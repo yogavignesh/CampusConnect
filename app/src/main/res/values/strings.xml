@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Campus Connect</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sports_buddy1">SportsBuddy1</string>
+    <string name="title_activity_events">Events</string>
+    <string name="title_activity_sbevents">SBEvents</string>
+    <string name="title_activity_game_invite">GameInvite</string>
+    <string name="title_activity_game_events">GameEvents</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">register</string>
+    <string name="title_activity_Main_Activity">MainActivity</string>
+    <string name="title_activity_forgot_password">forgot_password</string>
+    <style name="DefaultButtonText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#0099CC</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:shadowColor">#f9f9f9</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/athletes"
+        android:id="@+id/bgimg"
+        android:alpha=".15"/>
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bgimg"
+        android:layout_alignTop="@+id/bgimg"
+        android:layout_alignRight="@+id/bgimg"
+        android:layout_alignBottom="@+id/bgimg"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="Game"
+        android:textColor="#000000" />
+</RelativeLayout>

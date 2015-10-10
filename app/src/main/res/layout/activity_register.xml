@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.test.campusconnect.register">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_login"
+        android:alpha="0.25"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingTop="15dp"
+        android:text="Registration"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@color/ColorPrimary"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:id="@+id/reg_heading"
+        />
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/reg_heading"
+        >
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:textColorHint="#cccccc"
+                android:hint="First Name"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:hint="Last Name"
+                android:textColorHint="#cccccc"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+
+            <EditText
+                android:id="@+id/etSchool"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:hint="School"
+                android:textColorHint="#cccccc"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:textColorHint="#cccccc"
+                android:layout_marginBottom="10dp"
+                android:hint="Username: example@mavs.uta.edu"
+
+                android:inputType="textEmailAddress"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:password="true"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:hint="Password"
+                android:textColorHint="#cccccc"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+
+            <EditText
+                android:id="@+id/etCPassword"
+                android:password="true"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:hint="Confirm Password"
+                android:textColorHint="#cccccc"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+            <TextView
+
+                android:layout_height="wrap_content"
+                android:text="Sex"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/ColorPrimary"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/rggender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+
+                        android:text="M"
+                        android:id="@+id/rMale"
+                        android:checked="true"
+                        android:textSize="15sp"
+                        android:layout_gravity="center"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="F"
+                        android:id="@+id/rFemale"
+                        android:textSize="15sp"
+                        android:layout_gravity="center"/>
+                </RadioGroup>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tutoring Details"
+                android:id="@+id/TtextView"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="17dp"
+                android:textColor="#0000A0"
+                android:textAllCaps="true" />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="17dp"
+
+                android:layout_width="wrap_content"
+                android:textColor="@color/ColorPrimary"
+                android:text="Interseted in Tutoring?"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:id="@+id/rgtutor"
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <RadioButton android:id="@+id/rYes"
+                        android:layout_width="265dp"
+                        android:text="Yes"
+                        android:textColor="@color/ColorHeading"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true" />
+
+
+                    <RadioButton android:id="@+id/rNo"
+                        android:layout_width="match_parent"
+                        android:layoutDirection="rtl"
+                        android:text="No"
+                        android:textColor="@color/ColorHeading"
+
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/isTutor"
+                android:orientation="vertical">
+            <CheckBox android:id="@+id/cbAerospace"
+                android:layout_width="match_parent"
+                android:text="Aerospace"
+                android:textColor="@color/ColorHeading"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                />
+
+            <CheckBox android:id="@+id/cbBiotechnology"
+                android:layout_width="match_parent"
+                android:text="Biotechnology"
+                android:textColor="@color/ColorHeading"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbBusiness"
+                android:layout_width="match_parent"
+                android:text="Business"
+                android:textColor="@color/ColorHeading"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbComputerScience"
+                android:layout_width="match_parent"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:text="Computer Science/Computer Engineering"
+                android:layout_height="wrap_content"/>
+
+
+            <CheckBox android:id="@+id/cbElectrical"
+                android:layout_width="match_parent"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:text="Electrical/Electronics"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbIndustrial"
+                android:layout_width="match_parent"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:text="IndustrialEngineering"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbMechanical"
+                android:layout_width="match_parent"
+                android:text="Mechanical"
+                android:textColor="@color/ColorHeading"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbMaths"
+                android:layout_width="match_parent"
+                android:text="Mathematics"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbNursing"
+                android:layout_width="match_parent"
+                android:text="Nursing"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+
+            <CheckBox android:id="@+id/cbPsychology"
+                android:layout_width="match_parent"
+                android:text="Psychology"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbPhysics"
+                android:layout_width="match_parent"
+                android:text="Physics"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="17dp"
+                android:text="Sports of Interest"
+                android:id="@+id/StextView"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#0000A0"
+                android:textAllCaps="true" />
+
+            <CheckBox android:id="@+id/cbBaseball"
+                android:layout_width="265dp"
+                android:text="Baseball"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"
+               />
+
+            <CheckBox android:id="@+id/cbBasketball"
+                android:layout_width="265dp"
+                android:text="Basketball"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbBadminton"
+                android:layout_width="265dp"
+                android:text="Badminton"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+
+            <CheckBox android:id="@+id/cbCricket"
+                android:layout_width="265dp"
+                android:text="Cricket"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbFootball"
+                android:layout_width="265dp"
+                android:text="Football"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbFencing"
+                android:layout_width="265dp"
+                android:text="Fencing"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbPingPong"
+                android:layout_width="265dp"
+                android:text="Ping-Pong"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbRacketBall"
+                android:layout_width="265dp"
+                android:text="Racket-Ball"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/bSubmit"
+                android:text="Submit"
+                android:layout_margin="4dp"
+                style="@style/DefaultButtonText"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_default_bg"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+    </RelativeLayout>

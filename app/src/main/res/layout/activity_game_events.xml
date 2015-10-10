@@ -1,0 +1,33 @@
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:layout_margin="12dp"
+
+    android:orientation="vertical"
+    tools:context="com.example.test.campusconnect.GameEvents">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp"/>
+
+
+<ListView
+    android:id="@+id/lstEvents"
+    android:cacheColorHint="#CCBBFFFF"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:fadingEdge="none"
+    android:background="@drawable/card_background_selector"
+    android:divider="@color/ColorPrimary"
+    android:dividerHeight="10.0sp">
+
+</ListView>
+
+</LinearLayout>
