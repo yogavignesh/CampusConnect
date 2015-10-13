@@ -47,14 +47,22 @@
         android:id="@+id/datePick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        style="@style/AppTheme"
         android:layout_below="@+id/noofplayers"></DatePicker>
 
     <TimePicker
         android:id="@+id/tmePick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        style="@style/AppTheme"
         android:layout_below="@+id/datePick"></TimePicker>
 
     <Button

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.test.campusconnect" >
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,8 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".SBEvents"
             android:label="@string/title_activity_sbevents" >
@@ -44,6 +41,10 @@
         <activity
             android:name=".forgot_password"
             android:label="@string/title_activity_forgot_password" >
+        </activity>
+        <activity
+            android:name=".TutorRequest"
+            android:label="@string/title_activity_tutor_request" >
         </activity>
     </application>
 

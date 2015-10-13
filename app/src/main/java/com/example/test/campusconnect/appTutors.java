@@ -1,9 +1,9 @@
 package com.example.test.campusconnect;
 
 /**
- * Created by Yoga Vignesh on 10/8/2015.
+ * Created by Yoga Vignesh on 10/12/2015.
  */
-public class appEvents {
+public class appTutors {
     private String message = "";
     private String date = "";
     private String time = "";
@@ -48,6 +48,4 @@ public class appEvents {
     public String getTitle() {
         return title;
     }
-
-
 }

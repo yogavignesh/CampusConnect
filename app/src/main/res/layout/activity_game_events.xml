@@ -26,7 +26,7 @@
     android:fadingEdge="none"
     android:background="@drawable/card_background_selector"
     android:divider="@color/ColorPrimary"
-    android:dividerHeight="10.0sp">
+    android:dividerHeight="2.0sp">
 
 </ListView>
 

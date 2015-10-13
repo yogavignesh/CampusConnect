@@ -5,17 +5,20 @@
         >
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-
-
-    </style>
-
-    <!-- Styles for pop-up dialogs -->
-    <style name="MyThemeOverlay">
-
-
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
         <item name="android:colorAccent">@color/ColorPrimary</item>
-
     </style>
 
+
+
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
 
 </resources>

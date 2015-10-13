@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class GameEvents extends AppCompatActivity {
     private ListView mListView;
+    private TextView hdn_Title;
     private TextView title;
     private ArrayList<String> evntList;
     @Override
@@ -30,8 +31,11 @@ public class GameEvents extends AppCompatActivity {
         if (extras != null) {
             sp_name = extras.getString("sp_name");
         }
+
+
         title = (TextView) findViewById(R.id.title);
         title.setText(sp_name);
+
         mListView = (ListView) findViewById(R.id.lstEvents);
         evntList = new ArrayList<String>();
         String message="";
@@ -46,6 +50,7 @@ public class GameEvents extends AppCompatActivity {
         evnt.setDate("10/8/2015 ");
         evnt.setTime("5:43");
         evnt.setNoOfPlayers("1 players");
+        evnt.setTitle(sp_name);
         events_1.add(evnt);
 
 
@@ -55,28 +60,31 @@ public class GameEvents extends AppCompatActivity {
         evnt2.setDate("10/9/2015 ");
         evnt2.setTime("3:45");
         evnt2.setNoOfPlayers("2 players");
+        evnt2.setTitle(sp_name);
         events_1.add(evnt2);
 
 
 
         vEvents.setAdapter(new MyCustomBaseAdapter(this, events_1));
-        if(this.getIntent().getExtras().containsKey("mess")) {
-            message = extras.getString("mess");
-        }
-        if(this.getIntent().getExtras().containsKey("time")) {
-            time = extras.getString("time");
-        }
-        if(this.getIntent().getExtras().containsKey("date")) {
-            date = extras.getString("date");
-        }
-        if(this.getIntent().getExtras().containsKey("players")) {
-            players = extras.getString("players");
-        }
-        if(!message.isEmpty()&&!time.isEmpty()&&!date.isEmpty()&&!players.isEmpty()) {
-            ArrayList<appEvents> events = GetEvents(message, date, time, players);
-            final ListView viewEvents = (ListView) findViewById(R.id.lstEvents);
-            events_1.addAll(events);
-            viewEvents.setAdapter(new MyCustomBaseAdapter(this, events_1));
+        if(extras!=null) {
+            if (this.getIntent().getExtras().containsKey("mess")) {
+                message = extras.getString("mess");
+            }
+            if (this.getIntent().getExtras().containsKey("time")) {
+                time = extras.getString("time");
+            }
+            if (this.getIntent().getExtras().containsKey("date")) {
+                date = extras.getString("date");
+            }
+            if (this.getIntent().getExtras().containsKey("players")) {
+                players = extras.getString("players");
+            }
+            if (!message.isEmpty() && !time.isEmpty() && !date.isEmpty() && !players.isEmpty()) {
+                ArrayList<appEvents> events = GetEvents(message, date, time, players,sp_name);
+                final ListView viewEvents = (ListView) findViewById(R.id.lstEvents);
+                events_1.addAll(events);
+                viewEvents.setAdapter(new MyCustomBaseAdapter(this, events_1));
+            }
         }
 
 /*
@@ -155,14 +163,15 @@ public class GameEvents extends AppCompatActivity {
     }
 */
 
-    private ArrayList<appEvents> GetEvents(String message,String Date,String Time,String Players){
+    private ArrayList<appEvents> GetEvents(String message,String Date,String Time,String Players,String title){
         ArrayList<appEvents> results = new ArrayList<appEvents>();
 
 
         appEvents evnt = new appEvents();
         evnt.setMessage(message);
-        evnt.setDate(Date+" ");
+        evnt.setDate(Date + " ");
         evnt.setTime(Time);
+        evnt.setTitle(title);
         evnt.setNoOfPlayers(Players+ " players");
         results.add(evnt);
 
