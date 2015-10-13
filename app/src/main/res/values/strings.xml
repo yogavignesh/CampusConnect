@@ -26,4 +26,8 @@
         <item name="android:shadowRadius">1</item>
     </style>
     <string name="title_activity_tutor_request">TutorRequest</string>
+    <string name="menu_profile_settings">Profile Settings</string>
+    <string name="menu_log_out">Log Out</string>
+    <string name="go_to_home">Go to Home</string>
+    <string name="calendar">Calendar</string>
 </resources>

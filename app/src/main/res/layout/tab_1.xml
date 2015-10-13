@@ -23,21 +23,11 @@
             android:layout_width="match_parent"
             android:listSelector="@android:color/transparent"
             android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"
-            android:dividerHeight="10.0sp"
+            android:background="@drawable/card_background_selector"
+            android:divider="@color/ColorPrimary"
+            android:dividerHeight="2.0sp"/>
 
-            />
-        <TextView
-            android:id="@+id/line1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Text line 1"/>
 
-        <TextView
-            android:id="@+id/line2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Text line 2"/>
 
     </LinearLayout>
 </FrameLayout>

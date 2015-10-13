@@ -4,48 +4,49 @@ package com.example.test.campusconnect;
  * Created by Yoga Vignesh on 10/12/2015.
  */
 public class appTutors {
-    private String message = "";
-    private String date = "";
-    private String time = "";
-    private String players="";
-    private String title="";
+    private String TutorName = "";
+    private String rating = "";
+    private String subjects  = "";
+    private String exp="";
+    private String dept_title="";
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setTutorName(String TutorName) {
+        this.TutorName = TutorName;
     }
 
-    public String getMessage() {
-        return message;
+    public String getTutorName() {
+        return TutorName;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
-    public String getDate() {
-        return date;
+    public String getRating() {
+        return rating;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setSubjects(String subjects) {
+        this.subjects = subjects;
     }
 
-    public String getTime() {
-        return time;
+    public String getSubjects() {
+        return subjects;
     }
 
-    public void setNoOfPlayers(String players) {
-        this.players = players;
+    public void setExp(String exp) {
+        this.exp = exp;
     }
 
-    public String getNoOfPlayers() {
-        return players;
-    }
-    public void setTitle(String title) {
-        this.title = title;
+    public String getExp() {
+        return exp;
     }
 
-    public String getTitle() {
-        return title;
+    public void setDept_title(String title) {
+        this.dept_title = dept_title;
+    }
+
+    public String getDept_title() {
+        return dept_title;
     }
 }
