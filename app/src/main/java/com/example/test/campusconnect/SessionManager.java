@@ -21,7 +21,7 @@ public class SessionManager {
     int PRIVATE_MODE = 0;
 
     // Shared preferences file name
-    private static final String PREF_NAME = "AndroidHiveLogin";
+    public static final String PREF_NAME = "Login";
 
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
 
@@ -35,8 +35,10 @@ public class SessionManager {
 
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
 
+        editor.remove("USERNAME");
         // commit changes
         editor.commit();
+
 
         Log.d(TAG, "User login session modified!");
     }

@@ -38,13 +38,24 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     Button bLogin;
     EditText etUsername,eTPassword;
     TextView tvNewUser,tvForgotPassword;
-
+    SessionManager session;
     String enteredUsername;
     private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/index.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        session = new SessionManager(getApplicationContext());
+
+        // Check if user is already logged in or not
+        if (session.isLoggedIn()) {
+            // User is already logged in. Take him to main activity
+            Intent intent = new Intent(Login.this, MainActivity.class);
+
+            startActivity(intent);
+            finish();
+        }
         etUsername = (EditText) findViewById(R.id.etUsername);
         eTPassword = (EditText) findViewById(R.id.etPassword);
         bLogin = (Button) findViewById(R.id.bLogin);
@@ -61,6 +72,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.bLogin:
                 enteredUsername = etUsername.getText().toString();
                 String enteredPassword = eTPassword.getText().toString();
+                // Session manager
+
                 if(enteredUsername.equals("") || enteredPassword.equals("")){
 
                     Toast.makeText(Login.this, "Username or password must be filled", Toast.LENGTH_LONG).show();
@@ -244,11 +257,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             if(jsonResult == 1){
 
                 Intent intent = new Intent(Login.this, MainActivity.class);
-
-                intent.putExtra("USERNAME", enteredUsername);
-
-                intent.putExtra("MESSAGE", "You have been successfully login");
-
+                // Create login session
+                session.setLogin(true);
+                session.pref.edit().putString("USERNAME", enteredUsername);
                 startActivity(intent);
 
             }
@@ -273,7 +284,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             } catch (IOException e) {
 
-// TODO Auto-generated catch block
+            // TODO Auto-generated catch block
 
                 e.printStackTrace();
 

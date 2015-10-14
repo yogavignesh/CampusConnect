@@ -51,28 +51,31 @@ import java.util.ArrayList;
                 holder.txtSubjects = (TextView) convertView.findViewById(R.id.tSubjects);
                 holder.txtExp = (TextView) convertView.findViewById(R.id.tExp);
                 holder.txtRating = (RatingBar) convertView.findViewById(R.id.rtgTutor);
-                holder.btnJoin = (Button) convertView.findViewById(R.id.btnJoinEvent);
-                holder.btnEdit = (Button) convertView.findViewById(R.id.btnEditEvent);
-                holder.btnJoin.setOnClickListener(new View.OnClickListener() {
+                holder.btnReq = (Button) convertView.findViewById(R.id.btnTtrReq);
+                holder.moreInfo=(TextView) convertView.findViewById(R.id.moreInfo);
+                holder.reqSent=(TextView) convertView.findViewById(R.id.txtReqSent);
+                holder.btnReq.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View view) {
-                        Intent joinIntent= new Intent(parent.getContext(),GameEvents.class);
-                        joinIntent.putExtra("sp_name", holder.hdn_dept.getText());
+                        Intent joinIntent= new Intent(parent.getContext(),TutorRequest.class);
+                        joinIntent.putExtra("dp_name", holder.hdn_dept.getText());
                         parent.getContext().startActivity(joinIntent);
 
                     }
                 });
-                holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+                holder.moreInfo.setOnClickListener(new View.OnClickListener() {
+
                     @Override
                     public void onClick(View view) {
-
-                        Intent editIntent= new Intent(parent.getContext(),GameInvite.class);
-                        editIntent.putExtra("sp_name", holder.hdn_dept.getText());
-                        parent.getContext().startActivity(editIntent);
+                        Intent joinIntent= new Intent(parent.getContext(),TutorRequest.class);
+                        joinIntent.putExtra("dp_name", holder.hdn_dept.getText());
+                        parent.getContext().startActivity(joinIntent);
 
                     }
                 });
+
+
 
                 convertView.setTag(holder);
             } else {
@@ -83,8 +86,8 @@ import java.util.ArrayList;
             holder.txtExp.setText(searchArrayList.get(position).getExp());
             holder.txtRating.setRating(Float.parseFloat(searchArrayList.get(position).getRating()));
             holder.txtName.setText(searchArrayList.get(position).getTutorName());
-            holder.btnJoin.setVisibility(View.VISIBLE);
-            holder.btnEdit.setVisibility(View.GONE);
+            holder.btnReq.setVisibility(View.VISIBLE);
+            holder.reqSent.setVisibility(View.GONE);
             return convertView;
         }
 
@@ -94,8 +97,9 @@ import java.util.ArrayList;
             TextView txtExp;
             RatingBar txtRating;
             TextView hdn_dept;
-            Button btnJoin;
-            Button btnEdit;
+            Button btnReq;
+            TextView reqSent;
+            TextView moreInfo;
         }
 
     }

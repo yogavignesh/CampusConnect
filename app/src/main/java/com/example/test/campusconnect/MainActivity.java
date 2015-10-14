@@ -1,5 +1,6 @@
 package com.example.test.campusconnect;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -33,12 +34,18 @@ public class MainActivity extends AppCompatActivity {
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Sports Buddy","Find a Tutor"};
     int Numboftabs =2;
-
+SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+// session manager
+        session = new SessionManager(getApplicationContext());
+
+        if (!session.isLoggedIn()) {
+            logoutUser();
+        }
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
@@ -90,10 +97,25 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.logout) {
+            logoutUser();
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
 
+    /**
+     * Logging out the user. Will set isLoggedIn flag to false in shared
+     * preferences Clears the user data from sqlite users table
+     * */
+    private void logoutUser() {
+        session.setLogin(false);
+        // Launching the login activity
+        Intent intent = new Intent(MainActivity.this, Login.class);
+        startActivity(intent);
+        finish();
+    }
 
 }

@@ -3,11 +3,11 @@
 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/sb_orig"
+    android:background="@drawable/book_stack"
     >
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/evnttitle">
 
@@ -18,10 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <TextView android:id="@+id/tSubjects"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eventMessage"/>
+
         <TextView android:id="@+id/hidden_dept_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,38 +26,70 @@
         <TextView android:id="@+id/tExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:layout_below="@+id/tName"
+            />
+        <RatingBar
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:id="@+id/rtgTutor"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.2"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+                        android:progressTint="@color/star_color"
+            android:progressBackgroundTint="@color/star_color"
+            android:secondaryProgressTint="@color/star_color"
 
-        <LinearLayout
+            />
+
+            <TextView android:id="@+id/tSubjects"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_toEndOf="@id/evnttitle"
-            >
+android:layout_below="@+id/tExp"
+            android:textColor="@color/ColorHeading"
 
-        </LinearLayout>
-    </LinearLayout>
+            />
+
+
+
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"    >
-<RatingBar
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/rtgTutor"
-    android:isIndicator="true"
-    android:numStars="5"
-    android:stepSize="2.4"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/evnttitle">
+
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request"
+            android:id="@+id/btnTtrReq"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:padding="5pt"
+            android:background="@drawable/button_default_bg"
+            android:textColor="@color/ColorPrimary"></Button>
+        <TextView android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Request"
+            android:id="@+id/txtReqSent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:background="#993300FF"
+            android:textColor="@color/ColorPrimary"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtGoing"
-            android:text="More Info"
+            android:id="@+id/moreInfo"
+            android:text="More Info>"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:padding="5pt"
             android:gravity="center_vertical"
             android:textColor="@color/ColorPrimary"
 

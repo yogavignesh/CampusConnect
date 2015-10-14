@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class TutorRequest extends AppCompatActivity {
 
@@ -21,8 +24,47 @@ public class TutorRequest extends AppCompatActivity {
         }
         TextView dept_name=(TextView) findViewById(R.id.dept_title);
         dept_name.setText(dp_name);
-    }
 
+
+        final ListView vTutors = (ListView) findViewById(R.id.lstTutors);
+        appTutors ttr1 = new appTutors();
+        ArrayList<appTutors> tutors= new ArrayList<appTutors>();
+        ttr1.setTutorName("Philly Stone");
+        ttr1.setDept_title(dp_name);
+        ttr1.setExp("2 years");
+        ttr1.setSubjects("Maths,Aerospace");
+        ttr1.setRating("4.00");
+        tutors.add(ttr1);
+
+
+
+        appTutors ttr2 = new appTutors();
+        ttr2.setTutorName("Harry Potter");
+        ttr2.setDept_title(dp_name);
+        ttr2.setExp("1 years");
+        ttr2.setSubjects("Computer Science,Aerospace");
+        ttr2.setRating("3.00");
+        tutors.add(ttr2);
+
+
+
+        vTutors.setAdapter(new CustomTutorAdaptor(this, tutors));
+
+    }
+    private ArrayList<appTutors> GetTutors(String message,String Date,String Time,String Players,String title){
+        ArrayList<appTutors> results = new ArrayList<appTutors>();
+
+
+        appTutors ttr = new appTutors();
+        ttr.setTutorName(message);
+        ttr.setDept_title(Date + " ");
+        ttr.setExp(Time);
+        ttr.setSubjects(title);
+        ttr.setRating(Players+ " players");
+        results.add(ttr);
+
+        return results;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

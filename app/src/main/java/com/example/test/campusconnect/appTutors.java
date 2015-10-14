@@ -42,7 +42,7 @@ public class appTutors {
         return exp;
     }
 
-    public void setDept_title(String title) {
+    public void setDept_title(String dept_title) {
         this.dept_title = dept_title;
     }
 
