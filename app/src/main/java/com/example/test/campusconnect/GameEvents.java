@@ -33,6 +33,7 @@ public class GameEvents extends AppCompatActivity {
         }
 
 
+
         title = (TextView) findViewById(R.id.title);
         title.setText(sp_name);
 

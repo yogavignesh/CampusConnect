@@ -1,6 +1,5 @@
 package com.example.test.campusconnect;
 
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -256,10 +255,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             if(jsonResult == 1){
 
+                session.createLoginSession("Username",enteredUsername);
+
                 Intent intent = new Intent(Login.this, MainActivity.class);
-                // Create login session
-                session.setLogin(true);
-                session.pref.edit().putString("USERNAME", enteredUsername);
                 startActivity(intent);
 
             }
@@ -284,7 +282,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             } catch (IOException e) {
 
-            // TODO Auto-generated catch block
+                // TODO Auto-generated catch block
 
                 e.printStackTrace();
 

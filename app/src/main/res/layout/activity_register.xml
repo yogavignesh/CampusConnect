@@ -227,85 +227,85 @@
                 android:layout_height="match_parent"
                 android:id="@+id/isTutor"
                 android:orientation="vertical">
-            <CheckBox android:id="@+id/cbAerospace"
-                android:layout_width="match_parent"
-                android:text="Aerospace"
-                android:textColor="@color/ColorHeading"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"
-                />
+                <CheckBox android:id="@+id/cbAerospace"
+                    android:layout_width="match_parent"
+                    android:text="Aerospace"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    />
 
-            <CheckBox android:id="@+id/cbBiotechnology"
-                android:layout_width="match_parent"
-                android:text="Biotechnology"
-                android:textColor="@color/ColorHeading"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/cbBiotechnology"
+                    android:layout_width="match_parent"
+                    android:text="Biotechnology"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbBusiness"
-                android:layout_width="match_parent"
-                android:text="Business"
-                android:textColor="@color/ColorHeading"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/cbBusiness"
+                    android:layout_width="match_parent"
+                    android:text="Business"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbComputerScience"
-                android:layout_width="match_parent"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:text="Computer Science/Computer Engineering"
-                android:layout_height="wrap_content"/>
-
-
-            <CheckBox android:id="@+id/cbElectrical"
-                android:layout_width="match_parent"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:text="Electrical/Electronics"
-                android:layout_height="wrap_content"/>
-
-            <CheckBox android:id="@+id/cbIndustrial"
-                android:layout_width="match_parent"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:text="IndustrialEngineering"
-                android:layout_height="wrap_content"/>
-
-            <CheckBox android:id="@+id/cbMechanical"
-                android:layout_width="match_parent"
-                android:text="Mechanical"
-                android:textColor="@color/ColorHeading"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"/>
-
-            <CheckBox android:id="@+id/cbMaths"
-                android:layout_width="match_parent"
-                android:text="Mathematics"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:layout_height="wrap_content"/>
-
-            <CheckBox android:id="@+id/cbNursing"
-                android:layout_width="match_parent"
-                android:text="Nursing"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/cbComputerScience"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:text="Computer Science/Computer Engineering"
+                    android:layout_height="wrap_content"/>
 
 
-            <CheckBox android:id="@+id/cbPsychology"
-                android:layout_width="match_parent"
-                android:text="Psychology"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/cbElectrical"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:text="Electrical/Electronics"
+                    android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbPhysics"
-                android:layout_width="match_parent"
-                android:text="Physics"
-                android:textSize="15dp"
-                android:textColor="@color/ColorHeading"
-                android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/cbIndustrial"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:text="IndustrialEngineering"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbMechanical"
+                    android:layout_width="match_parent"
+                    android:text="Mechanical"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbMaths"
+                    android:layout_width="match_parent"
+                    android:text="Mathematics"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbNursing"
+                    android:layout_width="match_parent"
+                    android:text="Nursing"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+
+
+                <CheckBox android:id="@+id/cbPsychology"
+                    android:layout_width="match_parent"
+                    android:text="Psychology"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbPhysics"
+                    android:layout_width="match_parent"
+                    android:text="Physics"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -325,7 +325,7 @@
                 android:textSize="15dp"
                 android:textColor="@color/ColorHeading"
                 android:layout_height="wrap_content"
-               />
+                />
 
             <CheckBox android:id="@+id/cbBasketball"
                 android:layout_width="265dp"
@@ -387,7 +387,16 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_default_bg"/>
 
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/snackbarPosition">
+            </android.support.design.widget.CoordinatorLayout>
+
         </LinearLayout>
 
+
     </ScrollView>
-    </RelativeLayout>
+</RelativeLayout>

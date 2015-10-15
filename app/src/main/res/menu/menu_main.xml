@@ -5,6 +5,10 @@
 
         android:title="@string/menu_profile_settings"
         />
+    <item android:id="@+id/action_settings"
+
+        android:title="@string/action_settings"
+        />
     <item android:id="@+id/logout"
         android:title="@string/menu_log_out" />
 </menu>
