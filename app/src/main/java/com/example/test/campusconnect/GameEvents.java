@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 public class GameEvents extends AppCompatActivity {
     private ListView mListView;
+    Toolbar toolbar;
     private TextView hdn_Title;
     private TextView title;
     private ArrayList<String> evntList;
@@ -31,11 +33,19 @@ public class GameEvents extends AppCompatActivity {
         if (extras != null) {
             sp_name = extras.getString("sp_name");
         }
-
-
-
-        title = (TextView) findViewById(R.id.title);
+        title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(sp_name);
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        setSupportActionBar(toolbar);
+
+        // enabling action bar app icon and behaving it as toggle button
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
 
         mListView = (ListView) findViewById(R.id.lstEvents);
         evntList = new ArrayList<String>();

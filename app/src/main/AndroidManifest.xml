@@ -46,6 +46,14 @@
             android:name=".TutorRequest"
             android:label="@string/title_activity_tutor_request" >
         </activity>
+        <activity
+            android:name=".TOptions"
+            android:label="@string/title_activity_toptions" >
+        </activity>
+        <activity
+            android:name=".TutorResponse"
+            android:label="@string/title_activity_tutor_response" >
+        </activity>
     </application>
 
 </manifest>

@@ -57,4 +57,6 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_toptions">TOptions</string>
+    <string name="title_activity_tutor_response">TutorResponse</string>
 </resources>

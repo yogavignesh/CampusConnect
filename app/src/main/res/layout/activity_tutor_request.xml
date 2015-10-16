@@ -6,15 +6,13 @@
     android:paddingBottom="10dp"
     android:orientation="vertical"
     tools:context="com.example.test.campusconnect.TutorRequest">
-    <TextView
-        android:id="@+id/dept_title"
-        android:layout_width="fill_parent"
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:background="@android:color/holo_blue_dark"
-        android:padding="10dp"/>
+        android:layout_width="match_parent"
+        />
+
 
 
     <ListView

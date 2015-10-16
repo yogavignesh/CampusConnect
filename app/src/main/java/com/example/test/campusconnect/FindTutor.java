@@ -51,7 +51,7 @@ public class FindTutor extends Fragment {
                             @Override
                             public void run() {
                                 view.setAlpha(1);
-                                Intent intent = new Intent(view.getContext(), TutorRequest.class);
+                                Intent intent = new Intent(view.getContext(), TOptions.class);
                                 intent.putExtra("dp_name", item);
                                 startActivity(intent);
 

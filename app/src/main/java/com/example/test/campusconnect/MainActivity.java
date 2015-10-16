@@ -22,14 +22,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.test.slidingmenu.model.CommunityFragment;
+
 
 import com.example.test.slidingmenu.model.HomeFragment;
 import com.example.test.slidingmenu.model.NavDrawerItem;
 import com.example.test.slidingmenu.model.NavDrawerListAdapter;
 import com.example.test.slidingmenu.model.ProfileSettings;
-import com.example.test.slidingmenu.model.PhotosFragment;
-import com.example.test.slidingmenu.model.WhatsHotFragment;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -2,6 +2,7 @@ package com.example.test.campusconnect;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class TutorRequest extends AppCompatActivity {
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +23,15 @@ public class TutorRequest extends AppCompatActivity {
         if (extras != null) {
             dp_name = extras.getString("dp_name");
         }
-        TextView dept_name=(TextView) findViewById(R.id.dept_title);
+        TextView dept_name=(TextView) findViewById(R.id.toolbar_title);
         dept_name.setText(dp_name);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        setSupportActionBar(toolbar);
 
+        // enabling action bar app icon and behaving it as toggle button
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ListView vTutors = (ListView) findViewById(R.id.lstTutors);
         appTutors ttr1 = new appTutors();
