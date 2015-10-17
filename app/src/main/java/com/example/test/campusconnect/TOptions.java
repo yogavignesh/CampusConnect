@@ -36,7 +36,7 @@ public class TOptions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), TutorResponse.class);
-                intent.putExtra("dp_name", extras.getString("sp_name"));
+                intent.putExtra("dp_name", extras.getString("dp_name"));
                 startActivity(intent);
             }
         });

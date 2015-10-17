@@ -1,7 +1,9 @@
 package com.example.test.campusconnect;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +50,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
     protected String enteredUsername;
 
-    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/one.php";
+    private final String serverUrl = configuration.URL_REGISTER;
 
 
     @Override
@@ -131,8 +133,6 @@ public class register extends AppCompatActivity implements View.OnClickListener{
         String spassword = etPassword.getText().toString();
         String scpassword = etCpassword.getText().toString();
         String sschool = etSchool.getText().toString();
-
-
 
 
         // HashMap<String,String> hdepartment = new HashMap<String, String>();
@@ -282,20 +282,32 @@ public class register extends AppCompatActivity implements View.OnClickListener{
         }
 
 
-        if(etUsername.equals("") || etPassword.equals("") || etFname.equals("")|| etLname.equals("")
-                || etSchool.equals("")){
+        if(etUsername.length() < 1  || etPassword.length()< 1|| etFname.length() < 1|| etLname.length() < 1
+                || etSchool.length() < 1 ){
 
-            Toast.makeText(register.this, "Please Fill All Fields", Toast.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), "Please Enter all the Fields", Snackbar.LENGTH_LONG)
+                    .show();
+            //Toast.makeText(register.this, "Please Fill All Fields", Toast.LENGTH_LONG).show();
             return;
 
         }
 
-        if(etUsername.length() <= 1 || etPassword.length() <= 1){
+        if((etUsername.length() <= 7 && etUsername.length() >= 1)||(etPassword.length() <= 7 && etPassword.length() >= 1)){
 
-            Toast.makeText(register.this, "Username or password length must be greater than one", Toast.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), "Username or password length must be greater than 8 Characters", Snackbar.LENGTH_LONG)
+                    .show();
             return;
 
         }
+
+        if(!scpassword.equals(spassword)){
+
+            Snackbar.make(findViewById(android.R.id.content), "Passwords do not match", Snackbar.LENGTH_LONG)
+                    .show();
+            return;
+
+        }
+
 
 
         AsyncDataClass asyncRequestObject = new AsyncDataClass();

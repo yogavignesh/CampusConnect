@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     TextView tvNewUser,tvForgotPassword;
     SessionManager session;
     String enteredUsername;
-    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/index.php";
+    private final String serverUrl =configuration.URL_LOGIN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,7 +6,7 @@
                 android:color="@color/ColorPrimary" />
             <stroke
                 android:width="1dp"
-                android:color="@color/ColorPrimary" />
+                android:color="@color/ColorPrimaryDark" />
             <corners
                 android:radius="3dp" />
 
@@ -20,9 +20,9 @@
                 android:angle="270" />
             <stroke
                 android:width="1dp"
-                android:color="@color/ColorPrimary" />
+                android:color="#d2d2d2" />
             <corners
-                android:radius="3dp" />
+                android:radius="5dp" />
 
         </shape>
     </item>

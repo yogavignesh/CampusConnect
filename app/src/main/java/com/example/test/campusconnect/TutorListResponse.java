@@ -1,23 +1,12 @@
 package com.example.test.campusconnect;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
-import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,56 +28,45 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameEvents extends AppCompatActivity {
-
-    private ListView mListView;
-    private TextView title;
+public class TutorListResponse extends AppCompatActivity {
+    private TextView dept_name;
     Toolbar toolbar;
-    String sp_name;
+    String dp_name;
+    private ListView vTutors ;
     private AsyncDataClass asyncRequestObject;
     SessionManager session;
-    private final String serverUrl = configuration.URL_SPORTS_BUDDY_EVENTS;
+    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutor.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-        setContentView(R.layout.activity_game_events);
-        final Bundle extras = getIntent().getExtras();
+        overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
+        setContentView(R.layout.activity_tutor_request);
+
+        final Bundle extras=getIntent().getExtras();
 
         if (extras != null) {
-            sp_name = extras.getString("sp_name");
+            dp_name = extras.getString("dp_name");
         }
 
-
-        title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(sp_name);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setNavigationIcon(R.drawable.ic_drawer);
         setSupportActionBar(toolbar);
-
+        dept_name=(TextView) findViewById(R.id.toolbar_title);
+        dept_name.setText(dp_name);
         getSupportActionBar().setTitle("");
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         asyncRequestObject = new AsyncDataClass();
-        asyncRequestObject.execute(serverUrl, sp_name);
-
-
+        asyncRequestObject.execute(serverUrl, dp_name);
 
     }
-
-
-    public void onStart() {
-        super.onStart();
-
-    }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_game_events, menu);
+        getMenuInflater().inflate(R.menu.menu_tutor_request, menu);
         return true;
     }
 
@@ -107,7 +85,6 @@ public class GameEvents extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     private class AsyncDataClass extends AsyncTask<String, Void, String> {
 
         @Override
@@ -122,7 +99,7 @@ public class GameEvents extends AppCompatActivity {
 
                 Map<String,String> nameValuePairs = new HashMap<String,String>();
 
-                nameValuePairs.put("sname", params[1]);
+                nameValuePairs.put("dpname", params[1]);
 
                 URL url = new URL(serverUrl);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -143,7 +120,7 @@ public class GameEvents extends AppCompatActivity {
 
 
             }catch (IOException io){
-                Log.e("IOexcep","exp",io);
+                Log.e("IOexcep", "exp", io);
             }catch (Exception e) {
                 e.printStackTrace();
                 Log.e("MYAPP", "exception", e);
@@ -188,7 +165,7 @@ public class GameEvents extends AppCompatActivity {
 
             if(result.equals("") || result == null){
 
-                Toast.makeText(GameEvents.this, "Server connection failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(TutorListResponse.this, "Server connection failed", Toast.LENGTH_LONG).show();
 
                 return;
 
@@ -199,16 +176,16 @@ public class GameEvents extends AppCompatActivity {
 
             if(success == 0){
 
-                Toast.makeText(GameEvents.this, "Post cannot be posted", Toast.LENGTH_LONG).show();
+                Toast.makeText(TutorListResponse.this, "Post cannot be posted", Toast.LENGTH_LONG).show();
 
                 return;
 
             }
 
             if(success == 1){
-                List<SportsModel> lst = returnParsedJsonObject(result);
-                mListView = (ListView) findViewById(R.id.lstEvents);
-                mListView.setAdapter(new MyCustomBaseAdapter(GameEvents.this, R.layout.events_view, lst));
+                List<tutorModel> lst = returnParsedJsonObject(result);
+                vTutors = (ListView) findViewById(R.id.lstTutors);
+                vTutors.setAdapter(new CustomTutorAdaptor(TutorListResponse.this, R.layout.tutor_list_view,lst));
 
                 //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
                 //mListView.setAdapter(adpt);
@@ -255,11 +232,11 @@ public class GameEvents extends AppCompatActivity {
 
 
 
-    private List<SportsModel> returnParsedJsonObject(String result){
+    private List<tutorModel> returnParsedJsonObject(String result){
 
         JSONObject resultObject = null;
         JSONArray data = null;
-        List<SportsModel> sportsModelList = new ArrayList<>();
+        List<tutorModel> tutorModelList = new ArrayList<>();
 
 
 
@@ -271,14 +248,12 @@ public class GameEvents extends AppCompatActivity {
 
 
             for(int i = 0;i< data.length();i++){
-                SportsModel sportsModel = new SportsModel();
+                tutorModel tutorModel = new tutorModel();
                 JSONObject item = data.getJSONObject(i);
-                sportsModel.setUsername(item.getString("Username"));
-                sportsModel.setPost(item.getString("Post"));
-                sportsModel.setPostDate(item.getString("PostDate"));
-                sportsModel.setPostTime(item.getString("PostTime"));
-                sportsModel.setSportname(item.getString("Sportname"));
-                sportsModelList.add(sportsModel);
+                tutorModel.setUserName(item.getString("Username"));
+                tutorModel.setRating(item.getString("Rating"));
+                tutorModel.setDepartment(item.getString("Department"));
+                tutorModelList.add(tutorModel);
 
             }
 
@@ -288,7 +263,7 @@ public class GameEvents extends AppCompatActivity {
 
         }
 
-        return sportsModelList;
+        return tutorModelList;
 
     }
 
@@ -318,5 +293,3 @@ public class GameEvents extends AppCompatActivity {
     }
 
 }
-
-

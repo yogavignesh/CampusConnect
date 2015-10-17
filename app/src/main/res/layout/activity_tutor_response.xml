@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="10dp"
     android:paddingRight="10dp"
@@ -13,4 +13,140 @@
         android:layout_width="match_parent"
         />
 
-</RelativeLayout>
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.test.campusconnect.GameInvite"
+            >
+            <TextView
+                android:id="@+id/rtMessage"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accept Message:"
+                android:textSize="19dp"
+                android:textColor="@color/ColorPrimary"
+                />
+            <EditText
+                android:id="@+id/rtxtResponse"
+                android:textSize="17dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:inputType="textMultiLine"
+                android:hint="Your reply.."
+                android:lines="8"
+                android:background="@drawable/edittext_top_bg"
+                android:minLines="4"
+                android:gravity="top|left"
+                android:maxLines="15"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:layout_below="@id/rtMessage"
+                />
+            <TextView
+                android:id="@+id/rtSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Which Subject?"
+                android:textSize="19dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:textColor="@color/ColorPrimary"
+                android:layout_below="@id/rtxtResponse"/>
+            <Spinner
+                android:id="@+id/ddlSubjects"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:layout_below="@id/rtSubject"/>
+            <LinearLayout
+                android:id="@+id/title_Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal"
+                android:layout_below="@id/ddlSubjects">
+            <TextView
+                android:id="@+id/title_dte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:textSize="19dp"
+                android:textColor="@color/ColorPrimary"
+                android:layout_below="@id/ddlSubjects"/>
+            <EditText
+                android:id="@+id/rschDate"
+                android:padding="8sp"
+                android:focusable="false"
+                android:hint="Schedule Date"
+                android:background="@drawable/edittext_top_bg"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/title_Date"
+                />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rsch"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_Date"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time:"
+                android:textSize="19dp"
+                android:textColor="@color/ColorPrimary"/>
+            <EditText
+                android:id="@+id/rschStartTime"
+                android:hint="Start Time"
+                android:padding="8sp"
+                android:background="@drawable/edittext_top_bg"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:focusable="false"
+                android:layout_below="@id/ddlSubjects"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text=" to "
+                android:textSize="19dp"
+                android:textColor="@color/ColorPrimary"/>
+            <EditText
+                android:id="@+id/rschEndTime"
+                android:hint="End Time"
+                android:padding="8sp"
+                android:background="@drawable/edittext_top_bg"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:focusable="false"
+                android:layout_below="@id/ddlSubjects"
+                />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/rtbtnRes"
+                android:textSize="25dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@id/rsch"
+                android:layout_margin="4dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:alpha="0.76"
+                style="@style/DefaultButtonText"
+                android:background="@drawable/button_default_bg"
+                android:text="Schedule"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

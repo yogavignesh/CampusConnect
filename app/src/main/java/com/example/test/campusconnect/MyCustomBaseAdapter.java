@@ -5,37 +5,43 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.test.campusconnect.SportsModel;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yoga Vignesh on 10/8/2015.
  */
-public class MyCustomBaseAdapter extends BaseAdapter {
-    private static ArrayList<appEvents> searchArrayList;
+public class MyCustomBaseAdapter extends ArrayAdapter {
+
+    private static List<SportsModel> searchArrayList;
 
     private LayoutInflater mInflater;
 
 
-    public MyCustomBaseAdapter(Context context, ArrayList<appEvents> results) {
+    public MyCustomBaseAdapter(Context context,int resource ,List<SportsModel> results) {
+        super(context,resource,results);
         searchArrayList = results;
         mInflater = LayoutInflater.from(context);
     }
 
-    public int getCount() {
-        return searchArrayList.size();
-    }
-
-    public Object getItem(int position) {
-        return searchArrayList.get(position);
-    }
-
-    public long getItemId(int position) {
-        return position;
-    }
+//    public int getCount() {
+//        return searchArrayList.size();
+//    }
+//
+//    public Object getItem(int position) {
+//        return searchArrayList.get(position);
+//    }
+//
+//    public long getItemId(int position) {
+//        return position;
+//    }
 
     public View getView(int position, View convertView, final ViewGroup parent) {
         final ViewHolder holder;
@@ -76,11 +82,11 @@ public class MyCustomBaseAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.hdn_Title.setText(searchArrayList.get(position).getTitle());;
-        holder.txtMessage.setText(searchArrayList.get(position).getMessage());
-        holder.txtDate.setText(searchArrayList.get(position).getDate());
-        holder.txtTime.setText(searchArrayList.get(position).getTime());
-        holder.txtPlayers.setText(searchArrayList.get(position).getNoOfPlayers());
+        holder.hdn_Title.setText(searchArrayList.get(position).getSportname());;
+        holder.txtMessage.setText(searchArrayList.get(position).getPost());
+        holder.txtDate.setText(searchArrayList.get(position).getPostDate());
+        holder.txtTime.setText(searchArrayList.get(position).getPostTime());
+        //holder.txtPlayers.setText(searchArrayList.get(position).getNoOfPlayers());
         holder.btnJoin.setVisibility(View.VISIBLE);
         holder.btnEdit.setVisibility(View.GONE);
         return convertView;

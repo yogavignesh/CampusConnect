@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -41,8 +43,9 @@ import java.util.Map;
 public class GameInvite extends AppCompatActivity {
 
     SessionManager session;
-    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/invite.php";
-
+    private final String serverUrl = configuration.URL_SPORTS_BUDDY;
+    TextView title;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,16 @@ public class GameInvite extends AppCompatActivity {
         if (extras != null) {
             sp_name = extras.getString("sp_name");
         }
+        title = (TextView) findViewById(R.id.toolbar_title);
+        title.setText(sp_name);
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        // enabling action bar app icon and behaving it as toggle button
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Spinner dropdown = (Spinner)findViewById(R.id.noofplayers);
         String[] items = new String[]{"1", "2", "3",">3"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -96,20 +109,7 @@ public class GameInvite extends AppCompatActivity {
                     asyncRequestObject.execute(serverUrl,sport,players,inv_message,date_selected,timing,Username);
 
 
-                    //Intent intent = new Intent(getBaseContext(), GameEvents.class);
-                    /*intent.putExtra("sp_name", extras.getString("sp_name"));
-                    intent.putExtra("mess", inv_message);
-                    intent.putExtra("time", timing);
-                    intent.putExtra("date", date_selected);
-                    intent.putExtra("players", ddl.getSelectedItem().toString());
-                    Toast.makeText(GameInvite.this, "Event created successfully!", Toast.LENGTH_LONG).show();
-                    intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timing);
-                    intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-                    intent.putExtra(CalendarContract.Events.TITLE, "Sports Buddy");
-                    intent.putExtra(CalendarContract.Events.DESCRIPTION, inv_message);
-                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION, "MAC");
-                    intent.putExtra(CalendarContract.Events.RRULE, "FREQ=DAILY");*/
-                    //startActivity(intent);
+
                 }
             }
         });
@@ -269,6 +269,13 @@ public class GameInvite extends AppCompatActivity {
             if(jsonResult == 1){
 
                 Intent intent = new Intent(getBaseContext(), GameEvents.class);
+                final Bundle extras=getIntent().getExtras();
+                String sp_name="Sport";
+                if (extras != null) {
+                    sp_name = extras.getString("sp_name");                }
+
+                intent.putExtra("sp_name",sp_name);
+                Toast.makeText(GameInvite.this, "Your invite has been posted", Toast.LENGTH_LONG).show();
                 startActivity(intent);
 
             }

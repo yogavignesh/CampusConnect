@@ -7,5 +7,10 @@ public class configuration {
     public static String URL_REGISTER = "http://ec2-52-21-243-105.compute-1.amazonaws.com/one.php";
 
     // Server user sports buddy url
-    public static String URL_SPORTS_BUDDY = "http://ec2-52-21-243-105.compute-1.amazonaws.com/invites.php";
+    public static String URL_SPORTS_BUDDY = "http://ec2-52-21-243-105.compute-1.amazonaws.com/invite.php";
+
+
+    public static String URL_SPORTS_BUDDY_EVENTS = "http://ec2-52-21-243-105.compute-1.amazonaws.com/retinvite.php";
+
+    public static String URL_FIND_TUTOR = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutor.php";
 }
