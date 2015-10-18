@@ -16,7 +16,7 @@
 
 
     <ListView
-        android:id="@+id/lstTutors"
+        android:id="@+id/lstTutorsResponses"
         android:cacheColorHint="#CCBBFFFF"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

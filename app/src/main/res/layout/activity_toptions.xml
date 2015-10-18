@@ -19,32 +19,16 @@
         android:id="@+id/game_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bgimg"
-        android:layout_alignTop="@+id/bgimg"
-        android:layout_alignRight="@+id/bgimg"
-        android:layout_alignBottom="@+id/bgimg"
-        android:layout_margin="1dp"
 
-        android:gravity="center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_above="@+id/showResponses"
         android:textSize="30dp"
         android:text="Tutor"
-        android:textColor="#000000" />
-
-    <Button
-        android:id="@+id/btnRequest"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:padding="10dp"
-        android:layout_margin="4dp"
-        style="@style/DefaultButtonText"
-        android:background="@drawable/button_default_bg"
-        android:text="Request"
-        android:textSize="25dp"
-        android:layout_weight="1"
-        android:alpha="0.76"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/ColorPrimaryDark" />
 
 
-        />
+
     <Button
         android:id="@+id/btnRespond"
         android:textSize="25dp"
@@ -56,6 +40,37 @@
         style="@style/DefaultButtonText"
         android:background="@drawable/button_default_bg"
         android:layout_alignParentBottom="true"
-        android:text="Respond"/>
+        android:alpha="0.76"
+        android:text="Send Response"/>
+    <Button
+        android:id="@+id/btnRequest"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:padding="10dp"
+        android:layout_margin="4dp"
+        style="@style/DefaultButtonText"
+        android:background="@drawable/button_default_bg"
+        android:text="Send Request"
+        android:textSize="25dp"
+        android:layout_weight="1"
+        android:alpha="0.76"
+
+        android:layout_above="@id/btnRespond"
+        />
+    <Button
+        android:id="@+id/showResponses"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:padding="10dp"
+        android:layout_margin="4dp"
+        style="@style/DefaultButtonText"
+        android:background="@drawable/button_default_bg"
+        android:text="Request Updates"
+        android:textSize="25dp"
+        android:layout_weight="1"
+        android:alpha="0.76"
+        android:layout_above="@id/btnRequest"
+
+        />
 
 </RelativeLayout>

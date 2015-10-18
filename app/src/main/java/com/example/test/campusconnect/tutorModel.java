@@ -9,6 +9,7 @@ public class tutorModel {
     private String Username;
     private String Rating;
     private String Department;
+    private String[] Subjects;
 
     public void setUserName(String UserName) {
         this.Username = UserName;
@@ -32,5 +33,12 @@ public class tutorModel {
 
     public String getDepartment() {
         return Department;
+    }
+    public void setSubjects(String Subjects) {
+        this.Department = Subjects;
+    }
+
+    public String[] getSubjects() {
+        return Subjects;
     }
 }

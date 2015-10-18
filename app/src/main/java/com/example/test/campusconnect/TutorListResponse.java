@@ -1,5 +1,6 @@
 package com.example.test.campusconnect;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class TutorListResponse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
-        setContentView(R.layout.activity_tutor_request);
+        setContentView(R.layout.activity_tutor_list_response);
 
         final Bundle extras=getIntent().getExtras();
 
@@ -59,8 +60,16 @@ public class TutorListResponse extends AppCompatActivity {
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        asyncRequestObject = new AsyncDataClass();
-        asyncRequestObject.execute(serverUrl, dp_name);
+       // asyncRequestObject = new AsyncDataClass();
+        //asyncRequestObject.execute(serverUrl, dp_name);
+        List<tutorRModel> lst=new ArrayList<tutorRModel>();
+        tutorRModel tutorResModel = new tutorRModel();
+        tutorResModel.setUserName("Yoga");
+        tutorResModel.setMessage("Request for lessons");
+        tutorResModel.setSubject(dp_name);
+        lst.add(tutorResModel);
+        vTutors = (ListView) findViewById(R.id.lstTutorsResponses);
+        vTutors.setAdapter(new CustomTutorResponseAdapter(TutorListResponse.this, R.layout.tutor_response_list_view, lst));
 
     }
     @Override
@@ -152,6 +161,7 @@ public class TutorListResponse extends AppCompatActivity {
 
             super.onPreExecute();
 
+
         }
 
         @Override
@@ -183,16 +193,15 @@ public class TutorListResponse extends AppCompatActivity {
             }
 
             if(success == 1){
-                List<tutorModel> lst = returnParsedJsonObject(result);
+                List<tutorRModel> lst = returnParsedJsonObject(result);
                 vTutors = (ListView) findViewById(R.id.lstTutors);
-                vTutors.setAdapter(new CustomTutorAdaptor(TutorListResponse.this, R.layout.tutor_list_view,lst));
+                vTutors.setAdapter(new CustomTutorResponseAdapter(TutorListResponse.this, R.layout.tutor_response_list_view,lst));
 
                 //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
                 //mListView.setAdapter(adpt);
 
 
-                //Intent intent = new Intent(getBaseContext(), GameEvents.class);
-                //startActivity(intent);
+
                 //asyncRequestObject.cancel(true);
 
             }
@@ -232,11 +241,11 @@ public class TutorListResponse extends AppCompatActivity {
 
 
 
-    private List<tutorModel> returnParsedJsonObject(String result){
+    private List<tutorRModel> returnParsedJsonObject(String result){
 
         JSONObject resultObject = null;
         JSONArray data = null;
-        List<tutorModel> tutorModelList = new ArrayList<>();
+        List<tutorRModel> tutorModelList = new ArrayList<>();
 
 
 
@@ -248,12 +257,12 @@ public class TutorListResponse extends AppCompatActivity {
 
 
             for(int i = 0;i< data.length();i++){
-                tutorModel tutorModel = new tutorModel();
+                tutorRModel tutorResModel = new tutorRModel();
                 JSONObject item = data.getJSONObject(i);
-                tutorModel.setUserName(item.getString("Username"));
-                tutorModel.setRating(item.getString("Rating"));
-                tutorModel.setDepartment(item.getString("Department"));
-                tutorModelList.add(tutorModel);
+                tutorResModel.setUserName(item.getString("Username"));
+                tutorResModel.setMessage(item.getString("ReqMessage"));
+                tutorResModel.setSubject(item.getString("Subject"));
+                tutorModelList.add(tutorResModel);
 
             }
 

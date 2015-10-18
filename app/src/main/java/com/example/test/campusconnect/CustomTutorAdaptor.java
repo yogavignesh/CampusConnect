@@ -19,16 +19,15 @@ import java.util.List;
  * Created by Yoga Vignesh on 10/12/2015.
  */
 public class CustomTutorAdaptor extends ArrayAdapter {
-    private static List<tutorModel> searchArrayList;
-
+    private static List<tutorModel> tutorReqArrayList;
     private LayoutInflater mInflater;
-
-
     public CustomTutorAdaptor(Context context,int resource ,List<tutorModel> results) {
         super(context,resource,results);
-        searchArrayList = results;
+        tutorReqArrayList = results;
         mInflater = LayoutInflater.from(context);
     }
+
+
 
 //        public int getCount() {
 //            return searchArrayList.size();
@@ -84,11 +83,11 @@ public class CustomTutorAdaptor extends ArrayAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.hdn_dept.setText(searchArrayList.get(position).getDepartment());;
-        holder.txtSubjects.setText(searchArrayList.get(position).getDepartment());
+        holder.hdn_dept.setText(tutorReqArrayList.get(position).getDepartment());;
+        holder.txtSubjects.setText(tutorReqArrayList.get(position).getDepartment());
         //holder.txtExp.setText(searchArrayList.get(position).getExp());
-        holder.txtRating.setRating(Float.parseFloat(searchArrayList.get(position).getRating()));
-        holder.txtName.setText(searchArrayList.get(position).getUserName());
+        holder.txtRating.setRating(Float.parseFloat(tutorReqArrayList.get(position).getRating()));
+        holder.txtName.setText(tutorReqArrayList.get(position).getUserName());
         holder.btnReq.setVisibility(View.VISIBLE);
         holder.reqSent.setVisibility(View.GONE);
         return convertView;

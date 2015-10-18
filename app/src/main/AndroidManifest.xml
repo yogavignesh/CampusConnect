@@ -52,16 +52,13 @@
         </activity>
         <activity
             android:name=".TutorResponse"
-            android:label="@string/title_activity_tutor_response" >
-        </activity>
-        <activity
-            android:name=".tutor_Request_Popup"
-            android:label="@string/title_activity_tutor__request__popup" >
+            android:label="Response Dialog"
+            android:theme="@style/Theme.AppCompat.Dialog" >
         </activity>
         <activity
             android:name=".ratingPopup"
             android:label="Tutor Rating"
-            android:theme="@style/Theme.AppCompat.Light.Dialog" >
+            android:theme="@style/Theme.AppCompat.Dialog" >
         </activity>
         <activity
             android:name=".TutorListResponse"
@@ -70,7 +67,12 @@
         <activity
             android:name=".tutorRequestPopup"
             android:label="Request Tutor Lessons"
-            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            android:theme="@style/Theme.AppCompat.Dialog" >
+        </activity>
+        <activity
+            android:name=".checkTutorResponses"
+            android:label="Request Updates"
+            android:theme="@style/Theme.AppCompat.Dialog">
         </activity>
     </application>
 

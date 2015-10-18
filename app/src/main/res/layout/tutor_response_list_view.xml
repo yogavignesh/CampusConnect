@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    android:background="@drawable/book_stack"
+        android:id="@+id/evnttitle">
+
+        <TextView android:id="@+id/rUserName"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/ColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView android:id="@+id/hidden_dept_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:visibility="gone"/>
+
+        <TextView android:id="@+id/tSubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tName"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:textColor="@color/ColorHeading"
+
+            />
+        <TextView android:id="@+id/txtReqMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tSubject"
+            android:textColor="@color/ColorPrimaryDark"
+            />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:orientation="horizontal">
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept"
+        android:id="@+id/btnTtrAcc"
+        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/btnTtrDec"
+        android:padding="5pt"
+        android:background="@drawable/button_default_bg"
+        android:textColor="@color/ColorPrimary"></Button>
+
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decline"
+        android:id="@+id/btnTtrDec"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true"
+        android:padding="5pt"
+        android:background="@drawable/button_default_bg"
+        android:textColor="@color/ColorPrimary"></Button>
+    <TextView android:id="@+id/txtAccepted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Accepted"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textColor="@android:color/holo_green_dark"
+        />
+    <TextView android:id="@+id/txtDeclined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Declined"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textColor="@android:color/holo_red_dark"
+
+        />
+</LinearLayout>
+
+    </LinearLayout>
+
+

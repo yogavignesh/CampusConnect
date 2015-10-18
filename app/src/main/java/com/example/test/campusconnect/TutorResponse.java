@@ -12,8 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,7 +24,6 @@ import java.util.Locale;
 public class TutorResponse extends AppCompatActivity {
 
     private TextView dept_name;
-    Toolbar toolbar;
     private EditText schDate;
     private EditText schSTime;
     private  EditText schETime;
@@ -36,22 +37,14 @@ public class TutorResponse extends AppCompatActivity {
 
         final Bundle extras=getIntent().getExtras();
         String dp_name="Department";
+        int status=0;
         if (extras != null) {
             dp_name = extras.getString("dp_name");
+            status=extras.getInt("status");
         }
 
 
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setNavigationIcon(R.drawable.ic_drawer);
-        setSupportActionBar(toolbar);
-        dept_name=(TextView) findViewById(R.id.toolbar_title);
-        dept_name.setText(dp_name);
-        getSupportActionBar().setTitle("");
-        // enabling action bar app icon and behaving it as toggle button
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         myCalendar = Calendar.getInstance();
-
         schDate= (EditText) findViewById(R.id.rschDate);
         schDate.setOnClickListener(new View.OnClickListener() {
 
@@ -118,12 +111,21 @@ public class TutorResponse extends AppCompatActivity {
             }
         });
 
+        if(status!=1) {
+            LinearLayout sDate=(LinearLayout) findViewById(R.id.title_Date);
+            LinearLayout sTime=(LinearLayout) findViewById(R.id.rsch);
+            sDate.setVisibility(View.GONE);
+            sTime.setVisibility(View.GONE);
+
+        }
+
         Button resBtn= (Button) findViewById(R.id.rtbtnRes);
         resBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getBaseContext(),"The response has been sent",Toast.LENGTH_SHORT);
+                finish();
             }
         });
 

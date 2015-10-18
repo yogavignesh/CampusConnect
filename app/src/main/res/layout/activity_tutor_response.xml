@@ -6,12 +6,7 @@
     android:paddingBottom="10dp"
     android:orientation="vertical"
     tools:context="com.example.test.campusconnect.TutorResponse">
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        />
+
 
     <ScrollView
         android:id="@+id/ScrollView01"
@@ -29,7 +24,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Accept Message:"
+                android:text="Reply:"
                 android:textSize="19dp"
                 android:textColor="@color/ColorPrimary"
                 />
@@ -49,30 +44,14 @@
                 android:scrollbars="vertical"
                 android:layout_below="@id/rtMessage"
                 />
-            <TextView
-                android:id="@+id/rtSubject"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Which Subject?"
-                android:textSize="19dp"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:textColor="@color/ColorPrimary"
-                android:layout_below="@id/rtxtResponse"/>
-            <Spinner
-                android:id="@+id/ddlSubjects"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"
-                android:layout_below="@id/rtSubject"/>
+
             <LinearLayout
                 android:id="@+id/title_Date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal"
-                android:layout_below="@id/ddlSubjects">
+                android:layout_below="@id/rtxtResponse">
             <TextView
                 android:id="@+id/title_dte"
                 android:layout_width="wrap_content"
@@ -80,7 +59,7 @@
                 android:text="Date:"
                 android:textSize="19dp"
                 android:textColor="@color/ColorPrimary"
-                android:layout_below="@id/ddlSubjects"/>
+                android:layout_below="@id/rtxtResponse"/>
             <EditText
                 android:id="@+id/rschDate"
                 android:padding="8sp"
@@ -113,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:focusable="false"
-                android:layout_below="@id/ddlSubjects"
+                android:layout_below="@id/rtxtResponse"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -130,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:focusable="false"
-                android:layout_below="@id/ddlSubjects"
+                android:layout_below="@id/rtxtResponse"
                 />
             </LinearLayout>
 
@@ -145,7 +124,7 @@
                 android:alpha="0.76"
                 style="@style/DefaultButtonText"
                 android:background="@drawable/button_default_bg"
-                android:text="Schedule"/>
+                android:text="Reply"/>
 
         </RelativeLayout>
     </ScrollView>
