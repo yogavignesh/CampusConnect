@@ -16,24 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class checkTutorResponses extends AppCompatActivity {
-    private String tutorName;
-    private String replyMessage;
-
-    public void setTutorName(String tutorName) {
-        this.tutorName = tutorName;
-    }
-
-    public String getTutorName() {
-        return tutorName;
-    }
-
-    public void setReplyMessage(String replyMessage) {
-        this.replyMessage = replyMessage;
-    }
-
-    public String getReplyMessage() {
-        return replyMessage;
-    }
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
