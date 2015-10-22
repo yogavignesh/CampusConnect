@@ -11,9 +11,9 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/athletes"
+        android:background="@drawable/all_sports_banner"
         android:id="@+id/bgimg"
-        android:alpha=".15"/>
+        android:alpha=".45"/>
 
     <TextView
         android:id="@+id/game_name"
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:textSize="30dp"
         android:text="Game"
-        android:textColor="#000000" />
+        android:textColor="@color/ColorPrimary" />
 
     <Button
         android:id="@+id/btnInvite"

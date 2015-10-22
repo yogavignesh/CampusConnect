@@ -21,7 +21,6 @@
             >
             <TextView
                 android:id="@+id/rtMessage"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reply:"
@@ -30,6 +29,7 @@
                 />
             <EditText
                 android:id="@+id/rtxtResponse"
+                android:textColor="#000000"
                 android:textSize="17dp"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:inputType="textMultiLine"
@@ -39,6 +39,7 @@
                 android:minLines="4"
                 android:gravity="top|left"
                 android:maxLines="15"
+
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:scrollbars="vertical"
@@ -52,24 +53,25 @@
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:orientation="horizontal"
                 android:layout_below="@id/rtxtResponse">
-            <TextView
-                android:id="@+id/title_dte"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date:"
-                android:textSize="19dp"
-                android:textColor="@color/ColorPrimary"
-                android:layout_below="@id/rtxtResponse"/>
-            <EditText
-                android:id="@+id/rschDate"
-                android:padding="8sp"
-                android:focusable="false"
-                android:hint="Schedule Date"
-                android:background="@drawable/edittext_top_bg"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_below="@id/title_Date"
-                />
+                <TextView
+                    android:id="@+id/title_dte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date:"
+                    android:textSize="19dp"
+                    android:textColor="@color/ColorPrimary"
+                    android:layout_below="@id/rtxtResponse"/>
+                <EditText
+                    android:id="@+id/rschDate"
+                    android:textColor="#000000"
+                    android:padding="8sp"
+                    android:focusable="false"
+                    android:hint="Schedule Date"
+                    android:background="@drawable/edittext_top_bg"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/title_Date"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/rsch"
@@ -78,39 +80,41 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title_Date"
                 android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time:"
-                android:textSize="19dp"
-                android:textColor="@color/ColorPrimary"/>
-            <EditText
-                android:id="@+id/rschStartTime"
-                android:hint="Start Time"
-                android:padding="8sp"
-                android:background="@drawable/edittext_top_bg"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:focusable="false"
-                android:layout_below="@id/rtxtResponse"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time:"
+                    android:textSize="19dp"
+                    android:textColor="@color/ColorPrimary"/>
+                <EditText
+                    android:id="@+id/rschStartTime"
+                    android:hint="Start Time"
+                    android:textColor="#000000"
+                    android:padding="8sp"
+                    android:background="@drawable/edittext_top_bg"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:focusable="false"
+                    android:layout_below="@id/rtxtResponse"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-                android:text=" to "
-                android:textSize="19dp"
-                android:textColor="@color/ColorPrimary"/>
-            <EditText
-                android:id="@+id/rschEndTime"
-                android:hint="End Time"
-                android:padding="8sp"
-                android:background="@drawable/edittext_top_bg"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:focusable="false"
-                android:layout_below="@id/rtxtResponse"
-                />
+                    android:text=" to "
+                    android:textSize="19dp"
+                    android:textColor="@color/ColorPrimary"/>
+                <EditText
+                    android:id="@+id/rschEndTime"
+                    android:hint="End Time"
+                    android:textColor="#000000"
+                    android:padding="8sp"
+                    android:background="@drawable/edittext_top_bg"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:focusable="false"
+                    android:layout_below="@id/rtxtResponse"
+                    />
             </LinearLayout>
 
             <Button

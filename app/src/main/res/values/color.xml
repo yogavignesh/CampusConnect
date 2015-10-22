@@ -3,7 +3,6 @@
     <color name="ColorPrimary">#0099CC</color>
     <color name="ColorPrimaryDark">#1188CC</color>
     <color name="tabsScrollColor">#0033FF</color>
-    <color name="ColorListItem">#0099CC</color>
     <color name="ColorSubListItem">#CCCCCC</color>
     <color name="ColorHeading">#3300FF</color>
     <color name="card_shadow">#000005</color>
@@ -15,4 +14,5 @@
     <color name="list_divider">#272727</color>
     <color name="counter_text_bg">#626262</color>
     <color name="counter_text_color">#c5c4c4</color>
+    <color name="ColorListItem">#86d6ff</color>
 </resources>

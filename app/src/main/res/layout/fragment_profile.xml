@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.test.campusconnect.register">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_login"
+        android:alpha="0.25"/>
+
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/reg_heading"
+        >
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Change your profile details"
+    android:textSize="20sp"
+    android:textColor="@color/ColorPrimaryDark"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tutoring Details"
+                android:id="@+id/TtextView"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="17dp"
+                android:textColor="#0000A0"
+                android:textAllCaps="true" />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="17dp"
+
+                android:layout_width="wrap_content"
+                android:textColor="@color/ColorPrimary"
+                android:text="Interseted in Tutoring?"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:id="@+id/rgtutor"
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <RadioButton android:id="@+id/rYes"
+                        android:layout_width="265dp"
+                        android:text="Yes"
+                        android:textColor="@color/ColorHeading"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true" />
+
+
+                    <RadioButton android:id="@+id/rNo"
+                        android:layout_width="match_parent"
+                        android:layoutDirection="rtl"
+                        android:text="No"
+                        android:textColor="@color/ColorHeading"
+
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/isTutor"
+                android:orientation="vertical">
+                <CheckBox android:id="@+id/cbAerospace"
+                    android:layout_width="match_parent"
+                    android:text="Aerospace"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    />
+
+                <CheckBox android:id="@+id/cbBiotechnology"
+                    android:layout_width="match_parent"
+                    android:text="Biotechnology"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbBusiness"
+                    android:layout_width="match_parent"
+                    android:text="Business"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbComputerScience"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:text="Computer Science/Computer Engineering"
+                    android:layout_height="wrap_content"/>
+
+
+                <CheckBox android:id="@+id/cbElectrical"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:text="Electrical/Electronics"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbIndustrial"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:text="IndustrialEngineering"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbMechanical"
+                    android:layout_width="match_parent"
+                    android:text="Mechanical"
+                    android:textColor="@color/ColorHeading"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbMaths"
+                    android:layout_width="match_parent"
+                    android:text="Mathematics"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbNursing"
+                    android:layout_width="match_parent"
+                    android:text="Nursing"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+
+
+                <CheckBox android:id="@+id/cbPsychology"
+                    android:layout_width="match_parent"
+                    android:text="Psychology"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+
+                <CheckBox android:id="@+id/cbPhysics"
+                    android:layout_width="match_parent"
+                    android:text="Physics"
+                    android:textSize="15dp"
+                    android:textColor="@color/ColorHeading"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="17dp"
+                android:text="Sports of Interest"
+                android:id="@+id/StextView"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#0000A0"
+                android:textAllCaps="true" />
+
+            <CheckBox android:id="@+id/cbBaseball"
+                android:layout_width="265dp"
+                android:text="Baseball"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"
+                />
+
+            <CheckBox android:id="@+id/cbBasketball"
+                android:layout_width="265dp"
+                android:text="Basketball"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbBadminton"
+                android:layout_width="265dp"
+                android:text="Badminton"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+
+            <CheckBox android:id="@+id/cbCricket"
+                android:layout_width="265dp"
+                android:text="Cricket"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbFootball"
+                android:layout_width="265dp"
+                android:text="Football"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbFencing"
+                android:layout_width="265dp"
+                android:text="Fencing"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbPingPong"
+                android:layout_width="265dp"
+                android:text="Ping-Pong"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox android:id="@+id/cbRacketBall"
+                android:layout_width="265dp"
+                android:text="Racket-Ball"
+                android:textSize="15dp"
+                android:textColor="@color/ColorHeading"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/bUpdateChanges"
+                android:text="Update"
+                android:layout_margin="4dp"
+                style="@style/DefaultButtonText"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_default_bg"/>
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/snackbarPosition">
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</RelativeLayout>

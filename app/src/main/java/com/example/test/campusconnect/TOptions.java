@@ -21,7 +21,7 @@ public class TOptions extends AppCompatActivity {
             dp_name = extras.getString("dp_name");
         }
         TextView game_name=(TextView) findViewById(R.id.game_name);
-        game_name.setText("Wanna learn or teach someone "+dp_name+"?");
+        game_name.setText("Wanna learn or teach someone " + dp_name + "?");
         Button btnReq=(Button) findViewById(R.id.btnRequest);
         btnReq.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,11 +35,13 @@ public class TOptions extends AppCompatActivity {
         btnRes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Intent intent = new Intent(getBaseContext(), TutorResponse.class);
                 Intent intent = new Intent(getBaseContext(), TutorListResponse.class);
                 intent.putExtra("dp_name", extras.getString("dp_name"));
                 startActivity(intent);
             }
         });
+
         Button btnRequestUpdates=(Button) findViewById(R.id.showResponses);
         btnRequestUpdates.setOnClickListener(new View.OnClickListener() {
             @Override

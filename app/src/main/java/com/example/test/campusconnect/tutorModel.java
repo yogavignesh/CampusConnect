@@ -10,6 +10,16 @@ public class tutorModel {
     private String Rating;
     private String Department;
     private String[] Subjects;
+    private String tutorName;
+    private int status;
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
 
     public void setUserName(String UserName) {
         this.Username = UserName;
@@ -18,6 +28,14 @@ public class tutorModel {
     public String getUserName() {
         return Username;
     }
+    public void settutorName(String tutorName) {
+        this.tutorName = tutorName;
+    }
+
+    public String gettutorName() {
+        return tutorName;
+    }
+
 
     public void setRating(String Rating) {
         this.Rating = Rating;
@@ -34,11 +52,12 @@ public class tutorModel {
     public String getDepartment() {
         return Department;
     }
+
     public void setSubjects(String Subjects) {
-        this.Department = Subjects;
-    }
+                this.Department = Subjects;
+           }
 
     public String[] getSubjects() {
-        return Subjects;
-    }
+                return Subjects;
+            }
 }

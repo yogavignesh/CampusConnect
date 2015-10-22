@@ -1,37 +1,45 @@
 package com.example.test.campusconnect;
 
 /**
- * Created by Yoga Vignesh on 10/17/2015.
+ * Created by Namratha on 10/18/2015.
  */
 public class tutorRModel {
 
-    private String Username;
-    private String Message;
-    private String Subject;
-
-
-    public void setUserName(String UserName) {
-        this.Username = UserName;
+    private String ReqUsername;
+    private String ReqMessage;
+    private String Department;
+    private int status;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getUserName() {
-        return Username;
+    public int getStatus() {
+        return status;
     }
 
-    public void setMessage(String Message) {
-        this.Message = Message;
+
+    public void setReqUsername(String UserName) {
+        this.ReqUsername = UserName;
     }
 
-    public String getMessage() {
-        return Message;
+    public String getReqUsername() {
+        return ReqUsername;
     }
 
-    public void setSubject(String Subject) {
-        this.Subject = Subject;
+    public void setReqMessage(String Message) {
+        this.ReqMessage = Message;
     }
 
-    public String getSubject() {
-        return Subject;
+    public String getReqMessage() {
+        return ReqMessage;
+    }
+
+    public void setDepartment(String Subject) {
+        this.Department = Subject;
+    }
+
+    public String getDepartment() {
+        return Department;
     }
 
 }

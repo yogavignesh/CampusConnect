@@ -5,6 +5,7 @@
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
     android:orientation="vertical"
+    android:background="@drawable/tutor4"
     tools:context="com.example.test.campusconnect.TutorRequest">
     <include
         android:id="@+id/tool_bar"
@@ -24,7 +25,8 @@
         android:fadingEdge="none"
         android:background="@drawable/card_background_selector"
         android:divider="@color/ColorPrimary"
-        android:dividerHeight="2.0sp">
+        android:dividerHeight="2.0sp"
+        android:alpha="0.85">
 
     </ListView>
 

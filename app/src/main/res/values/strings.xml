@@ -64,5 +64,6 @@
     <string name="title_activity_rating_popup">ratingPopup</string>
     <string name="title_activity_tutor_list_response">TutorListResponse</string>
     <string name="title_activity_tutor_request_popup">tutorRequestPopup</string>
+    <string name="title_activity_request_response">RequestResponse</string>
     <string name="title_activity_check_tutor_responses">checkTutorResponses</string>
 </resources>

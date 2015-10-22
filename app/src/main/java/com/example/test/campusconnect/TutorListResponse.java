@@ -1,13 +1,16 @@
 package com.example.test.campusconnect;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +39,17 @@ public class TutorListResponse extends AppCompatActivity {
     private ListView vTutors ;
     private AsyncDataClass asyncRequestObject;
     SessionManager session;
-    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutor.php";
+    private String tutorUsername;
+    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutorRequestList.php";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
+
         overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
         setContentView(R.layout.activity_tutor_list_response);
 
@@ -52,24 +60,37 @@ public class TutorListResponse extends AppCompatActivity {
         }
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setNavigationIcon(R.drawable.tutoring);
         setSupportActionBar(toolbar);
+
         dept_name=(TextView) findViewById(R.id.toolbar_title);
         dept_name.setText(dp_name);
         getSupportActionBar().setTitle("");
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // asyncRequestObject = new AsyncDataClass();
+        // asyncRequestObject = new AsyncDataClass();
         //asyncRequestObject.execute(serverUrl, dp_name);
-        List<tutorRModel> lst=new ArrayList<tutorRModel>();
-        tutorRModel tutorResModel = new tutorRModel();
-        tutorResModel.setUserName("Yoga");
-        tutorResModel.setMessage("Request for lessons");
-        tutorResModel.setSubject(dp_name);
-        lst.add(tutorResModel);
-        vTutors = (ListView) findViewById(R.id.lstTutorsResponses);
-        vTutors.setAdapter(new CustomTutorResponseAdapter(TutorListResponse.this, R.layout.tutor_response_list_view, lst));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        //List<tutorRModel> lst=new ArrayList<>();
+        HashMap<String,String> user = session.getUserDetails();
+        tutorUsername = user.get(SessionManager.KEY_EMAIL);
+
+//        tutorRModel tutorResModel = new tutorRModel();
+//        tutorResModel.setUserName("Yoga");
+//        tutorResModel.setMessage("Request for lessons");
+//        tutorResModel.setSubject(dp_name);
+//        lst.add(tutorResModel);
+        asyncRequestObject = new AsyncDataClass();
+        asyncRequestObject.execute(serverUrl, dp_name, tutorUsername);
+
+
 
     }
     @Override
@@ -90,6 +111,19 @@ public class TutorListResponse extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.logout) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Are you sure you want to log out?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            session.logoutUser();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -109,6 +143,7 @@ public class TutorListResponse extends AppCompatActivity {
                 Map<String,String> nameValuePairs = new HashMap<String,String>();
 
                 nameValuePairs.put("dpname", params[1]);
+                nameValuePairs.put("tutorname",params[2]);
 
                 URL url = new URL(serverUrl);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -186,7 +221,7 @@ public class TutorListResponse extends AppCompatActivity {
 
             if(success == 0){
 
-                Toast.makeText(TutorListResponse.this, "Post cannot be posted", Toast.LENGTH_LONG).show();
+                Toast.makeText(TutorListResponse.this, "List cannot be Retrieved", Toast.LENGTH_LONG).show();
 
                 return;
 
@@ -194,8 +229,8 @@ public class TutorListResponse extends AppCompatActivity {
 
             if(success == 1){
                 List<tutorRModel> lst = returnParsedJsonObject(result);
-                vTutors = (ListView) findViewById(R.id.lstTutors);
-                vTutors.setAdapter(new CustomTutorResponseAdapter(TutorListResponse.this, R.layout.tutor_response_list_view,lst));
+                vTutors = (ListView) findViewById(R.id.lstTutorsResponses);
+                vTutors.setAdapter(new CustomTutorResponseAdapter(TutorListResponse.this, R.layout.tutor_response_list_view, lst));
 
                 //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
                 //mListView.setAdapter(adpt);
@@ -259,9 +294,16 @@ public class TutorListResponse extends AppCompatActivity {
             for(int i = 0;i< data.length();i++){
                 tutorRModel tutorResModel = new tutorRModel();
                 JSONObject item = data.getJSONObject(i);
-                tutorResModel.setUserName(item.getString("Username"));
-                tutorResModel.setMessage(item.getString("ReqMessage"));
-                tutorResModel.setSubject(item.getString("Subject"));
+                tutorResModel.setReqUsername(item.getString("ReqUsername"));
+                tutorResModel.setReqMessage(item.getString("ReqMessage"));
+                tutorResModel.setDepartment(item.getString("Department"));
+                if(!item.isNull("Flag")) {
+                    tutorResModel.setStatus(item.getInt("Flag"));
+                }
+                else
+                {
+                    tutorResModel.setStatus(0);
+                }
                 tutorModelList.add(tutorResModel);
 
             }

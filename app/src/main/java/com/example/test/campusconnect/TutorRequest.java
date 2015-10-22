@@ -1,12 +1,17 @@
 package com.example.test.campusconnect;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,34 +41,55 @@ public class TutorRequest extends AppCompatActivity {
     private ListView vTutors ;
     private AsyncDataClass asyncRequestObject;
     SessionManager session;
+    String rUsername;
     private final String serverUrl = configuration.URL_FIND_TUTOR;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
+
         overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
         setContentView(R.layout.activity_tutor_request);
+
+        HashMap<String,String> user = session.getUserDetails();
+        rUsername = user.get(SessionManager.KEY_EMAIL);
 
         final Bundle extras=getIntent().getExtras();
 
         if (extras != null) {
             dp_name = extras.getString("dp_name");
         }
+
+
         TextView dept_name=(TextView) findViewById(R.id.toolbar_title);
         dept_name.setText(dp_name);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setNavigationIcon(R.drawable.tutoring);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("");
+
+
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         asyncRequestObject = new AsyncDataClass();
         asyncRequestObject.execute(serverUrl, dp_name);
 
     }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -81,6 +107,20 @@ public class TutorRequest extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == R.id.logout) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Are you sure you want to log out?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            session.logoutUser();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -184,9 +224,11 @@ public class TutorRequest extends AppCompatActivity {
             }
 
             if(success == 1){
-                List<tutorModel> lst = returnParsedJsonObject(result);
+               List<tutorModel> lst = returnParsedJsonObject(result);
                 vTutors = (ListView) findViewById(R.id.lstTutors);
-                vTutors.setAdapter(new CustomTutorAdaptor(TutorRequest.this, R.layout.tutor_list_view,lst));
+                CustomTutorAdaptor cta = new CustomTutorAdaptor(TutorRequest.this, R.layout.tutor_list_view,lst);
+                vTutors.setAdapter(cta);
+                cta.notifyDataSetChanged();
 
                 //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
                 //mListView.setAdapter(adpt);
@@ -251,10 +293,22 @@ public class TutorRequest extends AppCompatActivity {
             for(int i = 0;i< data.length();i++){
                 tutorModel tutorModel = new tutorModel();
                 JSONObject item = data.getJSONObject(i);
-                tutorModel.setUserName(item.getString("Username"));
-                tutorModel.setRating(item.getString("Rating"));
-                tutorModel.setDepartment(item.getString("Department"));
-                tutorModelList.add(tutorModel);
+                if(item.getString("Username").trim().equalsIgnoreCase(rUsername)) {
+                //if its current user
+                }
+                else {
+                    tutorModel.settutorName(item.getString("Username"));
+                    tutorModel.setRating(item.getString("Rating"));
+                    tutorModel.setDepartment(item.getString("Department"));
+                    if(!item.isNull("Flag")) {
+                        tutorModel.setStatus(item.getInt("Flag"));
+                    }
+                    else {
+                        tutorModel.setStatus(0);
+                    }
+                    tutorModel.setUserName(rUsername);
+                    tutorModelList.add(tutorModel);
+                }
 
             }
 

@@ -5,11 +5,13 @@
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
+    android:background="@drawable/tutor4"
     android:descendantFocusability="beforeDescendants">
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <ListView
         android:id="@+id/lstDepts"
@@ -18,6 +20,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="5"
         android:fadingEdge="none"
+        android:alpha=".85"
         android:background="@drawable/card_background_selector"
         android:divider="@color/ColorPrimary"
         android:dividerHeight="2.0sp"

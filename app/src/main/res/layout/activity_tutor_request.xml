@@ -4,7 +4,9 @@
     android:paddingRight="10dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
+    android:id="@+id/tutorReq"
     android:orientation="vertical"
+    android:background="@drawable/tutor4"
     tools:context="com.example.test.campusconnect.TutorRequest">
     <include
         android:id="@+id/tool_bar"
@@ -12,8 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         />
-
-
 
     <ListView
         android:id="@+id/lstTutors"
@@ -24,7 +24,8 @@
         android:fadingEdge="none"
         android:background="@drawable/card_background_selector"
         android:divider="@color/ColorPrimary"
-        android:dividerHeight="2.0sp">
+        android:dividerHeight="2.0sp"
+        android:alpha="0.85">
 
     </ListView>
 

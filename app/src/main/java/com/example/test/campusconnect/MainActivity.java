@@ -1,6 +1,7 @@
 package com.example.test.campusconnect;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -163,7 +165,16 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new ProfileSettings();
                 break;
             case 2:
-                session.logoutUser();
+                new AlertDialog.Builder(this)
+                        .setMessage("Are you sure you want to log out?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                session.logoutUser();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
                 break;
           default:
                 break;
@@ -229,7 +240,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 return true;
             case R.id.logout:
-                session.logoutUser();
+                new AlertDialog.Builder(this)
+                        .setMessage("Are you sure you want to log out?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                session.logoutUser();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
             default:
                 return super.onOptionsItemSelected(item);
         }

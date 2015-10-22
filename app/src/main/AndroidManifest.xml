@@ -3,7 +3,8 @@
     package="com.example.test.campusconnect" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -71,9 +72,10 @@
         </activity>
         <activity
             android:name=".checkTutorResponses"
-            android:label="Request Updates"
-            android:theme="@style/Theme.AppCompat.Dialog">
+            android:label="Updates"
+            android:theme="@style/Theme.AppCompat.Dialog" >
         </activity>
+
     </application>
 
 </manifest>

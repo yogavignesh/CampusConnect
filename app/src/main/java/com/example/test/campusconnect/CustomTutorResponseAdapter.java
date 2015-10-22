@@ -1,5 +1,8 @@
 package com.example.test.campusconnect;
 
+/**
+ * Created by Namratha on 10/18/2015.
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,9 +15,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by Yoga Vignesh on 10/17/2015.
- */
+
 public class CustomTutorResponseAdapter extends ArrayAdapter {
 
     private static List<tutorRModel> tutorResArrayList;
@@ -32,14 +33,15 @@ public class CustomTutorResponseAdapter extends ArrayAdapter {
 
     public View getView(int position, View convertView, final ViewGroup parent) {
         final ViewHolder holder;
-
+        int stat=tutorResArrayList.get(position).getStatus();
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.tutor_response_list_view, null);
             holder = new ViewHolder();
 
             holder.hdn_dept= (TextView) convertView.findViewById(R.id.hidden_dept_title);
-            holder.txtName = (TextView) convertView.findViewById(R.id.rUserName);
-            holder.txtSubject = (TextView) convertView.findViewById(R.id.tSubject);
+
+            holder.txtsName = (TextView) convertView.findViewById(R.id.sUsername);
+
             holder.Accept = (Button) convertView.findViewById(R.id.btnTtrAcc);
             holder.txtMessage=(TextView) convertView.findViewById(R.id.txtReqMessage);
             holder.txtAccepted=(TextView) convertView.findViewById(R.id.txtAccepted);
@@ -51,6 +53,8 @@ public class CustomTutorResponseAdapter extends ArrayAdapter {
                 public void onClick(View view) {
                     Intent accIntent= new Intent(parent.getContext(),TutorResponse.class);
                     accIntent.putExtra("dp_name", holder.hdn_dept.getText());
+                    accIntent.putExtra("student", holder.txtsName.getText());
+                    accIntent.putExtra("reqmsg", holder.txtMessage.getText());
                     accIntent.putExtra("status", 1);
                     parent.getContext().startActivity(accIntent);
 
@@ -62,6 +66,8 @@ public class CustomTutorResponseAdapter extends ArrayAdapter {
                 public void onClick(View view) {
                     Intent decIntent= new Intent(parent.getContext(),TutorResponse.class);
                     decIntent.putExtra("dp_name", holder.hdn_dept.getText());
+                    decIntent.putExtra("student", holder.txtsName.getText());
+                    decIntent.putExtra("reqmsg", holder.txtMessage.getText());
                     decIntent.putExtra("status", 0);
                     parent.getContext().startActivity(decIntent);
 
@@ -74,18 +80,33 @@ public class CustomTutorResponseAdapter extends ArrayAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.hdn_dept.setText(tutorResArrayList.get(position).getSubject());
-        holder.txtName.setText(tutorResArrayList.get(position).getUserName());;
-        holder.txtSubject.setText(tutorResArrayList.get(position).getSubject());
+        holder.hdn_dept.setText(tutorResArrayList.get(position).getDepartment());
+
+        holder.txtsName.setText(tutorResArrayList.get(position).getReqUsername());
         //holder.txtExp.setText(searchArrayList.get(position).getExp());
-        holder.txtMessage.setText(tutorResArrayList.get(position).getMessage());
-        holder.txtDeclined.setVisibility(View.GONE);
-        holder.txtAccepted.setVisibility(View.GONE);
+        holder.txtMessage.setText(tutorResArrayList.get(position).getReqMessage());
+        if(stat==0) {
+            holder.txtDeclined.setVisibility(View.GONE);
+            holder.txtAccepted.setVisibility(View.GONE);
+        }
+        else if(stat==1) {
+            holder.Accept.setVisibility(View.GONE);
+            holder.Decline.setVisibility(View.GONE);
+            holder.txtDeclined.setVisibility(View.GONE);
+            holder.txtAccepted.setVisibility(View.VISIBLE);
+        }
+        else if(stat==2) {
+            holder.Decline.setVisibility(View.GONE);
+            holder.Accept.setVisibility(View.GONE);
+            holder.txtAccepted.setVisibility(View.GONE);
+            holder.txtDeclined.setVisibility(View.VISIBLE);
+        }
         return convertView;
     }
 
     static class ViewHolder {
-        TextView txtName;
+
+        TextView txtsName;
         TextView txtSubject;
         TextView txtAccepted;
         TextView txtDeclined;

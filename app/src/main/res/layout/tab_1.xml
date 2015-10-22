@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
+android:background="@drawable/all_sports_banner"
     android:descendantFocusability="beforeDescendants">
 
     <LinearLayout
@@ -16,7 +17,8 @@
         android:paddingBottom="10dp"
         android:paddingRight="10dp"
         android:background="@drawable/card_background_selector"
-        android:descendantFocusability="afterDescendants">
+        android:descendantFocusability="afterDescendants"
+        android:alpha="0.85">
         <ListView
             android:id="@+id/lvExp"
             android:layout_height="match_parent"
@@ -25,7 +27,8 @@
             android:cacheColorHint="@android:color/transparent"
             android:background="@drawable/card_background_selector"
             android:divider="@color/ColorPrimary"
-            android:dividerHeight="2.0sp"/>
+            android:dividerHeight="2.0sp"
+            android:alpha="0.75"/>
 
 
 
