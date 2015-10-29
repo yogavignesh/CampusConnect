@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <permission android:protectionLevel="signature"
         android:name="com.example.test.campusconnect.C2D_MESSAGE" />
@@ -20,16 +24,23 @@
         android:icon="@drawable/logo1"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/google_maps_key"/>
+
+
+
+
         <activity
             android:name=".SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".Login"
@@ -49,9 +60,12 @@
             android:label="@string/title_activity_game_events" >
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="Campus Connect" >
-        </activity>
+        android:name=".MainActivity"
+        android:label="Campus Connect" >
+    </activity>
+        <activity android:name=".ShareCar"
+            android:label="ShareCar"></activity>
+
         <activity
             android:name=".register"
             android:label="@string/title_activity_register" >
@@ -109,9 +123,14 @@
                 <category android:name="com.example.test.campusconnect" />
             </intent-filter>
         </receiver>
-        <meta-data android:name="com.parse.push.gcm_sender_id"
-            android:value="id:875139390022"/>
+
 
     </application>
 
 </manifest>
+
+
+
+
+
+

@@ -18,8 +18,8 @@ public class HomeFragment extends android.support.v4.app.Fragment{
     ViewPager pager;
     ViewPagerAdapter listingAdapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Sports Buddy","Find a Tutor"};
-    int Numboftabs =2;
+    CharSequence Titles[]={"Sports Buddy","Find a Tutor","Share Ride"};
+    int Numboftabs =3;
 	public HomeFragment(){}
 	
 	@Override

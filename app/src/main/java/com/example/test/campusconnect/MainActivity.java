@@ -32,6 +32,7 @@ import com.example.test.slidingmenu.model.NavDrawerListAdapter;
 import com.example.test.slidingmenu.model.ProfileSettings;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     // Declaring Your View and Variables
@@ -161,10 +162,13 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 fragment = new HomeFragment();
                 break;
+
             case 1:
                 fragment = new ProfileSettings();
                 break;
             case 2:
+                fragment = new ShareRideHome();
+            case 3:
                 new AlertDialog.Builder(this)
                         .setMessage("Are you sure you want to log out?")
                         .setCancelable(false)

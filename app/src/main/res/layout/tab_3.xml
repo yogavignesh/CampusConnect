@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:background="@drawable/carpool"
+    android:descendantFocusability="beforeDescendants"
+    android:id="@+id/image">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:text="Share a ride"
+        android:id="@+id/button1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="left|center_vertical"
+        android:onClick="onClick1" />
+
+    <Button
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:text="Want a ride ?"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right|center_vertical" />
+</FrameLayout>
