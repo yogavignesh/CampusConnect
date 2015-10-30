@@ -90,7 +90,7 @@ public class CustomTutorAdaptor extends ArrayAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.hdn_dept.setText(tutorReqArrayList.get(position).getDepartment());;
+        holder.hdn_dept.setText(tutorReqArrayList.get(position).getDepartment());
         holder.txtSubjects.setText(tutorReqArrayList.get(position).getDepartment());
         //holder.txtExp.setText(searchArrayList.get(position).getExp());
         holder.txtRating.setRating(Float.parseFloat(tutorReqArrayList.get(position).getRating()));

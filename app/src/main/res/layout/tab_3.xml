@@ -34,5 +34,11 @@
         android:id="@+id/button"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="right|center_vertical" />
+        android:layout_gravity="right|center_vertical"
+        android:onClick="onClick2"/>
+
+
+
+
+
 </FrameLayout>
