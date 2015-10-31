@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/book_stack"
+    android:id="@+id/posttitle">
+
+
+
+
+
+    <TextView android:id="@+id/spostname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textColor="@color/ColorHeading"
+
+        />
+    <TextView android:id="@+id/btnJoinedevent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:textColor="@color/ColorHeading"
+
+        />
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Join"
+        android:id="@+id/btnJoinEvent"
+        android:layout_alignParentRight="true"
+        android:padding="5pt"
+        android:background="@drawable/button_default_bg"
+        android:textColor="@color/ColorPrimary"></Button>
+    <ListView
+        android:id="@+id/lstposts"
+        android:cacheColorHint="#CCBBFFFF"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:fadingEdge="none"
+        android:background="@drawable/card_background_selector"
+        android:divider="@color/ColorPrimary"
+        android:dividerHeight="2.0sp"
+        android:alpha="0.85">
+
+    </ListView>
+
+
+</LinearLayout>
+
