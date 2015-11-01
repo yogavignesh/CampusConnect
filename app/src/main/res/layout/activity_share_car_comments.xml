@@ -20,6 +20,8 @@
         android:layout_height="150dp"
         android:id="@+id/txtWantCarComment"
         android:hint="Your Comment"
+       android:textSize="15sp"
+        android:textColor="@color/ColorPrimary"
         android:background="@drawable/edittext_default_bg"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/UjConfirmation"
