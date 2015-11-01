@@ -26,7 +26,7 @@ public class ShareRideHome extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_3, container, false);
-        Button bt = (Button) view.findViewById(R.id.button1);
+        Button bt = (Button) view.findViewById(R.id.btnPostRide);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +35,7 @@ public class ShareRideHome extends Fragment {
                 startActivity(intent);
             }
         });
-        Button bu = (Button) view.findViewById(R.id.button);
+        Button bu = (Button) view.findViewById(R.id.btnGetRide);
         bu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

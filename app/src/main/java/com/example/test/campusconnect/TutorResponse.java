@@ -323,11 +323,11 @@ public class TutorResponse extends AppCompatActivity {
             if(jsonResult == 1){
 
                 Intent intent = new Intent(getBaseContext(), TutorListResponse.class);
-                final Bundle extras=getIntent().getExtras();
 
-                Toast.makeText(TutorResponse.this, "Your response has been posted", Toast.LENGTH_LONG).show();
+                final Bundle extras=getIntent().getExtras();
+                intent.putExtra("dp_name",dp_name);
                 SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage("0016823658219", null, notifyMessage, null, null);
+                smsManager.sendTextMessage("6823658219", null, notifyMessage, null, null);
                 startActivity(intent);
 
             }
