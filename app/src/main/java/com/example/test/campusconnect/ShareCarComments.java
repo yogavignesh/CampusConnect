@@ -37,7 +37,8 @@ import java.util.Locale;
 import java.util.Map;
 
 public class ShareCarComments extends AppCompatActivity {
-    String addresss,citys,states,countrys,username,postid,Flag;
+    private AsyncDataClass asyncRequestObject;
+    String addresss,citys,states,countrys,username,postid,flag;
     static String EXTRA_ADDRESS = "com.example.test.addresss";
     static String EXTRA_CITY=     "com.example.test.citys";
     static String EXTRA_STATE=    "com.example.test.states";
@@ -51,7 +52,7 @@ public class ShareCarComments extends AppCompatActivity {
     Button btnconfirmUnjoinN;
     EditText txtComment;
     SessionManager session;
-    private AsyncDataClass asyncRequestObject;
+  ;
     private final String serverUrlComment = configuration.URL_COMMENTS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +66,14 @@ public class ShareCarComments extends AppCompatActivity {
         txtConfirmUnjoin=(TextView) findViewById(R.id.UjConfirmation);
         btnconfirmUnjoinN=(Button) findViewById(R.id.btnUjConfirmNo);
         postid="";
-        Flag="0";
+        flag="0";
 
         final Bundle extras=getIntent().getExtras();
         if(extras!=null){
             postid = extras.getString("post_id");
-            Flag = extras.getString("flag");
+            flag = extras.getString("flag");
         }
-        if(Flag=="0"){
+        if(flag=="0"){
             btnShareLocation.setVisibility(View.GONE);
             txtComment.setVisibility(View.GONE);
             location.setVisibility(View.GONE);
@@ -107,7 +108,7 @@ public class ShareCarComments extends AppCompatActivity {
                 username = user.get(SessionManager.KEY_EMAIL);
                 String enteredText = txtComment.getText().toString();
                 AsyncDataClass asyncRequestObject = new AsyncDataClass();
-                asyncRequestObject.execute(serverUrlComment, enteredText, username, location.getText().toString(), Flag);
+                asyncRequestObject.execute(serverUrlComment, enteredText, username, location.getText().toString(), flag);
                 Toast.makeText(ShareCarComments.this, "Posted Succesfully", Toast.LENGTH_LONG).show();
                 Intent doneIntent=new Intent(getBaseContext(),ShareCarComments.class);
                 doneIntent.putExtra("post_id","flag");
@@ -176,10 +177,13 @@ public void onNavigate(View view) {
             try {
 
                 Map<String,String> nameValuePairs = new HashMap<String,String>();
-                nameValuePairs.put("comment", params[1]);
+
+                nameValuePairs.put("post_id",params[1]);
                 nameValuePairs.put("username",params[2]);
                 nameValuePairs.put("location",params[3]);
-                nameValuePairs.put("Flag",params[4]);
+                nameValuePairs.put("flag",params[4]);
+                nameValuePairs.put("comment", params[5]);
+
 
                 URL url = new URL(serverUrlComment);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
