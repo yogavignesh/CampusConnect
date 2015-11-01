@@ -82,6 +82,18 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
 
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"
+                android:background="@drawable/edittext_top_bg"
+                android:padding="10dp"
+                android:hint="Phone Number"
+                android:textColorHint="#cccccc"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
 
             <EditText
                 android:id="@+id/etUsername"

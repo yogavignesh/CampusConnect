@@ -37,7 +37,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
     Button bSubmit;
 
-    EditText etFname,etLname,etPassword,etUsername,etCpassword,etSchool;
+    EditText etFname,etLname,etPassword,etUsername,etCpassword,etSchool,phonenumber;
 
     RadioGroup rggender,rgtutor;
 
@@ -85,6 +85,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
         etCpassword = (EditText)findViewById(R.id.etCPassword);
         etUsername = (EditText)findViewById(R.id.etUsername);
         etSchool = (EditText)findViewById(R.id.etSchool);
+        phonenumber = (EditText)findViewById(R.id.phonenumber);
 
         rggender = (RadioGroup) findViewById(R.id.rggender);
         rgtutor = (RadioGroup) findViewById(R.id.rgtutor);
@@ -127,12 +128,15 @@ public class register extends AppCompatActivity implements View.OnClickListener{
         String sgender = rgender.getText().toString();
         String stutor = rtutor.getText().toString();
 
+
         enteredUsername = etUsername.getText().toString();
         String sfname = etFname.getText().toString();
         String slname = etLname.getText().toString();
         String spassword = etPassword.getText().toString();
         String scpassword = etCpassword.getText().toString();
         String sschool = etSchool.getText().toString();
+        String sphonenumber = phonenumber.getText().toString();
+
 
 
         // HashMap<String,String> hdepartment = new HashMap<String, String>();
@@ -283,7 +287,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
 
         if(etUsername.length() < 1  || etPassword.length()< 1|| etFname.length() < 1|| etLname.length() < 1
-                || etSchool.length() < 1 ){
+                || etSchool.length() < 1 || phonenumber.length()<1){
 
             Snackbar.make(findViewById(android.R.id.content), "Please Enter all the Fields", Snackbar.LENGTH_LONG)
                     .show();
@@ -292,7 +296,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
         }
 
-        if((etUsername.length() <= 7 && etUsername.length() >= 1)||(etPassword.length() <= 7 && etPassword.length() >= 1)){
+        if((etUsername.length() <= 7 && etUsername.length() >= 1)||(etPassword.length() <= 7 && etPassword.length() >= 1)||(phonenumber.length() <=9 && phonenumber.length() >=1)){
 
             Snackbar.make(findViewById(android.R.id.content), "Username or password length must be greater than 8 Characters", Snackbar.LENGTH_LONG)
                     .show();
@@ -314,7 +318,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
         asyncRequestObject.execute(serverUrl, enteredUsername, spassword, sfname, slname, sgender, sschool, stutor, sAerospace, sBioTechnology, sBusiness,
                 sComputerScience, sElectrical, sIndustrialEngineering, sMechanical, sMathematics, sNursing, sPsychology, sPhysics, sBaseball, sBadminton,
-                sBasketball, sCricket, sFootball, sFencing, sPingpong, sRacketball,scpassword
+                sBasketball, sCricket, sFootball, sFencing, sPingpong, sRacketball,scpassword,sphonenumber
         );
 
         //Toast.makeText(register.this, "Success! , Welcome", Toast.LENGTH_LONG).show();
@@ -415,6 +419,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
                 nameValuePairs.put("PingPong", params[25]);
 
                 nameValuePairs.put("Racketball", params[26]);
+                nameValuePairs.put("phonenumber", params[27]);
 
                 //nameValuePairs.put("Cpassword",params[27]);
 

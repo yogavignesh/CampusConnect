@@ -1,16 +1,13 @@
 package com.example.test.campusconnect;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +15,6 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,20 +27,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
-/**
- * Created by samsony on 10/30/2015.
- */
 public class PostList extends AppCompatActivity {
-
-
-
     private TextView postname;
     private AsyncDataClass asyncRequestObject;
     SessionManager session;
     private ListView vPosts ;
-    private String tutorUsername;
+    private String Username;
     String ps_name;
 
     private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/postlist.php";
@@ -57,10 +45,10 @@ public class PostList extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
 
-      //  overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
+       overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
         setContentView(R.layout.post_list_view);
 
-        final Bundle extras=getIntent().getExtras();
+       final Bundle extras=getIntent().getExtras();
         if (extras != null) {
             ps_name = extras.getString("ps_name");
         }
@@ -70,19 +58,19 @@ public class PostList extends AppCompatActivity {
         // enabling action bar app icon and behaving it as toggle button
         //getSupportActionBar().setHomeButtonEnabled(true);
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // asyncRequestObject = new AsyncDataClass();
-        //asyncRequestObject.execute(serverUrl, dp_name);
-        //List<tutorRModel> lst=new ArrayList<>();
+         //asyncRequestObject = new AsyncDataClass();
+       // asyncRequestObject.execute(serverUrl, ps_name);
+        List<PostModel> lst=new ArrayList<>();
         HashMap<String,String> user = session.getUserDetails();
-        tutorUsername = user.get(SessionManager.KEY_EMAIL);
+        Username = user.get(SessionManager.KEY_EMAIL);
 
-//        tutorRModel tutorResModel = new tutorRModel();
-//        tutorResModel.setUserName("Yoga");
-//        tutorResModel.setMessage("Request for lessons");
-//        tutorResModel.setSubject(dp_name);
-//        lst.add(tutorResModel);
+      // PostModel  postModel = new PostModel();
+
+     //   postModel.setPostMessage("ps_name");
+
+      //  lst.add(postModel);
         asyncRequestObject = new AsyncDataClass();
-        asyncRequestObject.execute(serverUrl,ps_name,tutorUsername);
+        asyncRequestObject.execute(serverUrl,ps_name,Username);
 
 
 
@@ -137,7 +125,7 @@ public class PostList extends AppCompatActivity {
                 Map<String,String> nameValuePairs = new HashMap<String,String>();
 
                 nameValuePairs.put("postname", params[1]);
-                nameValuePairs.put("tutorUsername",params[2]);
+                nameValuePairs.put("Username",params[2]);
 
                 URL url = new URL(serverUrl);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -329,10 +317,6 @@ public class PostList extends AppCompatActivity {
 
         return returnedResult;
 
-    }
-
-    public static class flag{
-        public static boolean FIRST_START = true;
     }
 
 }

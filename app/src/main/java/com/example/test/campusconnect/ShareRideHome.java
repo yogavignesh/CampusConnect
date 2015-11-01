@@ -36,7 +36,7 @@ public class ShareRideHome extends Fragment {
             }
         });
         Button bu = (Button) view.findViewById(R.id.button);
-        bu.setOnClickListener(new View.OnClickListener() {
+         bu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
