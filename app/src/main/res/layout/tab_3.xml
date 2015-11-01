@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    android:background="@drawable/carpool"
+    android:background="@drawable/sharecar_bg"
     android:descendantFocusability="beforeDescendants"
     android:id="@+id/image">
 
@@ -21,9 +21,11 @@
         android:layout_width="138dp"
         android:layout_height="wrap_content"
         android:text="Share a ride"
-        android:id="@+id/button1"
+        android:id="@+id/btnPostRide"
         android:layout_alignParentTop="true"
+        android:background="@drawable/button_default_bg"
         android:layout_alignParentEnd="true"
+        android:textColor="@color/ColorPrimary"
         android:layout_gravity="left|center_vertical"
         android:onClick="onClick1" />
 
@@ -31,9 +33,11 @@
         android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:text="Want a ride ?"
-        android:id="@+id/button"
+        android:id="@+id/btnGetRide"
+        android:background="@drawable/button_default_bg"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:textColor="@color/ColorPrimary"
         android:layout_gravity="right|center_vertical"
         android:onClick="onClick2"/>
 

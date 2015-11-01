@@ -1,24 +1,26 @@
 package com.example.test.campusconnect;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.v7.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +30,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -37,13 +40,15 @@ import java.util.Map;
 /**
  * Created by samsony on 10/29/2015.
  */
-public class ShareCar extends Activity {
-    String addresss,citys,states,countrys,username;
-    static String EXTRA_ADDRESS = "com.example.test.addresss";
-    static String EXTRA_CITY=     "com.example.test.citys";
-    static String EXTRA_STATE=    "com.example.test.states";
-    static String EXTRA_COUNTRY=  "com.example.test.countrys";
-    EditText eText;
+public class ShareCar extends AppCompatActivity {
+    String username;
+    EditText postMess;
+    EditText seatCount;
+    Toolbar toolbar;
+    Calendar myCalendar;
+    EditText rDate;
+    EditText rTime;
+
     SessionManager session;
     int ePid;
         TextView eView;
@@ -52,63 +57,83 @@ public class ShareCar extends Activity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_share);
-            eText = (EditText) findViewById(R.id.editText1);
+            toolbar = (Toolbar) findViewById(R.id.tool_bar);
+            toolbar.setNavigationIcon(R.drawable.car);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle("Share Ride Info");
+            // enabling action bar app icon and behaving it as toggle button
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+            postMess = (EditText) findViewById(R.id.txtShareCar);
+            seatCount=(EditText) findViewById(R.id.txtSeats);
+            myCalendar = Calendar.getInstance();
+            rDate= (EditText) findViewById(R.id.rideDate);
+            rDate.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    int mYear = myCalendar.get(Calendar.YEAR);
+                    int mMonth = myCalendar.get(Calendar.MONTH);
+                    int mDay = myCalendar.get(Calendar.DAY_OF_MONTH);
+
+                    DatePickerDialog mDatePicker;
+                    mDatePicker = new DatePickerDialog(ShareCar.this, R.style.AppTheme, new DatePickerDialog.OnDateSetListener() {
+                        public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                            // TODO Auto-generated method stub
+                    /*      Your code   to get date and time    */
+                            selectedmonth = selectedmonth + 1;
+                            rDate.setText(selectedyear + "-" + selectedmonth + "-" + selectedday);
+                        }
+                    }, mYear, mMonth, mDay);
+                    mDatePicker.setTitle("Select Date");
+                    mDatePicker.show();
 
 
+                }
+            });
+            rTime= (EditText) findViewById(R.id.rideTime);
+            rTime.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
+                    int minute = myCalendar.get(Calendar.MINUTE);
+                    TimePickerDialog mTimePicker;
+                    mTimePicker = new TimePickerDialog(ShareCar.this,R.style.AppTheme, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                            rTime.setText(selectedHour + ":" + selectedMinute+":"+"00");
+                        }
+                    }, hour, minute, true);//Yes 24 hour time
+                    mTimePicker.setTitle("Select Time");
+                    mTimePicker.show();
 
 
+                }
+            });
 
         }
 
-        public void onSearch(View view) {
-
-            GPSTracker gps = new GPSTracker(this);
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                double lat = gps.latitude;
-                double lon = gps.longitude;
-                List<Address> addresses  = geocoder.getFromLocation(lat, lon, 1);
-                addresss = addresses.get(0).getAddressLine(0);
-                citys = addresses.get(0).getLocality();
-                states = addresses.get(0).getAdminArea();
-                // String zip = addresses.get(0).getPostalCode();
-                countrys = addresses.get(0).getCountryName();
-                TextView mText = (TextView)findViewById(R.id.textView);
-                mText.setText("");
-                mText.append(addresss);
-                mText.append(citys);
-                mText.append(states);
-                mText.append(countrys);
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-            }
-
-        }
-
-
-        public void onNavigate(View view) {
-
-            Intent intent = new Intent(this,MapsActivity.class);
-            intent.putExtra(EXTRA_ADDRESS, addresss);
-            intent.putExtra(EXTRA_CITY, citys);
-            intent.putExtra(EXTRA_STATE, states);
-            intent.putExtra(EXTRA_COUNTRY, countrys); // getText() SHOULD NOT be static!!!
-            startActivity(intent);
-        }
         public void onClick(View v) {
-            String enteredText = eText.getText().toString();
+            String enteredText = postMess.getText().toString();
             session = new SessionManager(getApplicationContext());
             session.checkLogin();
             HashMap<String,String> user = session.getUserDetails();
             username = user.get(SessionManager.KEY_EMAIL);
-
             Toast.makeText(ShareCar.this, "Posted Succesfully", Toast.LENGTH_LONG).show();
             AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-            asyncRequestObject.execute(serverUrl, enteredText,username);
-            eText.setText("");
+            asyncRequestObject.execute(serverUrl, enteredText,username,rDate.getText().toString(),rTime.getText().toString(),seatCount.getText().toString());
+            Intent doneIntent=new Intent(getBaseContext(),PostList.class);
+            doneIntent.putExtra("ps_name","User");
+            startActivity(doneIntent);
         }
 
         private class AsyncDataClass extends AsyncTask<String, Void, String> {
@@ -124,6 +149,9 @@ public class ShareCar extends Activity {
                     Map<String,String> nameValuePairs = new HashMap<String,String>();
                     nameValuePairs.put("postname", params[1]);
                     nameValuePairs.put("username",params[2]);
+                    nameValuePairs.put("rdate",params[3]);
+                    nameValuePairs.put("rtime",params[4]);
+                    nameValuePairs.put("seatcount",params[5]);
 
                     URL url = new URL(serverUrl);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -247,7 +275,7 @@ public class ShareCar extends Activity {
 
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_main, menu);
+            getMenuInflater().inflate(R.menu.menu_share_car, menu);
             return true;
         }
 
@@ -261,6 +289,24 @@ public class ShareCar extends Activity {
             //noinspection SimplifiableIfStatement
             if (id == R.id.action_settings) {
                 return true;
+            }
+            if (id == R.id.logout) {
+                new AlertDialog.Builder(this)
+                        .setMessage("Are you sure you want to log out?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                session.logoutUser();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
+            }
+            if (id == R.id.myposts) {
+                Intent tempIntent=new Intent(getBaseContext(),PostList.class);
+                tempIntent.putExtra("ps_name","User");
+                startActivity(tempIntent);
             }
             return super.onOptionsItemSelected(item);
         }

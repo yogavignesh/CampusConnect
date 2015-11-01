@@ -14,5 +14,7 @@ public class configuration {
 
     public static String URL_FIND_TUTOR = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutor.php";
     public static String URL_SHARE_RIDE = "http://ec2-52-21-243-105.compute-1.amazonaws.com/poolpost.php" ;
+    public static String URL_MY_RIDES = "http://ec2-52-21-243-105.compute-1.amazonaws.com/userpostlist.php" ;
+    public static String URL_ALL_RIDES = "http://ec2-52-21-243-105.compute-1.amazonaws.com/postlist.php" ;
 
 }

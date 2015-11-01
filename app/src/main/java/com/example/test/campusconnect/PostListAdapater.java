@@ -34,23 +34,35 @@ public class PostListAdapater extends ArrayAdapter{
 
         int stat = postListArray.get(position).getStatus();
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.tutor_response_list_view, null);
+            convertView = mInflater.inflate(R.layout.post_list_view, null);
             holder = new ViewHolder();
 
 
             holder.postnm = (TextView) convertView.findViewById(R.id.spostname);
 
-            holder.Join = (Button) convertView.findViewById(R.id.btnJoinEvent);
-            holder.Joined = (TextView) convertView.findViewById(R.id.btnJoinedevent);
-
-            holder.Join.setOnClickListener(new View.OnClickListener() {
+            holder.JoinRide = (Button) convertView.findViewById(R.id.btnWantRide);
+            holder.UnjoinRide = (Button) convertView.findViewById(R.id.btnUnWantRide);
+            holder.Joined = (TextView) convertView.findViewById(R.id.joinStatus);
+            holder.postedBy = (TextView) convertView.findViewById(R.id.scPostedby);
+            holder.hdnpostID = (TextView) convertView.findViewById(R.id.hdnPostId);
+            holder.JoinRide.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
-                    Intent accIntent = new Intent(parent.getContext(), PostList.class);
-                    accIntent.putExtra("post_name", holder.postnm.getText());
-
+                    Intent accIntent = new Intent(parent.getContext(), ShareCarComments.class);
+                    accIntent.putExtra("post_id", holder.hdnpostID.getText());
                     accIntent.putExtra("status", 1);
+                    parent.getContext().startActivity(accIntent);
+
+                }
+            });
+            holder.UnjoinRide.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    Intent accIntent = new Intent(parent.getContext(), ShareCarComments.class);
+                    accIntent.putExtra("post_id", holder.hdnpostID.getText());
+                    accIntent.putExtra("status", 0);
                     parent.getContext().startActivity(accIntent);
 
                 }
@@ -60,10 +72,21 @@ public class PostListAdapater extends ArrayAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
         holder.postnm.setText(postListArray.get(position).getPostMessage());
+        holder.postedBy.setText(postListArray.get(position).getpostedBy());
+        holder.hdnpostID.setText(postListArray.get(position).getpostID());
+        holder.currUser=postListArray.get(position).getcurrUser();
 
-        if (stat == 1) {
+        if (stat != 1) {
 
             holder.Joined.setVisibility(View.VISIBLE);
+            holder.UnjoinRide.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.Joined.setVisibility(View.GONE);
+            holder.JoinRide.setVisibility(View.VISIBLE);
+        }
+        if(holder.postedBy.toString().trim()==holder.currUser.toString().trim()){
+            holder.JoinRide.setVisibility(View.GONE);
         }
         return convertView;
     }
@@ -71,7 +94,11 @@ public class PostListAdapater extends ArrayAdapter{
             static class ViewHolder {
                 TextView Joined;
                 TextView postnm;
-                Button Join;
+                Button JoinRide;
+                TextView postedBy;
+                TextView hdnpostID;
+                Button UnjoinRide;
+                String currUser;
 
             }
 

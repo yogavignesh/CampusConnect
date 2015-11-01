@@ -9,6 +9,7 @@
     <string name="title_activity_game_invite">GameInvite</string>
     <string name="title_activity_game_events">GameEvents</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_postlist">Posts</string>
     <string name="title_activity_register">register</string>
     <string name="title_activity_Main_Activity">MainActivity</string>
     <string name="title_activity_forgot_password">forgot_password</string>
@@ -28,6 +29,7 @@
     <string name="title_activity_tutor_request">TutorRequest</string>
     <string name="menu_profile_settings">Profile Settings</string>
     <string name="menu_log_out">Log Out</string>
+    <string name="menu_my_posts">My Posts</string>
     <string name="go_to_home">Go to Home</string>
     <string name="calendar">Calendar</string>
     <string name="drawer_open">Slider Menu Opened</string>
@@ -67,4 +69,7 @@
     <string name="title_activity_request_response">RequestResponse</string>
     <string name="title_activity_check_tutor_responses">checkTutorResponses</string>
     <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyD_8Lke9e34CaE1rHOkh1cmQ2dgt3qN6Fs</string>
+    <string name="title_activity_post_list">PostList</string>
+    <string name="title_activity_share_car_comments">Comment</string>
 </resources>

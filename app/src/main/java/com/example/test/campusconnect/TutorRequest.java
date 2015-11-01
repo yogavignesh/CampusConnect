@@ -206,7 +206,8 @@ public class TutorRequest extends AppCompatActivity {
 
             if(result.equals("") || result == null){
 
-                Toast.makeText(TutorRequest.this, "Server connection failed", Toast.LENGTH_LONG).show();
+               //
+               // Toast.makeText(TutorRequest.this, "Server connection failed", Toast.LENGTH_LONG).show();
 
                 return;
 

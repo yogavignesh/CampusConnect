@@ -33,10 +33,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap map) {
         // Add a marker in Sydney, Australia, and move the camera.
         Intent intent = getIntent();
-        String address1 = intent.getStringExtra(ShareCar.EXTRA_ADDRESS);
-        String city1 = getIntent().getExtras().getString(ShareCar.EXTRA_CITY);
-        String state1 = getIntent().getExtras().getString(ShareCar.EXTRA_STATE);
-        String country1 = getIntent().getExtras().getString(ShareCar.EXTRA_COUNTRY);
+        String address1 = intent.getStringExtra(ShareCarComments.EXTRA_ADDRESS);
+        String city1 = getIntent().getExtras().getString(ShareCarComments.EXTRA_CITY);
+        String state1 = getIntent().getExtras().getString(ShareCarComments.EXTRA_STATE);
+        String country1 = getIntent().getExtras().getString(ShareCarComments.EXTRA_COUNTRY);
 
 
         Uri gmmIntentUri = Uri.parse("geo:0,0?q="+address1+","+city1+","+state1);
