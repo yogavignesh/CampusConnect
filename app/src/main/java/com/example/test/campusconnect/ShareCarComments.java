@@ -18,9 +18,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -142,7 +139,7 @@ public class ShareCarComments extends AppCompatActivity {
             // String zip = addresses.get(0).getPostalCode();
             countrys = addresses.get(0).getCountryName();
             location = (TextView)findViewById(R.id.txtcurrLocation);
-           // location.setText("");
+            location.setText("");
             location.append(addresss);
             location.append(citys);
             location.append(states);
