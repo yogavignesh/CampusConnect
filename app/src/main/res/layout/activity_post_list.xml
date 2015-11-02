@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         />
 
-    <ListView
+    <ExpandableListView
         android:id="@+id/lstcarposts"
         android:cacheColorHint="#CCBBFFFF"
         android:layout_width="fill_parent"
@@ -26,6 +26,6 @@
         android:alpha="0.85"
         android:layout_below="@id/tool_bar">
 
-    </ListView>
+    </ExpandableListView>
 
 </RelativeLayout>

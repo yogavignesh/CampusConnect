@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -207,9 +208,14 @@ public class PostList extends AppCompatActivity {
             }
 
             if(success == 1){
-                List<PostModel>lst = returnParsedJsonObject(result);
-                vPosts = (ListView) findViewById(R.id.lstcarposts);
-                vPosts.setAdapter(new PostListAdapater(PostList.this, R.layout.post_list_view, lst));
+                List<PostModel> lst = returnParsedJsonObject(result);
+
+               // vPosts = (ListView) findViewById(R.id.lstcarposts);
+                ExpandableListView exList = (ExpandableListView) findViewById(R.id.lstcarposts);
+                HashMap<String, List<SCCommentModel>> childlst=returnParsedJsonChildObject(result);
+                PostListAdapater exAdpt = new PostListAdapater(getBaseContext(),lst,childlst);
+                exList.setIndicatorBounds(0, 20);
+                exList.setAdapter(exAdpt);
 
                 //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
                 //mListView.setAdapter(adpt);
@@ -253,7 +259,37 @@ public class PostList extends AppCompatActivity {
 
     }
 
+    private  HashMap<String, List<SCCommentModel>> returnParsedJsonChildObject(String result) {
+        JSONObject resultObject = null;
+        JSONArray data = null;
+        HashMap<String, List<SCCommentModel>> commentHashList=new HashMap<>();
+        List<SCCommentModel> commentList =new ArrayList<>();
 
+
+        try {
+
+            resultObject = new JSONObject(result);
+            data = resultObject.getJSONArray("results");
+
+            for(int i = 0;i< data.length(); i++) {
+                SCCommentModel commentModel=new SCCommentModel();
+                JSONObject item = data.getJSONObject(i);
+                commentModel.setpostID(item.getString("postid"));
+                commentModel.setCommentedBy(item.getString("Username"));
+                commentModel.setComment(item.getString("comment"));
+                commentModel.setLocation(item.getString("location"));
+                commentList.add(commentModel);
+                commentHashList.put(item.getString("postid"),commentList);
+            }
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return commentHashList;
+    }
 
     private List<PostModel> returnParsedJsonObject(String result){
 
@@ -262,20 +298,19 @@ public class PostList extends AppCompatActivity {
         List<PostModel> PostList = new ArrayList<>();
 
 
-
         try {
 
             resultObject = new JSONObject(result);
             data = resultObject.getJSONArray("results");
 
-            for(int i = 0;i< data.length();i++){
+            for(int i = 0;i< data.length(); i++) {
                 PostModel postModel = new PostModel();
+                SCCommentModel commentModel=new SCCommentModel();
                 JSONObject item = data.getJSONObject(i);
                 postModel.setPostMessage(item.getString("postname"));
                 postModel.setpostedBy(item.getString("PostedBy"));
                 postModel.setpostID(item.getString("postid"));
                 postModel.setcurrUser(currUsername);
-                //postModel.setpostID("43ddg4");
                 if(!item.isNull("Flag")) {
                     postModel.setStatus(item.getInt("Flag"));
                 }
@@ -283,8 +318,13 @@ public class PostList extends AppCompatActivity {
                 {
                     postModel.setStatus(0);
                 }
-                PostList.add(postModel);
-
+                //postModel.setpostID("43ddg4");
+                if(PostList.contains(postModel)){
+                    continue;
+                }
+                else {
+                    PostList.add(postModel);
+                }
             }
 
         } catch (JSONException e) {

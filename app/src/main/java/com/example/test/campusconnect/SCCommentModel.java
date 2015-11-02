@@ -1,13 +1,10 @@
 package com.example.test.campusconnect;
 
 /**
- * Created by samsony on 10/30/2015.
+ * Created by Yoga Vignesh on 11/1/2015.
  */
-public class PostModel {
-     int Status;
-    String PostList;
-    String postedBy;
-    String currUser;
+public class SCCommentModel {
+    int Status;
     String commentedBy;
     String postID;
     String Comment;
@@ -36,30 +33,10 @@ public class PostModel {
     public String getLocation() {
         return location;
     }
-
-    public void setPostMessage(String respMessage) {
-        PostList = respMessage;
-    }
-    public String getPostMessage() {
-        return PostList;
-    }
-    public void setcurrUser(String currUser) {
-        this.currUser = currUser;
-    }
-    public String getcurrUser() {
-        return currUser;
-    }
-    public void setpostedBy(String postedBy) {
-        this.postedBy = postedBy;
-    }
-    public String getpostedBy() {
-        return postedBy;
-    }
     public void setpostID(String postID) {
         this.postID = postID;
     }
     public String getpostID() {
         return postID;
     }
-
 }

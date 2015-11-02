@@ -142,10 +142,13 @@ public class ShareCarComments extends AppCompatActivity {
             // String zip = addresses.get(0).getPostalCode();
             countrys = addresses.get(0).getCountryName();
             location = (TextView)findViewById(R.id.txtcurrLocation);
-           // location.setText("");
+            location.setText("");
             location.append(addresss);
+            location.append(",");
             location.append(citys);
+            location.append(",");
             location.append(states);
+            location.append(",");
             location.append(countrys);
         }
         catch(Exception e)
@@ -184,7 +187,6 @@ public void onNavigate(View view) {
                 nameValuePairs.put("location",params[3]);
                 nameValuePairs.put("flag",params[4]);
                 nameValuePairs.put("comment", params[5]);
-
 
                 URL url = new URL(serverUrlComment);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
