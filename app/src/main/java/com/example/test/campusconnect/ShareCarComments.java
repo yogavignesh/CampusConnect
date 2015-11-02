@@ -66,13 +66,15 @@ public class ShareCarComments extends AppCompatActivity {
         location=(TextView) findViewById(R.id.txtcurrLocation);
         txtConfirmUnjoin=(TextView) findViewById(R.id.UjConfirmation);
         btnconfirmUnjoinN=(Button) findViewById(R.id.btnUjConfirmNo);
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
         postid="";
         flag="0";
 
         final Bundle extras=getIntent().getExtras();
         if(extras!=null){
             postid = extras.getString("post_id");
-            flag = extras.getString("Flag");
+            flag = Integer.toString(extras.getInt("status"));
         }
         if(flag=="0"){
             btnShareLocation.setVisibility(View.GONE);
@@ -103,20 +105,18 @@ public class ShareCarComments extends AppCompatActivity {
         btnSendCarReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                session = new SessionManager(getApplicationContext());
-                session.checkLogin();
-                HashMap<String,String> user = session.getUserDetails();
-                Username = user.get(SessionManager.KEY_EMAIL);
-                String enteredText = txtComment.getText().toString();
-                AsyncDataClass asyncRequestObject = new AsyncDataClass();
-                asyncRequestObject.execute(serverUrlComment, enteredText, Username, location.getText().toString(), flag);
+
+
+
                 Toast.makeText(ShareCarComments.this, "Posted Succesfully", Toast.LENGTH_LONG).show();
-                Intent doneIntent=new Intent(getBaseContext(),ShareCarComments.class);
-                doneIntent.putExtra("post_id","Flag");
-                startActivity(doneIntent);
 
                 if(location.getText().toString()!="location"){
                     //txtComment.getText().toString();
+                    HashMap<String,String> user = session.getUserDetails();
+                    Username = user.get(SessionManager.KEY_EMAIL);
+                    String enteredText = txtComment.getText().toString();
+                    AsyncDataClass asyncRequestObject = new AsyncDataClass();
+                    asyncRequestObject.execute(serverUrlComment, postid, Username, location.getText().toString(), flag,enteredText);
                     Intent replyIntent = new Intent(getBaseContext(), PostList.class);
                     Toast.makeText(getBaseContext(),"Your request has been updated",Toast.LENGTH_SHORT);
                     startActivity(replyIntent);
@@ -142,7 +142,7 @@ public class ShareCarComments extends AppCompatActivity {
             // String zip = addresses.get(0).getPostalCode();
             countrys = addresses.get(0).getCountryName();
             location = (TextView)findViewById(R.id.txtcurrLocation);
-            location.setText("");
+           // location.setText("");
             location.append(addresss);
             location.append(citys);
             location.append(states);
@@ -179,10 +179,10 @@ public void onNavigate(View view) {
 
                 Map<String,String> nameValuePairs = new HashMap<String,String>();
 
-                nameValuePairs.put("post_id",params[1]);
+                nameValuePairs.put("postid",params[1]);
                 nameValuePairs.put("Username",params[2]);
                 nameValuePairs.put("location",params[3]);
-                nameValuePairs.put("Flag",params[4]);
+                nameValuePairs.put("flag",params[4]);
                 nameValuePairs.put("comment", params[5]);
 
 
