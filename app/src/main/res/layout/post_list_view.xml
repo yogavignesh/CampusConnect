@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:padding="15sp"
     android:background="@drawable/car_list_bg"
     android:id="@+id/posttitle"
     >
@@ -11,10 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17sp"
+
         android:textColor="@color/ColorHeading"
 
         />
     <TextView android:id="@+id/hdnPostId"
+        android:layout_below="@+id/scPostedby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -24,18 +27,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17sp"
+        android:layout_below="@+id/scPostedby"
         android:layout_marginTop="10sp"
         android:textColor="@color/ColorPrimary"
+
+        />
+    <TextView android:id="@+id/seatsAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_below="@+id/spostname"
+        android:textColor="@color/star_color"
 
         />
     <TextView android:id="@+id/joinStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17sp"
+        android:layout_below="@+id/seatsAvailable"
         android:textColor="@color/ColorHeading"
 
         />
+    <TextView android:id="@+id/rideDatenTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:layout_below="@+id/joinStatus"
+        android:textColor="@android:color/holo_blue_light"
 
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/expand_dd"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:padding="15sp"
+        android:id="@+id/dd_btn"
+        ></ImageView>
     <Button android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get this ride"
@@ -43,7 +73,8 @@
         android:layout_alignParentRight="true"
         android:layout_margin="10sp"
         android:padding="5pt"
-        android:layout_gravity="right"
+
+        android:layout_alignParentBottom="true"
         android:background="@drawable/button_default_bg"
         android:textColor="@color/ColorPrimary"></Button>
 
@@ -56,12 +87,13 @@
         android:layout_margin="10sp"
         android:id="@+id/btnUnWantRide"
         android:onClick="onNavigate"
-        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
         android:textColor="@color/ColorPrimary"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/btnShareCar"
         android:layout_alignEnd="@+id/btnShareCar"
-        android:visibility="gone"
+android:visibility="gone"
         />
 
-</LinearLayout>
+</RelativeLayout>
 

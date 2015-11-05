@@ -30,6 +30,7 @@
     <string name="menu_profile_settings">Profile Settings</string>
     <string name="menu_log_out">Log Out</string>
     <string name="menu_my_posts">My Posts</string>
+    <string name="menu_all_posts">All Posts</string>
     <string name="go_to_home">Go to Home</string>
     <string name="calendar">Calendar</string>
     <string name="drawer_open">Slider Menu Opened</string>
@@ -72,4 +73,10 @@
     <string name="google_maps_key">AIzaSyD_8Lke9e34CaE1rHOkh1cmQ2dgt3qN6Fs</string>
     <string name="title_activity_post_list">PostList</string>
     <string name="title_activity_share_car_comments">Comment</string>
+
+    <!-- GPS enabling-->
+    <string name="gps_network_not_enabled">GPS not enabled.Enable it to get your location.</string>
+    <string name="open_location_settings">Open location settings</string>
+    <string name="Cancel">Cancel</string>
+
 </resources>

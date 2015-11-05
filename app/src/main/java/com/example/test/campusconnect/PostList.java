@@ -15,11 +15,10 @@ import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import static com.wagnerandade.coollection.Coollection.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,9 +28,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -209,20 +211,11 @@ public class PostList extends AppCompatActivity {
 
             if(success == 1){
                 List<PostModel> lst = returnParsedJsonObject(result);
-
-               // vPosts = (ListView) findViewById(R.id.lstcarposts);
                 ExpandableListView exList = (ExpandableListView) findViewById(R.id.lstcarposts);
                 HashMap<String, List<SCCommentModel>> childlst=returnParsedJsonChildObject(result);
                 PostListAdapater exAdpt = new PostListAdapater(getBaseContext(),lst,childlst);
                 exList.setIndicatorBounds(0, 20);
                 exList.setAdapter(exAdpt);
-
-                //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
-                //mListView.setAdapter(adpt);
-
-
-
-                //asyncRequestObject.cancel(true);
 
             }
 
@@ -265,22 +258,32 @@ public class PostList extends AppCompatActivity {
         HashMap<String, List<SCCommentModel>> commentHashList=new HashMap<>();
         List<SCCommentModel> commentList =new ArrayList<>();
 
-
         try {
 
             resultObject = new JSONObject(result);
             data = resultObject.getJSONArray("results");
 
-            for(int i = 0;i< data.length(); i++) {
-                SCCommentModel commentModel=new SCCommentModel();
+            for (int i = 0; i < data.length(); i++) {
+                SCCommentModel commentModel = new SCCommentModel();
                 JSONObject item = data.getJSONObject(i);
-                commentModel.setpostID(item.getString("postid"));
-                commentModel.setCommentedBy(item.getString("Username"));
-                commentModel.setComment(item.getString("comment"));
-                commentModel.setLocation(item.getString("location"));
-                commentList.add(commentModel);
-                commentHashList.put(item.getString("postid"),commentList);
+
+                if (!item.getString("CommentedBy").equals("null")) {
+                    commentModel.setpostID(item.getString("postid"));
+                    commentModel.setCommentedBy(item.getString("CommentedBy"));
+                    commentModel.setComment(item.getString("comment"));
+                    commentModel.setLocation(item.getString("location"));
+                    commentList = commentHashList.get(item.getString("postid"));
+                    if (commentList == null) {
+                        commentList = new ArrayList<>();
+                    }
+                    commentList.add(commentModel);
+                    commentHashList.put(item.getString("postid"), commentList);
+                }
+
             }
+
+
+
 
         } catch (JSONException e) {
 
@@ -302,14 +305,17 @@ public class PostList extends AppCompatActivity {
 
             resultObject = new JSONObject(result);
             data = resultObject.getJSONArray("results");
+            boolean postExists;
 
             for(int i = 0;i< data.length(); i++) {
                 PostModel postModel = new PostModel();
-                SCCommentModel commentModel=new SCCommentModel();
                 JSONObject item = data.getJSONObject(i);
                 postModel.setPostMessage(item.getString("postname"));
                 postModel.setpostedBy(item.getString("PostedBy"));
                 postModel.setpostID(item.getString("postid"));
+                postModel.setSeatCnt(item.getString("seatCount"));
+                postModel.setDate(item.getString("Date"));
+                postModel.setTime(item.getString("Time"));
                 postModel.setcurrUser(currUsername);
                 if(!item.isNull("Flag")) {
                     postModel.setStatus(item.getInt("Flag"));
@@ -318,13 +324,19 @@ public class PostList extends AppCompatActivity {
                 {
                     postModel.setStatus(0);
                 }
-                //postModel.setpostID("43ddg4");
-                if(PostList.contains(postModel)){
+                /*if(from(PostList).where("postID",eq(item.getString("postid"))).all().size()>0)
+                {
+                    continue;
+                }*/
+                postExists=isExists(PostList,item.getString("postid"));
+                if(postExists){
                     continue;
                 }
-                else {
+                else{
                     PostList.add(postModel);
                 }
+
+
             }
 
         } catch (JSONException e) {
@@ -361,8 +373,15 @@ public class PostList extends AppCompatActivity {
     public static class flag{
         public static boolean FIRST_START = true;
     }
-
-
+    public static boolean isExists(List<PostModel> PostList, String targetValue) {
+        for (final PostModel postModel: PostList)
+        {
+            if (postModel.getpostID().equals(targetValue)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -399,6 +418,10 @@ public class PostList extends AppCompatActivity {
         if (id == R.id.myposts) {
             Intent tempIntent=new Intent(getBaseContext(),PostList.class);
             tempIntent.putExtra("ps_name","User");
+            startActivity(tempIntent);
+        }
+        if (id == R.id.allposts) {
+            Intent tempIntent=new Intent(getBaseContext(),PostList.class);
             startActivity(tempIntent);
         }
 

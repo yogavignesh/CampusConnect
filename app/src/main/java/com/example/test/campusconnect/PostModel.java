@@ -5,12 +5,13 @@ package com.example.test.campusconnect;
  */
 public class PostModel {
      int Status;
-    String PostList;
+    String message;
     String postedBy;
+    String seatCnt;
     String currUser;
-    String commentedBy;
     String postID;
-    String Comment;
+    String Date;
+    String Time;
     String location;
     public void setStatus(int status) {
         Status = status;
@@ -18,18 +19,25 @@ public class PostModel {
     public int getStatus() {
         return Status;
     }
-    public void setCommentedBy(String commentedBy) {
-        this.commentedBy = commentedBy;
+    public void setSeatCnt(String seatCnt) {
+        this.seatCnt = seatCnt;
     }
-    public String getCommentedBy() {
-        return commentedBy;
+    public String getSeatCnt() {
+        return seatCnt;
     }
-    public void setComment(String Comment) {
-        this.Comment = Comment;
+    public void setDate(String Date) {
+        this.Date = Date;
     }
-    public String getComment() {
-        return Comment;
+    public String getDate() {
+        return Date;
     }
+    public void setTime(String Time) {
+        this.Time = Time;
+    }
+    public String getTime() {
+        return Time;
+    }
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -38,10 +46,10 @@ public class PostModel {
     }
 
     public void setPostMessage(String respMessage) {
-        PostList = respMessage;
+        message = respMessage;
     }
     public String getPostMessage() {
-        return PostList;
+        return message;
     }
     public void setcurrUser(String currUser) {
         this.currUser = currUser;

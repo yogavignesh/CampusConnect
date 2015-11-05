@@ -1,10 +1,14 @@
 package com.example.test.campusconnect;
 
+
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +16,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -65,6 +67,11 @@ public class ShareCarComments extends AppCompatActivity {
         btnconfirmUnjoinN=(Button) findViewById(R.id.btnUjConfirmNo);
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
+        WindowManager.LayoutParams params = getWindow().getAttributes();
+        params.height = 1400;
+
+
+        this.getWindow().setAttributes(params);
         postid="";
         flag="0";
 
@@ -72,6 +79,7 @@ public class ShareCarComments extends AppCompatActivity {
         if(extras!=null){
             postid = extras.getString("post_id");
             flag = Integer.toString(extras.getInt("status"));
+
         }
         if(flag=="0"){
             btnShareLocation.setVisibility(View.GONE);
@@ -126,46 +134,86 @@ public class ShareCarComments extends AppCompatActivity {
 
     }
     public void onSearch(View view) {
+       try {
+           if(checkGPS(view.getContext())) {
+               GPSTracker gps = new GPSTracker(this);
+               Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+               double lat = gps.latitude;
+               double lon = gps.longitude;
+               List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+               addresss = addresses.get(0).getAddressLine(0);
+               citys = addresses.get(0).getLocality();
+               states = addresses.get(0).getAdminArea();
+               // String zip = addresses.get(0).getPostalCode();
+               countrys = addresses.get(0).getCountryName();
+               location = (TextView) findViewById(R.id.txtcurrLocation);
+               location.setText("");
+               location.append(addresss);
+               location.append(",");
+               location.append(citys);
+               location.append(",");
+               location.append(states);
+               location.append(",");
+               location.append(countrys);
+           }
+           else{
+               showGPSEnableDialog(view.getContext());
+           }
+       }
+       catch (Exception e){
+           e.printStackTrace();
+       }
 
-        GPSTracker gps = new GPSTracker(this);
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+    }
+
+    private boolean checkGPS(final Context context) {
+
+        LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
         try {
-            double lat = gps.latitude;
-            double lon = gps.longitude;
-            List<Address> addresses  = geocoder.getFromLocation(lat, lon, 1);
-            addresss = addresses.get(0).getAddressLine(0);
-            citys = addresses.get(0).getLocality();
-            states = addresses.get(0).getAdminArea();
-            // String zip = addresses.get(0).getPostalCode();
-            countrys = addresses.get(0).getCountryName();
-            location = (TextView)findViewById(R.id.txtcurrLocation);
-            location.setText("");
-            location.append(addresss);
-            location.append(",");
-            location.append(citys);
-            location.append(",");
-            location.append(states);
-            location.append(",");
-            location.append(countrys);
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception ex) {
         }
 
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch (Exception ex) {
+        }
+        if(!gps_enabled&& !network_enabled){
+            return false;
+        }
+        else{
+            return true;
+        }
+
+
     }
+    private void showGPSEnableDialog(final Context context){
+        // notify user
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setMessage(context.getResources().getString(R.string.gps_network_not_enabled));
+        dialog.setPositiveButton(context.getResources().getString(R.string.open_location_settings), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                // TODO Auto-generated method stub
+                Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                context.startActivity(myIntent);
+                //get gps
+            }
+        });
+        dialog.setNegativeButton(context.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
 
+            @Override
+            public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                // TODO Auto-generated method stub
 
-public void onNavigate(View view) {
+            }
+        });
+        dialog.show();
 
-        Intent intent = new Intent(this,MapsActivity.class);
-        intent.putExtra(EXTRA_ADDRESS, addresss);
-        intent.putExtra(EXTRA_CITY, citys);
-        intent.putExtra(EXTRA_STATE, states);
-        intent.putExtra(EXTRA_COUNTRY, countrys); // getText() SHOULD NOT be static!!!
-        startActivity(intent);
     }
-
 
     private class AsyncDataClass extends AsyncTask<String, Void, String> {
 

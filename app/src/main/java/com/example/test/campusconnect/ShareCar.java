@@ -308,6 +308,11 @@ public class ShareCar extends AppCompatActivity {
                 tempIntent.putExtra("ps_name","User");
                 startActivity(tempIntent);
             }
+            if (id == R.id.allposts) {
+                Intent tempIntent=new Intent(getBaseContext(),PostList.class);
+                tempIntent.putExtra("ps_name","All");
+                startActivity(tempIntent);
+            }
             return super.onOptionsItemSelected(item);
         }
     }
