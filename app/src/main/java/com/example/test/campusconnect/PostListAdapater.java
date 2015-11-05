@@ -217,6 +217,11 @@ private Context context;
             holder.Joined.setVisibility(View.VISIBLE);
             holder.UnjoinRide.setVisibility(View.VISIBLE);
         }
+        else if(stat==1&&holder.postedBy.getText().toString().trim().equals(holder.currUser.toString().trim())){
+            holder.JoinRide.setVisibility(View.GONE);
+            holder.Joined.setVisibility(View.GONE);
+            holder.UnjoinRide.setVisibility(View.GONE);
+        }
         else if(stat==1){
             holder.JoinRide.setVisibility(View.GONE);
             holder.Joined.setVisibility(View.VISIBLE);
