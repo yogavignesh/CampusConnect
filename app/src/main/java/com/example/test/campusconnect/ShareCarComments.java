@@ -52,8 +52,9 @@ public class ShareCarComments extends AppCompatActivity {
     EditText txtComment;
     SessionManager session;
 
-  ;
+
     private final String serverUrlComment = configuration.URL_COMMENTS;
+    private final String serverUrlCancel = configuration.URL_CANCEL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +68,7 @@ public class ShareCarComments extends AppCompatActivity {
         btnconfirmUnjoinN=(Button) findViewById(R.id.btnUjConfirmNo);
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
-        WindowManager.LayoutParams params = getWindow().getAttributes();
-        params.height = 1400;
 
-
-        this.getWindow().setAttributes(params);
         postid="";
         flag="0";
 
@@ -81,22 +78,35 @@ public class ShareCarComments extends AppCompatActivity {
             flag = Integer.toString(extras.getInt("status"));
 
         }
+
+        WindowManager.LayoutParams params = getWindow().getAttributes();
         if(flag=="0"){
+            params.height = 1000;
+            this.getWindow().setAttributes(params);
             btnShareLocation.setVisibility(View.GONE);
             txtComment.setVisibility(View.GONE);
             location.setVisibility(View.GONE);
             btnSendCarReq.setVisibility(View.GONE);
-            confirmUnjoin.setVisibility(View.VISIBLE);
+            txtConfirmUnjoin.setVisibility(View.VISIBLE);
             btnconfirmUnjoinY.setVisibility(View.VISIBLE);
             btnconfirmUnjoinN.setVisibility(View.VISIBLE);
+        }
+        else {
+
+            params.height = 1400;
+            this.getWindow().setAttributes(params);
         }
 
         btnconfirmUnjoinY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                     Toast.makeText(getBaseContext(),"Your have successfully cancelled the ride",Toast.LENGTH_SHORT);
+                    HashMap<String,String> user = session.getUserDetails();
+                    Username = user.get(SessionManager.KEY_EMAIL);
+                    AsyncDataClass asyncRequestObject = new AsyncDataClass();
+                    asyncRequestObject.execute(serverUrlCancel, postid, Username);
                     Intent replyIntent = new Intent(getBaseContext(), PostList.class);
-                    Toast.makeText(getBaseContext(),"Your have successfully cancelled the ride",Toast.LENGTH_SHORT);
                     startActivity(replyIntent);
 
             }
@@ -113,7 +123,7 @@ public class ShareCarComments extends AppCompatActivity {
 
 
 
-                Toast.makeText(ShareCarComments.this, "Posted Succesfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(ShareCarComments.this, "Request Sent", Toast.LENGTH_LONG).show();
 
                 if(location.getText().toString()!="location"){
                     //txtComment.getText().toString();
@@ -223,17 +233,26 @@ public class ShareCarComments extends AppCompatActivity {
 
             String jsonResult = "";
 
+
             try {
 
                 Map<String,String> nameValuePairs = new HashMap<String,String>();
+                if(params[0]==serverUrlComment) {
+                    nameValuePairs.put("postid", params[1]);
+                    nameValuePairs.put("Username", params[2]);
+                    nameValuePairs.put("location", params[3]);
+                    nameValuePairs.put("cflag", params[4]);
+                    nameValuePairs.put("comment", params[5]);
 
-                nameValuePairs.put("postid",params[1]);
-                nameValuePairs.put("Username",params[2]);
-                nameValuePairs.put("location",params[3]);
-                nameValuePairs.put("flag",params[4]);
-                nameValuePairs.put("comment", params[5]);
+                }
+                if(params[0]==serverUrlCancel){
+                    nameValuePairs.put("postid", params[1]);
+                    nameValuePairs.put("commentedby", params[2]);
 
-                URL url = new URL(serverUrlComment);
+
+                }
+
+                URL url = new URL(params[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setDoOutput(true);
                 con.setDoInput(true);

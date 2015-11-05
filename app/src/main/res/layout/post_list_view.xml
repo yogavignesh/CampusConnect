@@ -45,8 +45,9 @@
         android:layout_height="wrap_content"
         android:textSize="17sp"
         android:layout_below="@+id/seatsAvailable"
-        android:textColor="@color/ColorHeading"
-
+        android:textColor="@android:color/holo_red_dark"
+        android:text="going"
+        android:textStyle="italic"
         />
     <TextView android:id="@+id/rideDatenTime"
         android:layout_width="wrap_content"
@@ -73,7 +74,8 @@
         android:layout_alignParentRight="true"
         android:layout_margin="10sp"
         android:padding="5pt"
-
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_alignParentBottom="true"
         android:background="@drawable/button_default_bg"
         android:textColor="@color/ColorPrimary"></Button>
@@ -84,6 +86,8 @@
         android:background="@drawable/button_default_bg"
         android:text="Cancel ride"
         android:padding="5pt"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_margin="10sp"
         android:id="@+id/btnUnWantRide"
         android:onClick="onNavigate"

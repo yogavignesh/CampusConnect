@@ -38,7 +38,7 @@
         android:textColor="@color/ColorHeading"
 
         />
-    <ImageButton android:layout_width="wrap_content"
+    <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:layout_gravity="right"
@@ -49,6 +49,6 @@
         android:onClick="onNavigate"
         android:layout_alignParentBottom="true"
         android:background="@drawable/navigation_icon"
-        android:textColor="@color/ColorPrimary"></ImageButton>
+        android:textColor="@color/ColorPrimary"></ImageView>
     </LinearLayout>
 </LinearLayout>

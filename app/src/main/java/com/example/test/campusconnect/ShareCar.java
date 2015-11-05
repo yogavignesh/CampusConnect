@@ -125,15 +125,20 @@ public class ShareCar extends AppCompatActivity {
             String enteredText = postMess.getText().toString();
             session = new SessionManager(getApplicationContext());
             session.checkLogin();
-            HashMap<String,String> user = session.getUserDetails();
-            username = user.get(SessionManager.KEY_EMAIL);
-            Toast.makeText(ShareCar.this, "Posted Succesfully", Toast.LENGTH_LONG).show();
-            AsyncDataClass asyncRequestObject = new AsyncDataClass();
+            if(!seatCount.getText().equals("")&&!enteredText.equals("")&&!rDate.getText().equals("")&&!rTime.getText().equals("")) {
+                HashMap<String, String> user = session.getUserDetails();
+                username = user.get(SessionManager.KEY_EMAIL);
+                Toast.makeText(ShareCar.this, "Posted Succesfully", Toast.LENGTH_LONG).show();
+                AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-            asyncRequestObject.execute(serverUrl, enteredText,username,rDate.getText().toString(),rTime.getText().toString(),seatCount.getText().toString());
-            Intent doneIntent=new Intent(getBaseContext(),PostList.class);
-            doneIntent.putExtra("ps_name","User");
-            startActivity(doneIntent);
+                asyncRequestObject.execute(serverUrl, enteredText, username, rDate.getText().toString(), rTime.getText().toString(), seatCount.getText().toString());
+                Intent doneIntent = new Intent(getBaseContext(), PostList.class);
+                doneIntent.putExtra("ps_name", "User");
+                startActivity(doneIntent);
+            }
+            else {
+                Toast.makeText(ShareCar.this, "Please enter all the required fields", Toast.LENGTH_LONG).show();
+            }
         }
 
         private class AsyncDataClass extends AsyncTask<String, Void, String> {

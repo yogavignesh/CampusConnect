@@ -194,15 +194,13 @@ private Context context;
                 }
             });
 
-
-
-
         holder.postnm.setText(postListArray.get(groupPosition).getPostMessage());
         holder.postedBy.setText(postListArray.get(groupPosition).getpostedBy());
         holder.hdnpostID.setText(postListArray.get(groupPosition).getpostID());
         holder.currUser=postListArray.get(groupPosition).getcurrUser();
         holder.DateTime.setText("Date "+postListArray.get(groupPosition).getDate()+"\nTime "+postListArray.get(groupPosition).getTime());
         holder.seats.setText("Seats Available : "+postListArray.get(groupPosition).getSeatCnt());
+
         if (stat == 0 && holder.postedBy.getText().toString().trim().equals(holder.currUser.toString().trim())) {
 
             holder.Joined.setVisibility(View.GONE);
@@ -212,14 +210,22 @@ private Context context;
         else if(stat==0){
             holder.Joined.setVisibility(View.GONE);
             holder.JoinRide.setVisibility(View.VISIBLE);
+            holder.UnjoinRide.setVisibility(View.GONE);
         }
-        else{
+        else if(stat==1&&postListArray.get(groupPosition).getSeatCnt().toString().contains("0")){
             holder.JoinRide.setVisibility(View.GONE);
-            holder.Joined.setVisibility(View.GONE);
+            holder.Joined.setVisibility(View.VISIBLE);
             holder.UnjoinRide.setVisibility(View.VISIBLE);
         }
-        if(holder.postedBy.toString().trim()==holder.currUser.toString().trim()){
+        else if(stat==1){
             holder.JoinRide.setVisibility(View.GONE);
+            holder.Joined.setVisibility(View.VISIBLE);
+            holder.UnjoinRide.setVisibility(View.VISIBLE);
+        }
+        else if(postListArray.get(groupPosition).getSeatCnt().toString().contains("0"))
+        {
+            holder.JoinRide.setVisibility(View.GONE);
+            holder.UnjoinRide.setVisibility(View.GONE);
         }
         holder.postedBy.setText("Posted by "+postListArray.get(groupPosition).getpostedBy());
         return convertView;

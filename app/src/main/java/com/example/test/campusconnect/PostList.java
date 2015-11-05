@@ -272,7 +272,9 @@ public class PostList extends AppCompatActivity {
                     commentModel.setCommentedBy(item.getString("CommentedBy"));
                     commentModel.setComment(item.getString("comment"));
                     commentModel.setLocation(item.getString("location"));
+                    commentModel.setStatus(item.getInt("cflag"));
                     commentList = commentHashList.get(item.getString("postid"));
+
                     if (commentList == null) {
                         commentList = new ArrayList<>();
                     }
@@ -317,8 +319,8 @@ public class PostList extends AppCompatActivity {
                 postModel.setDate(item.getString("Date"));
                 postModel.setTime(item.getString("Time"));
                 postModel.setcurrUser(currUsername);
-                if(!item.isNull("Flag")) {
-                    postModel.setStatus(item.getInt("Flag"));
+                if(!item.isNull("cflag")) {
+                    postModel.setStatus(item.getInt("cflag"));
                 }
                 else
                 {

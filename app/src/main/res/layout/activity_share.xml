@@ -43,6 +43,7 @@
         android:layout_below="@+id/txtShareCar"
         android:id="@+id/txtSeats"
         android:hint="No of seats"
+        android:inputType="number"
         android:background="@drawable/edittext_default_bg"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
