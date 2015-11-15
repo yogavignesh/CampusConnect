@@ -14,12 +14,11 @@ import com.example.test.campusconnect.SlidingTabLayout;
 import com.example.test.campusconnect.ViewPagerAdapter;
 
 public class HomeFragment extends android.support.v4.app.Fragment{
-    Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter listingAdapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Sports Buddy","Find a Tutor","Share Ride"};
-    int Numboftabs =3;
+    CharSequence Titles[]={"Sports Buddy","Find a Tutor","Share Ride","Today's Events"};
+    int Numboftabs =4;
 	public HomeFragment(){}
 	
 	@Override

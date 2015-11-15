@@ -8,7 +8,7 @@ public class configuration {
 
     // Server user sports buddy url
     public static String URL_SPORTS_BUDDY = "http://ec2-52-21-243-105.compute-1.amazonaws.com/invite.php";
-
+    public static String URL_ALL_EVENTS = "http://ec2-52-21-243-105.compute-1.amazonaws.com/Todaysevents.php";
 
     public static String URL_SPORTS_BUDDY_EVENTS = "http://ec2-52-21-243-105.compute-1.amazonaws.com/retinvite.php";
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:background="@drawable/events"
+    android:descendantFocusability="beforeDescendants">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/card_background_selector"
+        android:descendantFocusability="afterDescendants"
+        android:alpha="0.85">
+        <ListView
+            android:id="@+id/AllEventList"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:background="@drawable/card_background_selector"
+            android:divider="@color/ColorPrimary"
+            android:dividerHeight="2.0sp"
+            android:alpha="0.75"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/ColorPrimary"
+            android:text="No events for today"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:id="@+id/emptyLst"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+</FrameLayout>

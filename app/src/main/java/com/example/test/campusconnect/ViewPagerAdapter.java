@@ -34,9 +34,13 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             FindTutor tab2 = new FindTutor();
             return tab2;
 
-        } else {
+        } else if (position==2){
             ShareRideHome tab3 = new ShareRideHome();
             return tab3;
+        }
+        else {
+            AllEvents tab4 = new AllEvents();
+            return tab4;
         }
 
     }

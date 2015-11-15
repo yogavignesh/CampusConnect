@@ -30,19 +30,13 @@ import java.util.List;
  * Created by Yoga Vignesh on 10/1/2015.
  */
 public class SportsBuddy extends Fragment{
-  /*  ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;*/
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.tab_1, container, false);
         final ListView lstView = (ListView) v.findViewById(R.id.lvExp);
-//        AlertDialog.Builder build = new AlertDialog.Builder(v.getContext());
-//        build.setMessage("null");
-//        AlertDialog alert =build.create();
-//        alert.show();
+
        final List <String> sb_cat = new ArrayList<String>();
         sb_cat.add("Baseball");
         sb_cat.add("Basketball");
@@ -72,13 +66,6 @@ public class SportsBuddy extends Fragment{
                             @Override
                             public void run() {
                                 view.setAlpha(1);
-/*
-                                PopupMenu popup = new PopupMenu(view.getContext(), view);
-                                MenuInflater inflater = popup.getMenuInflater();
-                                inflater.inflate(R.menu.pop_up, popup.getMenu());
-                                TextView opt = (TextView) v.findViewById(R.id.lvExp);
-                                popup.show();//*/
-
                                 Intent intent=new Intent(view.getContext(),SBEvents.class);
                                 intent.putExtra("sp_name",item);
                                 startActivity(intent);
@@ -92,60 +79,10 @@ public class SportsBuddy extends Fragment{
         });
 
 
-/*
-
-        // preparing list data
-
-        prepareListData();
-
-        listAdapter = new ExpandableListAdapter(v.getContext(), listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);*/
-
         return v;
 
     }
 
 
-    /*
-    private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        //listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-
-        listDataHeader.add("Baseball");
-        listDataHeader.add("Basketball");
-        listDataHeader.add("Batminton");
-        listDataHeader.add("Cricket");
-        listDataHeader.add("Football");
-        listDataHeader.add("Fencing");
-        listDataHeader.add("Ping-Pong");
-        listDataHeader.add("Racket-ball");
-        listDataHeader.add("Soccer");
-        listDataHeader.add("Billiards");
-        listDataHeader.add("Swimming");
-        listDataHeader.add("Tennis");
-        listDataHeader.add("Volleyball");
-        listDataHeader.add("Others");
-
-
-
-       // Adding child data
-       List<String> sbOptions = new ArrayList<String>();
-        sbOptions.add("Invite");
-        sbOptions.add("What's Happening");
-
-        for(int cat_cnt=0;cat_cnt<listDataHeader.size();cat_cnt++) {
-            listDataChild.put(listDataHeader.get(cat_cnt), sbOptions); // Header, Child data
-        }*/
-    //}
-/*
-    public static void openlist(Context context) {
-        Intent in=new Intent(context,SBEvents.class);
-        context.startActivity(in);
-    }
-*/
 
 }

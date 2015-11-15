@@ -91,11 +91,6 @@ public class PostList extends AppCompatActivity {
         HashMap<String,String> user = session.getUserDetails();
         currUsername = user.get(SessionManager.KEY_EMAIL);
 
-//        tutorRModel tutorResModel = new tutorRModel();
-//        tutorResModel.setUserName("Yoga");
-//        tutorResModel.setMessage("Request for lessons");
-//        tutorResModel.setSubject(dp_name);
-//        lst.add(tutorResModel);
         if(ps_name=="All") {
             asyncRequestObject = new AsyncDataClass();
             asyncRequestObject.execute(serverUrlAll, ps_name, currUsername);
