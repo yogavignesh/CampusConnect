@@ -26,22 +26,23 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            SportsBuddy tab1 = new SportsBuddy();
+            AllEvents tab1 = new AllEvents();
             return tab1;
         }
-
-        else if(position==1) {
-            FindTutor tab2 = new FindTutor();
+        else if (position == 1) {
+            SportsBuddy tab2 = new SportsBuddy();
             return tab2;
-
-        } else if (position==2){
-            ShareRideHome tab3 = new ShareRideHome();
-            return tab3;
         }
-        else {
-            AllEvents tab4 = new AllEvents();
+
+        else if(position==2) {
+            FindTutor tab3 = new FindTutor();
+            return tab3;
+
+        } else{
+            ShareRideHome tab4 = new ShareRideHome();
             return tab4;
         }
+
 
     }
 

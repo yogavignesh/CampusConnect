@@ -167,8 +167,6 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new ProfileSettings();
                 break;
             case 2:
-                fragment = new ShareRideHome();
-            case 3:
                 new AlertDialog.Builder(this)
                         .setMessage("Are you sure you want to log out?")
                         .setCancelable(false)
