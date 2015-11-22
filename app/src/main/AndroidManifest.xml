@@ -120,6 +120,21 @@
             android:label="@string/title_activity_share_car_comments"
             android:theme="@style/Theme.AppCompat.Dialog">
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.test.campusconnect" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".GcmIntentService" />
     </application>
 
 </manifest>

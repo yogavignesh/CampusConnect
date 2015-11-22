@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    android:padding="15sp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/book_stack"
+
     >
     <RelativeLayout
         android:orientation="vertical"
@@ -34,10 +34,11 @@
             />
 
         <RatingBar
-            android:layout_width="230dp"
+            android:layout_width="235dp"
             android:layout_height="50dp"
             android:id="@+id/rtgTutor"
             android:isIndicator="true"
+            android:layout_marginRight="-50sp"
             android:numStars="5"
             android:stepSize="1"
             android:scaleX="0.5"
@@ -58,32 +59,29 @@
 
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Request"
-
-
             android:id="@+id/btnTtrReq"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
 
             android:padding="5pt"
-            android:background="@drawable/button_default_bg"
+            android:background="@drawable/trequest_icon"
             android:textColor="@color/ColorPrimary"></Button>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Request Sent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_toRightOf="@id/btnTtrReq"
+
             android:id="@+id/txtReqSent"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/going_icon"
             android:textColor="@color/cardview_shadow_start_color"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rateTutor"
-            android:text="Rate this tutor"
+android:background="@drawable/rate_icon"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:padding="5pt"

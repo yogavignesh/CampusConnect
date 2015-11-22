@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+android:padding="14dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/sb_orig"
@@ -11,17 +11,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/evnttitle">
 
-    <TextView android:id="@+id/eventMessage"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        android:textColor="@color/ColorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+          <TextView android:id="@+id/eventMessage"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/ColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/sbpostBy"
+            android:textSize="17sp"
+            android:textStyle="italic"
+            android:textColor="@color/ColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     <TextView android:id="@+id/eventPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eventMessage"/>
+        android:layout_below="@+id/eventMessage"
+        android:textColor="@color/star_color"
+        android:textSize="14sp"/>
         <TextView android:id="@+id/hidden_sp_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,6 +43,7 @@
         >
         <TextView android:id="@+id/eventDate"
         android:layout_width="wrap_content"
+            android:textColor="@color/ColorPrimaryDark"
         android:layout_height="wrap_content"
             />
     <TextView android:id="@+id/eventTime"
@@ -49,37 +58,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             >
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="60dp"
                 android:id="@+id/btnJoinEvent"
-                android:text="Join"
                 android:padding="15sp"
-                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
                 android:textColor="@color/ColorPrimary"
-                android:background="@drawable/button_default_bg"/>
+                android:background="@drawable/join_icon"/>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="60dp"
                 android:id="@+id/btnEditEvent"
-                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
                 android:padding="15sp"
-                android:text="Edit"
                 android:textColor="@color/ColorPrimary"
-                android:background="@drawable/button_default_bg"
+                android:background="@drawable/edit_icon"
                 />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="60dp"
                 android:id="@+id/txtGoing"
-                android:text="Going"
-                android:layout_centerInParent="true"
-                android:gravity="center_vertical"
-                android:textColor="@color/ColorPrimary"
-                android:background="#330099CC"
+                android:background="@drawable/going_icon"
+                android:layout_alignParentBottom="true"
+                android:textColor="@android:color/holo_green_dark"
+                android:textStyle="italic"
+                android:textSize="15sp"
 android:visibility="gone"
                 />
         </RelativeLayout>

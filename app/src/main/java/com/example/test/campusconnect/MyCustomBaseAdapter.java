@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.test.campusconnect.SportsModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,6 +24,9 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
     private static List<SportsModel> searchArrayList;
 
     private LayoutInflater mInflater;
+
+    private SessionManager session;
+    String Username;
 
 
     public MyCustomBaseAdapter(Context context,int resource ,List<SportsModel> results) {
@@ -61,8 +65,18 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
 
                 @Override
                 public void onClick(View view) {
-                    Intent joinIntent= new Intent(parent.getContext(),GameEvents.class);
+
+                    session = new SessionManager(getContext());
+                    session.checkLogin();
+                    HashMap<String,String> user = session.getUserDetails();
+                    Username = user.get(SessionManager.KEY_EMAIL);
+
+                    Intent joinIntent= new Intent(parent.getContext(),SBEvents.class);
                     joinIntent.putExtra("sp_name", holder.hdn_Title.getText());
+                    joinIntent.putExtra("date", holder.txtDate.getText());
+                    joinIntent.putExtra("time", holder.txtTime.getText());
+                    joinIntent.putExtra("message", holder.txtMessage.getText());
+                    joinIntent.putExtra("username",Username);
                     parent.getContext().startActivity(joinIntent);
 
                 }

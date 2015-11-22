@@ -36,6 +36,7 @@ public class AllEventsAdapter extends ArrayAdapter {
             holder.EventName= (TextView) convertView.findViewById(R.id.tEventname);
             holder.CurrentDate = (TextView) convertView.findViewById(R.id.tdate);
             holder.CurrentTime = (TextView) convertView.findViewById(R.id.ttime);
+            holder.Sportname = (TextView) convertView.findViewById(R.id.tsportname);
 
 
 
@@ -46,6 +47,8 @@ public class AllEventsAdapter extends ArrayAdapter {
         holder.EventName.setText(cEventArrayList.get(position).getEventName());;
         holder.CurrentDate.setText(cEventArrayList.get(position).getEventDate());
         holder.CurrentTime.setText(cEventArrayList.get(position).getEventTime());
+        if(cEventArrayList.get(position).getSportname().equals("None")!=true){
+        holder.Sportname.setText(cEventArrayList.get(position).getSportname());}
         return convertView;
     }
 
@@ -53,5 +56,6 @@ public class AllEventsAdapter extends ArrayAdapter {
         TextView EventName;
         TextView CurrentDate;
         TextView CurrentTime;
+        TextView Sportname;
     }
 }

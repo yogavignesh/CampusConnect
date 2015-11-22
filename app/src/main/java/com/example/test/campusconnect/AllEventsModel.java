@@ -9,6 +9,7 @@ public class AllEventsModel {
         String EventName;
         String EventDate;
         String EventTime;
+        String Sportname;
 
         public String getEventName() {
             return EventName;
@@ -33,6 +34,12 @@ public class AllEventsModel {
         public void setEventTime(String eventTime) {
             EventTime = eventTime;
         }
+
+        public String getSportname() {
+        return Sportname;
+    }
+
+        public void setSportname(String sportname) {Sportname= sportname;}
 
 
 }

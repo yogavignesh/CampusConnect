@@ -31,6 +31,13 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/tdate"/>
 
-
+    <TextView android:id="@+id/tsportname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/ttime"/>
 
 </RelativeLayout>

@@ -19,6 +19,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,6 +36,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class register extends AppCompatActivity implements View.OnClickListener{
+
+
+    GoogleCloudMessaging gcm;
+    String regid;
+    String PROJECT_NUMBER = "922601036110";
 
     Button bSubmit;
 
@@ -119,6 +126,18 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
     public void onClick(View v) {
         //+Toast.makeText(register.this, "Successfully Registered!Please login with your credentials", Toast.LENGTH_LONG).show();
+
+        String projectId =
+                getResources().getString(R.string.gcm_project_id);
+        GoogleCloudMessaging gcm =
+                GoogleCloudMessaging.getInstance(this);
+        try{
+            regid = gcm.register(projectId);
+        }catch (IOException e){
+            System.out.print(e);
+        }
+
+
         int gender = rggender.getCheckedRadioButtonId();
         rgender = (RadioButton) findViewById(gender);
 
@@ -360,6 +379,20 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 //            HttpClient httpClient = new DefaultHttpClient(httpParameters);
 //            HttpPost httpPost = new HttpPost(params[0]);
 
+            String msg = "";
+            try {
+                if (gcm == null) {
+                    gcm = GoogleCloudMessaging.getInstance(getApplicationContext());
+                }
+                regid = gcm.register(PROJECT_NUMBER);
+                msg = "Device registered, registration ID=" + regid;
+                Log.i("GCM",  msg);
+
+            } catch (IOException ex) {
+                msg = "Error :" + ex.getMessage();
+
+            }
+
 
 
             String jsonResult = "";
@@ -420,6 +453,7 @@ public class register extends AppCompatActivity implements View.OnClickListener{
 
                 nameValuePairs.put("Racketball", params[26]);
                 nameValuePairs.put("phonenumber", params[27]);
+                nameValuePairs.put("RegId",regid);
 
                 //nameValuePairs.put("Cpassword",params[27]);
 

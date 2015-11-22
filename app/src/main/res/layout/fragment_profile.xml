@@ -64,12 +64,12 @@
 
 
                 <RadioGroup
-                    android:id="@+id/rgtutor"
+                    android:id="@+id/rgUptutor"
                     android:layout_width="89dp"
                     android:layout_height="wrap_content"
                     >
 
-                    <RadioButton android:id="@+id/rYes"
+                    <RadioButton android:id="@+id/rUpYes"
                         android:layout_width="265dp"
                         android:text="Yes"
                         android:textColor="@color/ColorHeading"
@@ -78,7 +78,7 @@
                         android:checked="true" />
 
 
-                    <RadioButton android:id="@+id/rNo"
+                    <RadioButton android:id="@+id/rUpNo"
                         android:layout_width="match_parent"
                         android:layoutDirection="rtl"
                         android:text="No"
@@ -95,9 +95,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/isTutor"
+                android:id="@+id/isUpTutor"
                 android:orientation="vertical">
-                <CheckBox android:id="@+id/cbAerospace"
+                <CheckBox android:id="@+id/cbUAerospace"
                     android:layout_width="match_parent"
                     android:text="Aerospace"
                     android:textColor="@color/ColorHeading"
@@ -105,21 +105,21 @@
                     android:layout_height="wrap_content"
                     />
 
-                <CheckBox android:id="@+id/cbBiotechnology"
+                <CheckBox android:id="@+id/cbUBiotechnology"
                     android:layout_width="match_parent"
                     android:text="Biotechnology"
                     android:textColor="@color/ColorHeading"
                     android:textSize="15dp"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbBusiness"
+                <CheckBox android:id="@+id/cbUBusiness"
                     android:layout_width="match_parent"
                     android:text="Business"
                     android:textColor="@color/ColorHeading"
                     android:textSize="15dp"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbComputerScience"
+                <CheckBox android:id="@+id/cbUComputerScience"
                     android:layout_width="match_parent"
                     android:textSize="15dp"
                     android:textColor="@color/ColorHeading"
@@ -127,35 +127,35 @@
                     android:layout_height="wrap_content"/>
 
 
-                <CheckBox android:id="@+id/cbElectrical"
+                <CheckBox android:id="@+id/cbUElectrical"
                     android:layout_width="match_parent"
                     android:textSize="15dp"
                     android:textColor="@color/ColorHeading"
                     android:text="Electrical/Electronics"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbIndustrial"
+                <CheckBox android:id="@+id/cbUIndustrial"
                     android:layout_width="match_parent"
                     android:textSize="15dp"
                     android:textColor="@color/ColorHeading"
                     android:text="IndustrialEngineering"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbMechanical"
+                <CheckBox android:id="@+id/cbUMechanical"
                     android:layout_width="match_parent"
                     android:text="Mechanical"
                     android:textColor="@color/ColorHeading"
                     android:textSize="15dp"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbMaths"
+                <CheckBox android:id="@+id/cbUMaths"
                     android:layout_width="match_parent"
                     android:text="Mathematics"
                     android:textSize="15dp"
                     android:textColor="@color/ColorHeading"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbNursing"
+                <CheckBox android:id="@+id/cbUNursing"
                     android:layout_width="match_parent"
                     android:text="Nursing"
                     android:textSize="15dp"
@@ -163,14 +163,14 @@
                     android:layout_height="wrap_content"/>
 
 
-                <CheckBox android:id="@+id/cbPsychology"
+                <CheckBox android:id="@+id/cbUPsychology"
                     android:layout_width="match_parent"
                     android:text="Psychology"
                     android:textSize="15dp"
                     android:textColor="@color/ColorHeading"
                     android:layout_height="wrap_content"/>
 
-                <CheckBox android:id="@+id/cbPhysics"
+                <CheckBox android:id="@+id/cbUPhysics"
                     android:layout_width="match_parent"
                     android:text="Physics"
                     android:textSize="15dp"
@@ -189,7 +189,7 @@
                 android:textColor="#0000A0"
                 android:textAllCaps="true" />
 
-            <CheckBox android:id="@+id/cbBaseball"
+            <CheckBox android:id="@+id/cbUBaseball"
                 android:layout_width="265dp"
                 android:text="Baseball"
                 android:textSize="15dp"
@@ -197,14 +197,14 @@
                 android:layout_height="wrap_content"
                 />
 
-            <CheckBox android:id="@+id/cbBasketball"
+            <CheckBox android:id="@+id/cbUBasketball"
                 android:layout_width="265dp"
                 android:text="Basketball"
                 android:textSize="15dp"
                 android:textColor="@color/ColorHeading"
                 android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbBadminton"
+            <CheckBox android:id="@+id/cbUBadminton"
                 android:layout_width="265dp"
                 android:text="Badminton"
                 android:textSize="15dp"
@@ -212,35 +212,35 @@
                 android:layout_height="wrap_content"/>
 
 
-            <CheckBox android:id="@+id/cbCricket"
+            <CheckBox android:id="@+id/cbUCricket"
                 android:layout_width="265dp"
                 android:text="Cricket"
                 android:textSize="15dp"
                 android:textColor="@color/ColorHeading"
                 android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbFootball"
+            <CheckBox android:id="@+id/cbUFootball"
                 android:layout_width="265dp"
                 android:text="Football"
                 android:textSize="15dp"
                 android:textColor="@color/ColorHeading"
                 android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbFencing"
+            <CheckBox android:id="@+id/cbUFencing"
                 android:layout_width="265dp"
                 android:text="Fencing"
                 android:textSize="15dp"
                 android:textColor="@color/ColorHeading"
                 android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbPingPong"
+            <CheckBox android:id="@+id/cbUPingPong"
                 android:layout_width="265dp"
                 android:text="Ping-Pong"
                 android:textSize="15dp"
                 android:textColor="@color/ColorHeading"
                 android:layout_height="wrap_content"/>
 
-            <CheckBox android:id="@+id/cbRacketBall"
+            <CheckBox android:id="@+id/cbURacketBall"
                 android:layout_width="265dp"
                 android:text="Racket-Ball"
                 android:textSize="15dp"

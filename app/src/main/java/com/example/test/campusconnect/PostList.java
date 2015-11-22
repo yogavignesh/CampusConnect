@@ -15,7 +15,7 @@ import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import static com.wagnerandade.coollection.Coollection.*;
+//import static com.wagnerandade.coollection.Coollection.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -237,6 +237,8 @@ public class AllEvents extends Fragment {
                 cResModel.setEventName(item.getString("Event"));
                 cResModel.setEventDate(CurrentDate);
                 cResModel.setEventTime(item.getString("Time"));
+                //if(item.getString("Sportname")!="None"){
+                    cResModel.setSportname(item.getString("Sportname"));
                 EventModelList.add(cResModel);
 
             }

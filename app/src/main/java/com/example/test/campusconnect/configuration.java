@@ -11,6 +11,7 @@ public class configuration {
     public static String URL_ALL_EVENTS = "http://ec2-52-21-243-105.compute-1.amazonaws.com/Todaysevents.php";
 
     public static String URL_SPORTS_BUDDY_EVENTS = "http://ec2-52-21-243-105.compute-1.amazonaws.com/retinvite.php";
+    public static String URL_SPORTS_JOIN_EVENT = "http://ec2-52-21-243-105.compute-1.amazonaws.com/Joinsport.php";
 
     public static String URL_FIND_TUTOR = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutor.php";
     public static String URL_SHARE_RIDE = "http://ec2-52-21-243-105.compute-1.amazonaws.com/poolpost.php" ;
