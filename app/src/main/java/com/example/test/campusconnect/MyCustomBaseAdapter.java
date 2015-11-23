@@ -106,7 +106,8 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
         holder.txtDate.setText(searchArrayList.get(position).getPostDate());
         holder.txtTime.setText(" "+searchArrayList.get(position).getPostTime());
         holder.PostedBy.setText("Posted By "+searchArrayList.get(position).getUsername());
-        holder.txtPlayers.setText("No of Players : "+searchArrayList.get(position).getNoofplayers());
+        holder.txtPlayers.setText("No of players required : "+searchArrayList.get(position).getNoofplayers());
+
         if(searchArrayList.get(position).getUsername().equalsIgnoreCase(Username)){
             holder.btnJoin.setVisibility(View.GONE);
             holder.btnEdit.setVisibility(View.VISIBLE);
@@ -125,6 +126,10 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
                 holder.btnJoin.setVisibility(View.GONE);
                 holder.btnEdit.setVisibility(View.GONE);
             }
+        }
+        if(Integer.parseInt(searchArrayList.get(position).getNoofplayers())==0){
+            holder.btnJoin.setVisibility(View.GONE);
+            holder.btnEdit.setVisibility(View.GONE);
         }
 
         return convertView;
