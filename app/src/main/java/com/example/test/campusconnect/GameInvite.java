@@ -74,7 +74,7 @@ public class GameInvite extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Spinner dropdown = (Spinner)findViewById(R.id.noofplayers);
-        String[] items = new String[]{"1", "2", "3",">3"};
+        String[] items = new String[]{"1", "2", "3","4","5","6","7", "8", "9","10","11","12","13","14","15","16","17","18","19","20"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
         Button btnInvite=(Button) findViewById(R.id.btnInv);
@@ -106,7 +106,7 @@ public class GameInvite extends AppCompatActivity {
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrl,sport,players,inv_message,date_selected,timing,Username);
+                    asyncRequestObject.execute(serverUrl,sport,players,inv_message,date_selected,timing,Username,players);
 
 
 
@@ -168,7 +168,7 @@ public class GameInvite extends AppCompatActivity {
 
                 nameValuePairs.put("username", params[6]);
 
-
+                nameValuePairs.put("noofplayers", params[7]);
 
 
 
@@ -333,7 +333,6 @@ public class GameInvite extends AppCompatActivity {
         return returnedResult;
 
     }
-
 
 
 
