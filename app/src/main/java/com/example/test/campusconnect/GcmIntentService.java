@@ -11,8 +11,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -92,10 +94,11 @@ public class GcmIntentService extends IntentService {
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(msg))
                         .setContentText(msg)
-                        .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
-                        .setSound(Uri.parse("uri://sadfasdfasdf.mp3"));
+                        .setVibrate(new long[]{1000, 1000})
+                        .setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
         mBuilder.setContentIntent(contentIntent);
+        Toast.makeText(getBaseContext(),"A notification has been sent",Toast.LENGTH_SHORT);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 }
