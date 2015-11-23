@@ -87,14 +87,19 @@ public class SBEvents extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         Bundle bndl = getIntent().getExtras();
+        String flag="0";
         if (bndl.getString("date") != null) {
+
+            flag=bndl.getString("flag");
             String date = bndl.getString("date");
             String time = bndl.getString("time");
             String msg = bndl.getString("message");
             String sname = bndl.getString("sp_name");
             String username = bndl.getString("username");
-            asyncRequestObject = new AsyncDataClass();
-            asyncRequestObject.execute(serverUrl, username, sname, date, time, msg);
+           if(Integer.parseInt(flag)==1) {
+               asyncRequestObject = new AsyncDataClass();
+               asyncRequestObject.execute(serverUrl, username, sname, date, time, msg, flag);
+           }
 
         }
 
@@ -158,6 +163,7 @@ public class SBEvents extends AppCompatActivity {
                 nameValuePairs.put("date", params[3]);
                 nameValuePairs.put("time", params[4]);
                 nameValuePairs.put("msg", params[5]);
+                nameValuePairs.put("flag", params[6]);
 
                 URL url = new URL(serverUrl);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();

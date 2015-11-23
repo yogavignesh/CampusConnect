@@ -65,6 +65,7 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
             holder.txtPlayers = (TextView) convertView.findViewById(R.id.eventPlayers);
             holder.btnJoin = (Button) convertView.findViewById(R.id.btnJoinEvent);
             holder.Going=(TextView) convertView.findViewById(R.id.txtGoing);
+            final int flg=searchArrayList.get(position).getFlag();
             holder.PostedBy=(TextView) convertView.findViewById(R.id.sbpostBy);
             holder.btnEdit = (Button) convertView.findViewById(R.id.btnEditEvent);
             holder.btnJoin.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +80,7 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
                     joinIntent.putExtra("time", holder.txtTime.getText());
                     joinIntent.putExtra("message", holder.txtMessage.getText());
                     joinIntent.putExtra("username",Username);
+                    joinIntent.putExtra("flag","1");
                     parent.getContext().startActivity(joinIntent);
 
                 }
@@ -98,7 +100,7 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        int flg=searchArrayList.get(position).getFlag();
+        final int flg=searchArrayList.get(position).getFlag();
         holder.hdn_Title.setText(searchArrayList.get(position).getSportname());;
         holder.txtMessage.setText(searchArrayList.get(position).getPost());
         holder.txtDate.setText(searchArrayList.get(position).getPostDate());
