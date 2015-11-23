@@ -46,7 +46,6 @@ public class ShareCarComments extends AppCompatActivity {
     Button btnShareLocation;
     TextView txtConfirmUnjoin;
     TextView location;
-    TextView confirmUnjoin;
     Button btnconfirmUnjoinY;
     Button btnconfirmUnjoinN;
     EditText txtComment;

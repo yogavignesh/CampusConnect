@@ -67,7 +67,7 @@ public class GameInvite extends AppCompatActivity {
         title.setText(sp_name);
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setNavigationIcon(R.drawable.sb_icon);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         // enabling action bar app icon and behaving it as toggle button

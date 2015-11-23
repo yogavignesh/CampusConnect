@@ -68,7 +68,7 @@ public class GameEvents extends AppCompatActivity {
         title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(sp_name);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setNavigationIcon(R.drawable.sb_icon);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
