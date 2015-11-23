@@ -292,6 +292,20 @@ public class GameEvents extends AppCompatActivity {
                 sportsModel.setPostDate(item.getString("PostDate"));
                 sportsModel.setPostTime(item.getString("PostTime"));
                 sportsModel.setSportname(item.getString("Sportname"));
+                sportsModel.setNoofplayers(item.getString("Noofplayers"));
+                if(!item.isNull(item.getString("JoinedUser"))) {
+                    sportsModel.setJoinedBy(item.getString("JoinedUser"));
+                }
+                else {
+                    sportsModel.setJoinedBy("noJoin");
+                }
+                if(!item.isNull(item.getString("Flag"))) {
+                    sportsModel.setFlag(Integer.parseInt(item.getString("Flag")));
+                }
+                else {
+                    sportsModel.setFlag(0);
+                }
+
                 sportsModelList.add(sportsModel);
 
             }

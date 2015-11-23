@@ -3,7 +3,6 @@
 android:padding="14dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/sb_orig"
     >
     <LinearLayout
         android:orientation="vertical"
@@ -62,8 +61,8 @@ android:padding="14dp"
             >
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/btnJoinEvent"
                 android:padding="15sp"
                 android:layout_alignParentBottom="true"
@@ -71,8 +70,8 @@ android:padding="14dp"
                 android:background="@drawable/join_icon"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/btnEditEvent"
                 android:layout_alignParentBottom="true"
                 android:padding="15sp"
@@ -80,8 +79,8 @@ android:padding="14dp"
                 android:background="@drawable/edit_icon"
                 />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/txtGoing"
                 android:background="@drawable/going_icon"
                 android:layout_alignParentBottom="true"

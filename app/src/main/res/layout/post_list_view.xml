@@ -68,8 +68,8 @@ android:textStyle="italic"
         android:padding="15sp"
         android:id="@+id/dd_btn"
         ></ImageView>
-    <Button android:layout_width="wrap_content"
-        android:layout_height="60dp"
+    <Button android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/btnWantRide"
         android:layout_alignParentRight="true"
         android:layout_margin="10sp"
@@ -81,8 +81,8 @@ android:textStyle="italic"
         android:textColor="@color/ColorPrimary"></Button>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@drawable/cancel_icon"
         android:padding="5pt"
         android:focusable="false"

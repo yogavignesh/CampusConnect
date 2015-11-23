@@ -11,16 +11,26 @@ public class SportsModel {
     String PostDate;
     String PostTime;
     String Sportname;
+    String JoinedBy;
+    String noofplayers;
+    int Flag;
 
 
     public void setUsername(String username) {
         Username = username;
     }
-
+    public void setJoinedBy(String username) {
+        JoinedBy = username;
+    }
+    public void setNoofplayers(String noofplayers) {
+        this.noofplayers = noofplayers;
+    }
     public void setPost(String post) {
         Post = post;
     }
-
+    public void setFlag(int flag) {
+        Flag = flag;
+    }
     public void setPostDate(String postDate) {
         PostDate = postDate;
     }
@@ -37,7 +47,15 @@ public class SportsModel {
     public String getUsername() {
         return Username;
     }
-
+    public String getJoinedBy() {
+        return JoinedBy;
+    }
+    public String getNoofplayers() {
+        return noofplayers;
+    }
+    public int getFlag() {
+        return Flag;
+    }
     public String getPost() {
         return Post;
     }

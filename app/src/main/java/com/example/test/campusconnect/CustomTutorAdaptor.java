@@ -101,7 +101,6 @@ public class CustomTutorAdaptor extends ArrayAdapter {
         }
         if (stat== 1) {
 
-            holder.btnReq.setText("Resend");
             holder.reqSent.setVisibility(View.VISIBLE);
         }
         return convertView;

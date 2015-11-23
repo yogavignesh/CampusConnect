@@ -54,22 +54,24 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
             convertView = mInflater.inflate(R.layout.events_view, null);
             holder = new ViewHolder();
 
+            session = new SessionManager(getContext());
+            session.checkLogin();
+            HashMap<String,String> user = session.getUserDetails();
+            Username = user.get(SessionManager.KEY_EMAIL);
             holder.hdn_Title= (TextView) convertView.findViewById(R.id.hidden_sp_title);
             holder.txtMessage = (TextView) convertView.findViewById(R.id.eventMessage);
             holder.txtDate = (TextView) convertView.findViewById(R.id.eventDate);
             holder.txtTime = (TextView) convertView.findViewById(R.id.eventTime);
             holder.txtPlayers = (TextView) convertView.findViewById(R.id.eventPlayers);
             holder.btnJoin = (Button) convertView.findViewById(R.id.btnJoinEvent);
+            holder.Going=(TextView) convertView.findViewById(R.id.txtGoing);
+            holder.PostedBy=(TextView) convertView.findViewById(R.id.sbpostBy);
             holder.btnEdit = (Button) convertView.findViewById(R.id.btnEditEvent);
             holder.btnJoin.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
 
-                    session = new SessionManager(getContext());
-                    session.checkLogin();
-                    HashMap<String,String> user = session.getUserDetails();
-                    Username = user.get(SessionManager.KEY_EMAIL);
 
                     Intent joinIntent= new Intent(parent.getContext(),SBEvents.class);
                     joinIntent.putExtra("sp_name", holder.hdn_Title.getText());
@@ -96,13 +98,33 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        int flg=searchArrayList.get(position).getFlag();
         holder.hdn_Title.setText(searchArrayList.get(position).getSportname());;
         holder.txtMessage.setText(searchArrayList.get(position).getPost());
         holder.txtDate.setText(searchArrayList.get(position).getPostDate());
-        holder.txtTime.setText(searchArrayList.get(position).getPostTime());
-        //holder.txtPlayers.setText(searchArrayList.get(position).getNoOfPlayers());
-        holder.btnJoin.setVisibility(View.VISIBLE);
-        holder.btnEdit.setVisibility(View.GONE);
+        holder.txtTime.setText(" "+searchArrayList.get(position).getPostTime());
+        holder.PostedBy.setText("Posted By "+searchArrayList.get(position).getUsername());
+        holder.txtPlayers.setText("No of Players : "+searchArrayList.get(position).getNoofplayers());
+        if(searchArrayList.get(position).getUsername().equalsIgnoreCase(Username)){
+            holder.btnJoin.setVisibility(View.GONE);
+            holder.btnEdit.setVisibility(View.VISIBLE);
+        }
+        else {
+            if(flg==0){
+                holder.btnJoin.setVisibility(View.VISIBLE);
+                holder.btnEdit.setVisibility(View.GONE);
+            }
+            else if(flg==1){
+                holder.btnJoin.setVisibility(View.GONE);
+                holder.btnEdit.setVisibility(View.GONE);
+                holder.Going.setVisibility(View.VISIBLE);
+            }
+            else{
+                holder.btnJoin.setVisibility(View.GONE);
+                holder.btnEdit.setVisibility(View.GONE);
+            }
+        }
+
         return convertView;
     }
 
@@ -114,6 +136,10 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
         TextView hdn_Title;
         Button btnJoin;
         Button btnEdit;
+        TextView Going;
+        TextView PostedBy;
+
+
     }
 
 }
