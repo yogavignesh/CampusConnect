@@ -452,10 +452,12 @@ public class register extends AppCompatActivity implements View.OnClickListener{
                 nameValuePairs.put("PingPong", params[25]);
 
                 nameValuePairs.put("Racketball", params[26]);
-                nameValuePairs.put("phonenumber", params[27]);
-                nameValuePairs.put("RegId",regid);
 
-                //nameValuePairs.put("Cpassword",params[27]);
+                nameValuePairs.put("Cpassword",params[27]);
+                
+                nameValuePairs.put("phonenumber", params[28]);
+                
+                nameValuePairs.put("RegId",regid);
 
 
 
