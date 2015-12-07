@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         // adding nav drawer items to array
         //Profile pic
        // navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Profile Settings
@@ -123,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
         // setting the nav drawer list adapter
         navAdapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
-        //View header = getLayoutInflater().inflate(R.layout.nav_header, null);
-        //View footer = getLayoutInflater().inflate(R.layout.footer, null);
 
         View header = getLayoutInflater().inflate(R.layout.nav_header, mDrawerList, false);
         TextView currUser=(TextView) header.findViewById(R.id.currProf);
@@ -183,10 +182,10 @@ public class MainActivity extends AppCompatActivity {
     private void displayView(int position) {
         Fragment fragment = null;
         switch (position) {
+
             case 1:
                 fragment = new HomeFragment();
                 break;
-
             case 2:
                 fragment = new ProfileSettings();
                 break;
@@ -215,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            setTitle(navMenuTitles[position]);
+            setTitle(navMenuTitles[position-1]);
             mDrawerLayout.closeDrawer(mDrawerList);
 
         } else {

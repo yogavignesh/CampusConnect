@@ -6,7 +6,7 @@ package com.example.test.slidingmenu.model;
 public class NavDrawerItem {
     private String title;
     private int icon;
-    private String count = "0";
+    private String count = "1";
     // boolean to set visiblity of the counter
     private boolean isCounterVisible = false;
 
