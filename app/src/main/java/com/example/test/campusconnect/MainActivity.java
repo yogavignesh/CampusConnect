@@ -3,6 +3,15 @@ package com.example.test.campusconnect;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.AvoidXfermode;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
@@ -16,12 +25,17 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -44,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     // nav drawer title
     private CharSequence mDrawerTitle;
-
+     String currUsername;
     // used to store app title
     private CharSequence mTitle;
 
@@ -64,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
         if (!session.isLoggedIn()) {
             session.logoutUser();
         }
-
+        HashMap<String,String> user = session.getUserDetails();
+        currUsername = user.get(SessionManager.KEY_EMAIL);
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -90,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
         // adding nav drawer items to array
+        //Profile pic
+       // navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Profile Settings
@@ -106,8 +123,15 @@ public class MainActivity extends AppCompatActivity {
         // setting the nav drawer list adapter
         navAdapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
-        mDrawerList.setAdapter(navAdapter);
+        //View header = getLayoutInflater().inflate(R.layout.nav_header, null);
+        //View footer = getLayoutInflater().inflate(R.layout.footer, null);
 
+        View header = getLayoutInflater().inflate(R.layout.nav_header, mDrawerList, false);
+        TextView currUser=(TextView) header.findViewById(R.id.currProf);
+        currUser.setText(currUsername);
+        mDrawerList.addHeaderView(header);
+        // mDrawerList.addFooterView(footer);
+        mDrawerList.setAdapter(navAdapter);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
@@ -130,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             // on first time display view for first nav item
-            displayView(0);
+            displayView(1);
 
         }
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
@@ -159,14 +183,14 @@ public class MainActivity extends AppCompatActivity {
     private void displayView(int position) {
         Fragment fragment = null;
         switch (position) {
-            case 0:
+            case 1:
                 fragment = new HomeFragment();
                 break;
 
-            case 1:
+            case 2:
                 fragment = new ProfileSettings();
                 break;
-            case 2:
+            case 3:
                 new AlertDialog.Builder(this)
                         .setMessage("Are you sure you want to log out?")
                         .setCancelable(false)
@@ -269,7 +293,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    public Bitmap roundCornerImage(Bitmap raw, float round) {
+        int width = raw.getWidth();
+        int height = raw.getHeight();
+        Bitmap result = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(result);
+        canvas.drawARGB(0, 0, 0, 0);
 
+        final Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setColor(Color.parseColor("#000000"));
+
+        final Rect rect = new Rect(0, 0, width, height);
+        final RectF rectF = new RectF(rect);
+
+        canvas.drawRoundRect(rectF, round, round, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(raw, rect, rect, paint);
+
+        return result;
+    }
 
 
 

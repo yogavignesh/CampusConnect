@@ -120,20 +120,17 @@ public class ShareCarComments extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-                Toast.makeText(ShareCarComments.this, "Request Sent", Toast.LENGTH_LONG).show();
-
-                if(location.getText().toString()!="location"){
+                if(!location.getText().toString().trim().equalsIgnoreCase("location")){
                     //txtComment.getText().toString();
+                    Toast.makeText(getBaseContext(), "Your request has been updated", Toast.LENGTH_SHORT);
                     HashMap<String,String> user = session.getUserDetails();
                     Username = user.get(SessionManager.KEY_EMAIL);
                     String enteredText = txtComment.getText().toString();
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
-                    asyncRequestObject.execute(serverUrlComment, postid, Username, location.getText().toString(), flag,enteredText);
+                    asyncRequestObject.execute(serverUrlComment, postid, Username, location.getText().toString(), flag, enteredText);
                     Intent replyIntent = new Intent(getBaseContext(), PostList.class);
-                    Toast.makeText(getBaseContext(),"Your request has been updated",Toast.LENGTH_SHORT);
                     startActivity(replyIntent);
+
                 }
                 else {
                     Toast.makeText(getBaseContext(),"Share your location",Toast.LENGTH_SHORT);

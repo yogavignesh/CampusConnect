@@ -125,7 +125,7 @@ public class ShareCar extends AppCompatActivity {
             String enteredText = postMess.getText().toString();
             session = new SessionManager(getApplicationContext());
             session.checkLogin();
-            if(!seatCount.getText().equals("")&&!enteredText.equals("")&&!rDate.getText().equals("")&&!rTime.getText().equals("")) {
+            if(!seatCount.getText().toString().isEmpty()&&!enteredText.isEmpty()&&!rDate.getText().toString().isEmpty()&&!rTime.getText().toString().isEmpty()) {
                 HashMap<String, String> user = session.getUserDetails();
                 username = user.get(SessionManager.KEY_EMAIL);
                 Toast.makeText(ShareCar.this, "Posted Succesfully", Toast.LENGTH_LONG).show();

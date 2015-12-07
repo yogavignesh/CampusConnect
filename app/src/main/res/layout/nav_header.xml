@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@drawable/theme_bg"
+    android:layout_gravity="center_horizontal">
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:src="@drawable/def_prof"
+        android:background="@drawable/round_profile"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/currProf"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:text="test"
+    android:textSize="20sp"
+    android:textColor="@color/card_white"/>
+</LinearLayout>

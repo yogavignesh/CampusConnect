@@ -32,10 +32,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
-            android:divider="@color/list_divider"
+            android:divider="@color/ColorPrimary"
             android:dividerHeight="1dp"
             android:listSelector="@drawable/list_selector"
-            android:background="@color/list_background"/>
+            android:background="@color/card_white"/>
     </android.support.v4.widget.DrawerLayout>
 
 

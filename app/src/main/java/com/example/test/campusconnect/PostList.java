@@ -90,10 +90,17 @@ public class PostList extends AppCompatActivity {
         });
         HashMap<String,String> user = session.getUserDetails();
         currUsername = user.get(SessionManager.KEY_EMAIL);
-
+        final ExpandableListView exPostList = (ExpandableListView) findViewById(R.id.lstcarposts);
         if(ps_name=="All") {
             asyncRequestObject = new AsyncDataClass();
             asyncRequestObject.execute(serverUrlAll, ps_name, currUsername);
+            exPostList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+                @Override
+                public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                    return false;
+                }
+
+            });
         }
         else{
             asyncRequestObject = new AsyncDataClass();
@@ -206,10 +213,22 @@ public class PostList extends AppCompatActivity {
 
             if(success == 1){
                 List<PostModel> lst = returnParsedJsonObject(result);
-                ExpandableListView exList = (ExpandableListView) findViewById(R.id.lstcarposts);
+                final ExpandableListView exList = (ExpandableListView) findViewById(R.id.lstcarposts);
                 HashMap<String, List<SCCommentModel>> childlst=returnParsedJsonChildObject(result);
                 PostListAdapater exAdpt = new PostListAdapater(getBaseContext(),lst,childlst);
                 exList.setIndicatorBounds(0, 20);
+                exList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                    int previousGroup = -1;
+
+                    @Override
+                    public void onGroupExpand(int groupPosition) {
+                        if (groupPosition != previousGroup)
+                            exList.collapseGroup(previousGroup);
+                        previousGroup = groupPosition;
+                    }
+
+                });
+
                 exList.setAdapter(exAdpt);
 
             }

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -146,6 +147,9 @@ private Context context;
         return convertView;
 
     }
+
+
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView,final ViewGroup parentView) {
@@ -255,6 +259,7 @@ private Context context;
         TextView txthdnpostID;
         TextView txtComment;
         ImageView navImg;
+        String currentUser;
 
     }
 
