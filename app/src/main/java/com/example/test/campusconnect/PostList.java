@@ -322,6 +322,7 @@ public class PostList extends AppCompatActivity {
             resultObject = new JSONObject(result);
             data = resultObject.getJSONArray("results");
             boolean postExists;
+            int tempFlag=1;
 
             for(int i = 0;i< data.length(); i++) {
                 PostModel postModel = new PostModel();
@@ -329,30 +330,32 @@ public class PostList extends AppCompatActivity {
                 postModel.setPostMessage(item.getString("postname"));
                 postModel.setpostedBy(item.getString("PostedBy"));
                 postModel.setpostID(item.getString("postid"));
+                postModel.setCommentedBy(item.getString("CommentedBy"));
                 postModel.setSeatCnt(item.getString("seatCount"));
                 postModel.setDate(item.getString("Date"));
                 postModel.setTime(item.getString("Time"));
                 postModel.setcurrUser(currUsername);
-                if(!item.isNull("cflag")) {
-                    postModel.setStatus(item.getInt("cflag"));
-                }
-                else
-                {
+                if (!item.isNull("cflag")) {
+                    if(currUsername.trim().equalsIgnoreCase(item.getString("CommentedBy").trim())) {
+                      tempFlag=2;
+                        postModel.setStatus(tempFlag);
+                        PostList= Remove(PostList, item.getString("postid"));
+                        PostList.add(postModel);
+                    }
+                    else {
+                        postModel.setStatus(Integer.parseInt(item.getString("cflag")));
+                    }
+                } else {
                     postModel.setStatus(0);
                 }
-                /*if(from(PostList).where("postID",eq(item.getString("postid"))).all().size()>0)
-                {
-                    continue;
-                }*/
-                postExists=isExists(PostList,item.getString("postid"));
+
+                postExists = isExists(PostList, item.getString("postid"));
                 if(postExists){
-                    continue;
+                   continue;
                 }
                 else{
-                    PostList.add(postModel);
+                        PostList.add(postModel);
                 }
-
-
             }
 
         } catch (JSONException e) {
@@ -389,16 +392,24 @@ public class PostList extends AppCompatActivity {
     public static class flag{
         public static boolean FIRST_START = true;
     }
-    public static boolean isExists(List<PostModel> PostList, String targetValue) {
+    public boolean isExists(List<PostModel> PostList, String targetValue) {
         for (final PostModel postModel: PostList)
         {
-            if (postModel.getpostID().equals(targetValue)) {
-                return true;
+            if (postModel.getpostID().equals(targetValue)){
+            return true;
             }
         }
         return false;
     }
-
+    public List<PostModel> Remove(List<PostModel> PostList, String targetValue) {
+        for (final PostModel postModel: PostList)
+        {
+            if (postModel.getpostID().equals(targetValue)){
+                PostList.remove(postModel);
+            }
+        }
+        return PostList;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -443,4 +454,5 @@ public class PostList extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

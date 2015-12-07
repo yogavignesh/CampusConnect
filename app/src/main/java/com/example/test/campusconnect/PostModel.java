@@ -12,6 +12,7 @@ public class PostModel {
     String postID;
     String Date;
     String Time;
+    String commentedBy;
     String location;
     public void setStatus(int status) {
         Status = status;
@@ -27,6 +28,12 @@ public class PostModel {
     }
     public void setDate(String Date) {
         this.Date = Date;
+    }
+    public String getCommentedBy() {
+        return commentedBy;
+    }
+    public void setCommentedBy(String commentedBy) {
+        this.commentedBy = commentedBy;
     }
     public String getDate() {
         return Date;
