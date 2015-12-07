@@ -13,6 +13,7 @@ public class SportsModel {
     String Sportname;
     String JoinedBy;
     String noofplayers;
+    String postid;
     int Flag;
 
 
@@ -27,6 +28,9 @@ public class SportsModel {
     }
     public void setPost(String post) {
         Post = post;
+    }
+    public void setPostid(String postid) {
+        this.postid = postid;
     }
     public void setFlag(int flag) {
         Flag = flag;
@@ -59,7 +63,9 @@ public class SportsModel {
     public String getPost() {
         return Post;
     }
-
+    public String getPostid() {
+        return postid;
+    }
     public String getPostDate() {
         return PostDate;
     }

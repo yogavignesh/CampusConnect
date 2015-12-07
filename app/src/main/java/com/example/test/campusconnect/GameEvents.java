@@ -293,6 +293,7 @@ public class GameEvents extends AppCompatActivity {
                 sportsModel.setPostTime(item.getString("PostTime"));
                 sportsModel.setSportname(item.getString("Sportname"));
                 sportsModel.setNoofplayers(item.getString("Noofplayers"));
+                sportsModel.setPostid(item.getString("PId"));
                 if(!item.isNull("JoinedUser")) {
                     sportsModel.setJoinedBy(item.getString("JoinedUser"));
                 }

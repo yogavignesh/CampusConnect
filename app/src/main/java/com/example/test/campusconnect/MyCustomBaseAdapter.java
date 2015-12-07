@@ -66,8 +66,11 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
             holder.btnJoin = (Button) convertView.findViewById(R.id.btnJoinEvent);
             holder.Going=(TextView) convertView.findViewById(R.id.txtGoing);
             final int flg=searchArrayList.get(position).getFlag();
+           final String nPlyrs=searchArrayList.get(position).getNoofplayers();
+            holder.postid=searchArrayList.get(position).getPostid();
             holder.PostedBy=(TextView) convertView.findViewById(R.id.sbpostBy);
             holder.btnEdit = (Button) convertView.findViewById(R.id.btnEditEvent);
+            holder.btnDelete = (Button) convertView.findViewById(R.id.btnDeleteEvent);
             holder.btnJoin.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -91,6 +94,12 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
 
                     Intent editIntent= new Intent(parent.getContext(),GameInvite.class);
                     editIntent.putExtra("sp_name", holder.hdn_Title.getText());
+                    editIntent.putExtra("date", holder.txtDate.getText());
+                    editIntent.putExtra("time", holder.txtTime.getText());
+                    editIntent.putExtra("message", holder.txtMessage.getText());
+                    editIntent.putExtra("players",nPlyrs);
+                    editIntent.putExtra("eflag","1");
+                    editIntent.putExtra("postid",holder.postid);
                     parent.getContext().startActivity(editIntent);
 
                 }
@@ -106,11 +115,13 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
         holder.txtDate.setText(searchArrayList.get(position).getPostDate());
         holder.txtTime.setText(" "+searchArrayList.get(position).getPostTime());
         holder.PostedBy.setText("Posted By "+searchArrayList.get(position).getUsername());
+
         holder.txtPlayers.setText("No of players required : "+searchArrayList.get(position).getNoofplayers());
 
         if(searchArrayList.get(position).getUsername().equalsIgnoreCase(Username)){
             holder.btnJoin.setVisibility(View.GONE);
             holder.btnEdit.setVisibility(View.VISIBLE);
+            holder.btnDelete.setVisibility(View.VISIBLE);
         }
         else {
             if(flg==0){
@@ -143,8 +154,11 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
         TextView hdn_Title;
         Button btnJoin;
         Button btnEdit;
+        Button btnDelete;
         TextView Going;
         TextView PostedBy;
+        String postid;
+
 
 
     }
