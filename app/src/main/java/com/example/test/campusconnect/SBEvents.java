@@ -88,15 +88,16 @@ public class SBEvents extends AppCompatActivity {
             String msg = bndl.getString("message");
             String sname = bndl.getString("sp_name");
             String username = bndl.getString("username");
+            String postid=bndl.getString("postid");
             String action="c";
             if(Integer.parseInt(flag)==1) {
                 asyncRequestObject = new AsyncDataClass();
-                asyncRequestObject.execute(serverUrl, username, sname, date, time, msg, flag,action);
+                asyncRequestObject.execute(serverUrl, username, sname, date, time, msg, flag,postid,action);
             }
             if(Integer.parseInt(flag)==2) {
                 asyncRequestObject = new AsyncDataClass();
                 action="d";
-                asyncRequestObject.execute(serverUrl, username, sname, date, time, msg, flag,action);
+                asyncRequestObject.execute(serverUrl, username, sname, date, time, msg, flag,postid,action);
             }
 
         }

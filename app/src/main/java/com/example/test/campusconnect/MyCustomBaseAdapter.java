@@ -83,7 +83,26 @@ public class MyCustomBaseAdapter extends ArrayAdapter {
                     joinIntent.putExtra("time", holder.txtTime.getText());
                     joinIntent.putExtra("message", holder.txtMessage.getText());
                     joinIntent.putExtra("username",Username);
+                    joinIntent.putExtra("postid",holder.postid);
                     joinIntent.putExtra("flag","1");
+                    parent.getContext().startActivity(joinIntent);
+
+                }
+            });
+            holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+
+                    Intent joinIntent= new Intent(parent.getContext(),SBEvents.class);
+                    joinIntent.putExtra("sp_name", holder.hdn_Title.getText());
+                    joinIntent.putExtra("date", holder.txtDate.getText());
+                    joinIntent.putExtra("time", holder.txtTime.getText());
+                    joinIntent.putExtra("message", holder.txtMessage.getText());
+                    joinIntent.putExtra("username",Username);
+                    joinIntent.putExtra("postid",holder.postid);
+                    joinIntent.putExtra("flag","2");
                     parent.getContext().startActivity(joinIntent);
 
                 }
