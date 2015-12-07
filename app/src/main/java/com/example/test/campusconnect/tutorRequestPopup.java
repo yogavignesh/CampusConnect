@@ -35,7 +35,7 @@ public class tutorRequestPopup extends AppCompatActivity {
     String rUsername;
     String reqmessage;
     String flag;
-    String notifyMessage;
+
     private AsyncDataClass asyncRequestObject;
     private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutorRequest.php";
 
@@ -66,7 +66,7 @@ public class tutorRequestPopup extends AppCompatActivity {
                 EditText message = (EditText)findViewById(R.id.rtxtRequest);
                 reqmessage = message.getText().toString();
                 flag ="1";
-                notifyMessage="From Campus Connect:"+reqmessage+"\n"+"Requested by:"+ "\n" + rUsername +"\n"+"Dept : "+ dept;
+
                   asyncRequestObject = new AsyncDataClass();
                 asyncRequestObject.execute(serverUrl,rUsername,tutorname,dept,reqmessage,flag);
                //Toast.makeText(tutorRequestPopup.this,"The request has been sent",Toast.LENGTH_SHORT);
@@ -214,12 +214,10 @@ public class tutorRequestPopup extends AppCompatActivity {
 
             if(jsonResult == 1){
 
-                Intent intent = new Intent(getBaseContext(), GameEvents.class);
+                Intent intent = new Intent(getBaseContext(), ShareCar.class);
                 final Bundle extras=getIntent().getExtras();
-
                 Toast.makeText(tutorRequestPopup.this, "Your request has been posted", Toast.LENGTH_LONG).show();
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage("6823072231", null, notifyMessage, null, null);
+
 
             }
 

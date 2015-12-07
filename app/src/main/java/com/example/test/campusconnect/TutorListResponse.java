@@ -40,7 +40,7 @@ public class TutorListResponse extends AppCompatActivity {
     private AsyncDataClass asyncRequestObject;
     SessionManager session;
     private String tutorUsername;
-    private final String serverUrl = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutorRequestList.php";
+    private final String serverUrl = configuration.URL_TUTOR_REQUEST;
 
 
     @Override

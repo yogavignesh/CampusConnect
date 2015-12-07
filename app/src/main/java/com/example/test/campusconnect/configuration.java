@@ -19,4 +19,5 @@ public class configuration {
     public static String URL_ALL_RIDES = "http://ec2-52-21-243-105.compute-1.amazonaws.com/postlist.php" ;
     public static String URL_COMMENTS = "http://ec2-52-21-243-105.compute-1.amazonaws.com/comment.php" ;
     public static String URL_CANCEL = "http://ec2-52-21-243-105.compute-1.amazonaws.com/cancel.php" ;
+    public static String URL_TUTOR_REQUEST = "http://ec2-52-21-243-105.compute-1.amazonaws.com/tutorRequestList.php";
 }

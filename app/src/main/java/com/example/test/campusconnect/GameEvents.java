@@ -293,13 +293,13 @@ public class GameEvents extends AppCompatActivity {
                 sportsModel.setPostTime(item.getString("PostTime"));
                 sportsModel.setSportname(item.getString("Sportname"));
                 sportsModel.setNoofplayers(item.getString("Noofplayers"));
-                if(!item.isNull(item.getString("JoinedUser"))) {
+                if(!item.isNull("JoinedUser")) {
                     sportsModel.setJoinedBy(item.getString("JoinedUser"));
                 }
                 else {
                     sportsModel.setJoinedBy("noJoin");
                 }
-                if(!item.isNull(item.getString("Flag"))) {
+                if(!item.isNull("Flag")) {
                     sportsModel.setFlag(Integer.parseInt(item.getString("Flag")));
                 }
                 else {

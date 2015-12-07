@@ -4,63 +4,75 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/book_stack"
     android:id="@+id/evnttitle">
 
 
     <TextView android:id="@+id/hidden_dept_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:visibility="gone"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:padding="10sp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="From :"
-        android:textColor="@color/ColorPrimaryDark"/>
+        android:text="Message from "
+        android:textColor="@color/tabsScrollColor"/>
 
      <TextView android:id="@+id/sUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:textSize="17sp"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:textColor="@color/ColorHeading"
+        android:padding="2pt"
+        android:textColor="@color/ColorPrimaryDark"
 
         />
+        </LinearLayout>
     <TextView android:id="@+id/txtReqMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
+        android:textSize="16sp"
         android:layout_below="@+id/tSubject"
         android:textColor="@color/ColorPrimaryDark"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
         />
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal">
-        <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Accept"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="10sp"
+        >
+        <Button android:layout_width="40dp"
+            android:layout_height="40dp"
+
             android:id="@+id/btnTtrAcc"
             android:layout_alignParentRight="true"
             android:layout_toLeftOf="@+id/btnTtrDec"
             android:padding="5pt"
-            android:background="@drawable/button_default_bg"
-            android:textColor="@color/ColorPrimary"></Button>
+            android:background="@drawable/going_icon"
+            android:textColor="@color/ColorPrimary"
+            android:layout_gravity="center_horizontal"></Button>
 
-        <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Decline"
+        <Button android:layout_width="40dp"
+            android:layout_height="40dp"
+
             android:id="@+id/btnTtrDec"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_alignParentBottom="true"
             android:padding="5pt"
-            android:background="@drawable/button_default_bg"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/cancel_icon"
             android:textColor="@color/ColorPrimary"></Button>
         <TextView android:id="@+id/txtAccepted"
             android:layout_width="wrap_content"
@@ -68,7 +80,7 @@
             android:background="@drawable/rounded_corner"
             android:text="Accepted"
             android:textSize="18sp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_gravity="center_horizontal"
             android:textColor="@android:color/holo_green_dark"
             />
         <TextView android:id="@+id/txtDeclined"
@@ -77,7 +89,7 @@
             android:background="@drawable/rounded_corner"
             android:text="Declined"
             android:textSize="18sp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_gravity="center_horizontal"
             android:textColor="@android:color/holo_red_dark"
 
             />

@@ -79,7 +79,7 @@ tools:context=".MainActivity"
         android:id="@+id/tvForgotPassword"
         android:layout_height="wrap_content"
         android:textColor="@color/ColorPrimary"
-        android:text="Forgot Password?"
+
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"/>

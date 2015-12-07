@@ -11,9 +11,15 @@
 
 
         <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+
             android:id="@+id/listResponses"
+            android:cacheColorHint="#CCBBFFFF"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:fadingEdge="none"
+            android:divider="@color/ColorPrimary"
+            android:dividerHeight="2.0sp"
             android:background="@drawable/card_background_selector"></ListView>
 
 

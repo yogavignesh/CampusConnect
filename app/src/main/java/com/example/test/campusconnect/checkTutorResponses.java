@@ -279,6 +279,7 @@ public class checkTutorResponses extends AppCompatActivity {
                 cResModel.setEndTime(item.getString("EndTime"));
                 cResModel.setTDate(item.getString("TDate"));
                 cResModel.setDept(item.getString("Department"));
+                cResModel.setStatus(item.getString("Flag"));
                 tutorModelList.add(cResModel);
 
             }
