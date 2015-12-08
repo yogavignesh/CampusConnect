@@ -85,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setNavigationIcon(R.drawable.ic_drawer);
         setSupportActionBar(toolbar);
+        final Bundle extras = getIntent().getExtras();
+        String frag = "1";
+        if (extras != null) {
+            frag = extras.getString("frag_cnt");
+        }
 
         // enabling action bar app icon and behaving it as toggle button
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -153,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             // on first time display view for first nav item
-            displayView(1);
+            displayView(Integer.parseInt(frag));
 
         }
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());

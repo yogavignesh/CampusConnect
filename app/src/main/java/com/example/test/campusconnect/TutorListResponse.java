@@ -232,12 +232,6 @@ public class TutorListResponse extends AppCompatActivity {
                 vTutors = (ListView) findViewById(R.id.lstTutorsResponses);
                 vTutors.setAdapter(new CustomTutorResponseAdapter(TutorListResponse.this, R.layout.tutor_response_list_view, lst));
 
-                //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
-                //mListView.setAdapter(adpt);
-
-
-
-                //asyncRequestObject.cancel(true);
 
             }
 

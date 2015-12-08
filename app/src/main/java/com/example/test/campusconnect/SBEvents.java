@@ -99,26 +99,17 @@ public class SBEvents extends AppCompatActivity {
                 action="d";
                 asyncRequestObject.execute(serverUrl, username, sname, date, time, msg, flag,postid,action);
             }
-
         }
-
-
     }
-
-
 
     @Override
     public void onStart() {
         super.onStart();
-
-
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-
     }
 
     private class AsyncDataClass extends AsyncTask<String, Void, String> {
@@ -140,7 +131,8 @@ public class SBEvents extends AppCompatActivity {
                 nameValuePairs.put("time", params[4]);
                 nameValuePairs.put("msg", params[5]);
                 nameValuePairs.put("flag", params[6]);
-                nameValuePairs.put("action", params[7]);
+                nameValuePairs.put("postid", params[7]);
+                nameValuePairs.put("action", params[8]);
 
                 URL url = new URL(serverUrl);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -194,6 +186,7 @@ public class SBEvents extends AppCompatActivity {
 
         }
 
+
         @Override
 
         protected void onPostExecute(String result) {
@@ -224,7 +217,17 @@ public class SBEvents extends AppCompatActivity {
             }
 
             if (success == 1) {
-                Toast.makeText(getApplicationContext(), "You have successfully joined the Sports Event", Toast.LENGTH_LONG).show();
+                Bundle bndl = getIntent().getExtras();
+                if (bndl.getString("flag") != null) {
+
+                    String flag = bndl.getString("flag");
+                    if (Integer.parseInt(flag) == 1) {
+
+                        Toast.makeText(getApplicationContext(), "Your have successfully joined the Sports Event", Toast.LENGTH_LONG).show();
+                    } else if (Integer.parseInt(flag) == 2) {
+                        Toast.makeText(getApplicationContext(), "Your event has been deleted", Toast.LENGTH_LONG).show();
+                    }
+                }
                 //MyCustomBaseAdapter adpt = new MyCustomBaseAdapter(getApplicationContext(),R.layout.events_view,lst);
                 //mListView.setAdapter(adpt);
 
@@ -288,5 +291,10 @@ public class SBEvents extends AppCompatActivity {
 
         return returnedResult;
 
+    }
+    @Override
+    public void onBackPressed() {
+        Intent prev_intent=new Intent(getBaseContext(),MainActivity.class);
+        startActivity(prev_intent);
     }
 }

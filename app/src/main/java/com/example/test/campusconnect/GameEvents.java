@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,8 +64,6 @@ public class GameEvents extends AppCompatActivity {
         if (extras != null) {
             sp_name = extras.getString("sp_name");
         }
-
-
         title = (TextView) findViewById(R.id.toolbar_title);
         title.setText(sp_name);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -190,6 +189,7 @@ public class GameEvents extends AppCompatActivity {
             super.onPreExecute();
 
         }
+
 
         @Override
 
@@ -342,6 +342,12 @@ public class GameEvents extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+       Intent prev_intent=new Intent(getBaseContext(),SBEvents.class);
+        prev_intent.putExtra("sp_name",sp_name);
+        startActivity(prev_intent);
+    }
     public static class flag{
         public static boolean FIRST_START = true;
     }

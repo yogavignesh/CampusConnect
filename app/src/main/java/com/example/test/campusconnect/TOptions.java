@@ -74,5 +74,12 @@ public class TOptions extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public void onBackPressed() {
+        Intent prev_intent=new Intent(getBaseContext(),MainActivity.class);
+
+        startActivity(prev_intent);
     }
 }

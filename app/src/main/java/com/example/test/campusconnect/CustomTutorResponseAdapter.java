@@ -85,11 +85,8 @@ public class CustomTutorResponseAdapter extends ArrayAdapter {
         holder.txtsName.setText(tutorResArrayList.get(position).getReqUsername());
         //holder.txtExp.setText(searchArrayList.get(position).getExp());
         holder.txtMessage.setText(tutorResArrayList.get(position).getReqMessage());
-        if(stat==0) {
-            holder.txtDeclined.setVisibility(View.GONE);
-            holder.txtAccepted.setVisibility(View.GONE);
-        }
-        else if(stat==1) {
+
+        if(stat==1 && holder.txtsName.getText().) {
             holder.Accept.setVisibility(View.GONE);
             holder.Decline.setVisibility(View.GONE);
             holder.txtDeclined.setVisibility(View.GONE);
@@ -100,6 +97,10 @@ public class CustomTutorResponseAdapter extends ArrayAdapter {
             holder.Accept.setVisibility(View.GONE);
             holder.txtAccepted.setVisibility(View.GONE);
             holder.txtDeclined.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.txtDeclined.setVisibility(View.GONE);
+            holder.txtAccepted.setVisibility(View.GONE);
         }
         return convertView;
     }

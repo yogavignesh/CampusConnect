@@ -76,7 +76,7 @@ public class TutorResponse extends AppCompatActivity {
             dp_name = extras.getString("dp_name");
             studentName = extras.getString("student");
             reqmsg = extras.getString("reqmsg");
-            status=extras.getInt("status");
+            status= extras.getInt("status");
         }
 
 
@@ -170,7 +170,6 @@ public class TutorResponse extends AppCompatActivity {
                 if(status==0) {
                     flag="2";
                 }
-                notifyMessage="From Campus Connect:"+reqmsg+"\n"+"Responded by"+"\n"+tutorUsername+"\n"+"Dept:"+dp_name;
                 asyncRequestObject = new AsyncDataClass();
                 asyncRequestObject.execute(serverUrl,studentName,tutorUsername,dp_name,reqmsg,response,schDate.getText().toString(),schSTime.getText().toString(),schETime.getText().toString(),flag);
 
@@ -326,8 +325,6 @@ public class TutorResponse extends AppCompatActivity {
 
                 final Bundle extras=getIntent().getExtras();
                 intent.putExtra("dp_name",dp_name);
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage("6823658219", null, notifyMessage, null, null);
                 startActivity(intent);
 
             }
